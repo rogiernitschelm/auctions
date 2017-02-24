@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import ObjectID from 'mongodb';
 import User from './user';
 
 const AuctionSchema = new Schema({
@@ -72,9 +71,6 @@ const AuctionSchema = new Schema({
 AuctionSchema.pre('save', function save(next) {
   const auction = this;
 
-
-  // if validation(auction) returns XYZ then next('Error')
-
   if (auction.buyoutPrice <= auction.startingPrice) {
     next(Error('The buyout-price must be higher than the starting price.'));
   }
@@ -94,16 +90,32 @@ AuctionSchema.pre('save', function save(next) {
   next();
 });
 
-AuctionSchema.post('save', function() {
+AuctionSchema.post('save', function () {
   User.findOneAndUpdate({ _id: this._owner }, { $push: { auctions: this } })
     .then(result => result)
     .catch(error => error);
 });
 
+AuctionSchema.pre('remove', function (next) {
+  if (this._bids.length > 0) {
+    throw new Error('There is a bid present. It is no longer possible to withdraw.');
+  }
+
+  next();
+});
+
+AuctionSchema.pre('update', function (next) {
+  if (this._bids.length > 0) {
+    throw new Error('There is a bid present. It is no longer possible to update.');
+  }
+
+  next();
+});
+
 const Auction = mongoose.model('auction', AuctionSchema);
 
-export const createAuction = ({ ...args, req }) => {
-  return Auction.create({ ...args, _owner: req.user.id });
-};
+export const createAuction = ({ ...args, req }) =>
+  Auction.create({ ...args, _owner: req.user.id });
+
 
 export default Auction;

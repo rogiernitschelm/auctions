@@ -1,13 +1,6 @@
-import {
-  GraphQLString,
-  GraphQLInt
-} from 'graphql';
-import mongoose from 'mongoose';
+import { GraphQLString, GraphQLInt } from 'graphql';
 import AuctionType from '../../types/auction_type';
-
-import { createAuction } from '../../../models/auction';
-
-const Auction = mongoose.model('auction');
+import { createAuction } from '../../../models';
 
 export default {
   createAuction: {
