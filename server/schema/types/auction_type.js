@@ -5,6 +5,7 @@ export default new GraphQLObjectType({
   fields: () => ({
     title: { type: new GraphQLNonNull(GraphQLString) },
     id: { type: GraphQLID },
+    highestBid: { type: GraphQLInt },
     startingPrice: { type: new GraphQLNonNull(GraphQLInt) },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString },

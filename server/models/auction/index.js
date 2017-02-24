@@ -1,2 +1,2 @@
 export * from './methods';
-export default from './schema';
+export default from './model';
