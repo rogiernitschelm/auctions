@@ -6,7 +6,7 @@ export const createAuction = ({ ...args, req }) =>
 export const removeAuction = ({ id, req }) => {
   const auctionToDelete = Auction.findById(id, (error, auction) => {
     if (auction._owner.equals(req.user._id) || req.user.usertype === 'admin') {
-      return Auction.remove(id);
+      return auction.remove();
     }
   });
 
