@@ -2,9 +2,11 @@ import { GraphQLObjectType, GraphQLList } from 'graphql';
 import mongoose from 'mongoose';
 import UserType from './user_type';
 import AuctionType from './auction_type';
+import BidType from './bid_type';
 
 const User = mongoose.model('user');
 const Auction = mongoose.model('auction');
+const Bid = mongoose.model('bid');
 
 export default new GraphQLObjectType({
   name: 'RootQueryType',
@@ -29,5 +31,12 @@ export default new GraphQLObjectType({
         return Auction.find({});
       }
     },
+
+    bids: {
+      type: new GraphQLList(BidType),
+      resolve() {
+        return Bid.find({});
+      }
+    }
   })
 });

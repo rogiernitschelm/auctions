@@ -56,27 +56,13 @@ export const login = ({ email, password, req }) => {
 export const signup = ({
   email,
   password,
-  firstName,
-  lastName,
-  usertype,
-  chamberOfCommerce,
-  companyName,
-  infix,
-  gender,
-  birthDate,
+  ...args,
   req
 }) => {
   const user = new User({
     email,
     password,
-    firstName,
-    lastName,
-    usertype,
-    chamberOfCommerce,
-    companyName, 
-    infix,
-    gender,
-    birthDate,
+    ...args,
     req
   });
 

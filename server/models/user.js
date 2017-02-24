@@ -71,7 +71,7 @@ const UserSchema = new Schema({
   updatedAt: {
     type: Date,
     required: false,
-  }
+  },
 
 });
 
@@ -110,4 +110,4 @@ UserSchema
   });
 };
 
-mongoose.model('user', UserSchema);
+export default mongoose.model('user', UserSchema);

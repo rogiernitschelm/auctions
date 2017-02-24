@@ -6,7 +6,7 @@ import expressGraphQL from 'express-graphql';
 import connectMongo from 'connect-mongo';
 
 import developmentConfiguration from './configuration/development';
-import './models';
+import * as models from './models';
 import schema from './schema';
 
 const MongoStore = connectMongo(session);

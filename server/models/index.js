@@ -1,2 +1,3 @@
-import './user';
-import './auction';
+export { default as Auction } from './auction';
+export { default as User } from './user';
+export { default as Bid } from './bid';

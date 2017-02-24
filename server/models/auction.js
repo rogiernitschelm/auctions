@@ -103,8 +103,4 @@ AuctionSchema.pre('save', function save(next) {
 //
 // })
 
-AuctionSchema.methods = {
-
-};
-
 mongoose.model('auction', AuctionSchema);
