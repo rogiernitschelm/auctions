@@ -73,6 +73,9 @@ const UserSchema = new Schema({
     required: false,
   },
 
+  _bids: [{ type: Schema.ObjectId, ref: 'bid', required: true }],
+  auctions: [{ type: Schema.ObjectId, ref: 'auction', required: true }]
+
 });
 
 UserSchema.pre('save', function save(next) {

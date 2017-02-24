@@ -1,18 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 
 const BidSchema = new Schema({
-  bidder: {
-    type: String,
-    required: true
-  },
-
   amount: {
     type: Number,
-    required: true
-  },
-
-  auctionId: {
-    type: String,
     required: true
   },
 
@@ -20,7 +10,10 @@ const BidSchema = new Schema({
     type: Date,
     required: true,
     defaultValue: new Date()
-  }
+  },
+
+  _auction: { type: Schema.ObjectId, ref: 'auction', required: true },
+  _bidder: { type: Schema.ObjectId, ref: 'user', required: true }
 });
 
 export default mongoose.model('bid', BidSchema);

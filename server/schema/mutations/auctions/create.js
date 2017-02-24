@@ -5,6 +5,8 @@ import {
 import mongoose from 'mongoose';
 import AuctionType from '../../types/auction_type';
 
+import { createAuction } from '../../../models/auction';
+
 const Auction = mongoose.model('auction');
 
 export default {
@@ -18,7 +20,7 @@ export default {
       startingPrice: { type: GraphQLInt }
     },
     resolve(parentValue, args, req) {
-      return (new Auction({ ...args, owner: req.user.id })).save();
+      return createAuction({ ...args, req });
     }
   }
 };
