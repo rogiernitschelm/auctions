@@ -41,7 +41,7 @@ AuctionSchema.pre('remove', function (next) {
 AuctionSchema.virtual('highestBid').get(function () {
   if (this._bids.length > 0) {
     return this._bids.reduce((lowest, next) => {
-      return next > lowest ? next : lowest;
+      return next.amount > lowest.amount ? next.amount : lowest.amount;
     });
   }
 
