@@ -5,7 +5,7 @@ import { User } from '../../../models';
 describe('Removing a user', () => {
   let user;
 
-  beforeEach(done => {
+  before(done => {
     user = new User(validUser);
     user.save()
       .then(() => done());
@@ -16,8 +16,8 @@ describe('Removing a user', () => {
 
     user.remove()
       .then(() => User.findOne({ email }))
-      .then(user => {
-        assert(user === null);
+      .then(result => {
+        assert(result === null);
         done();
       });
   });
