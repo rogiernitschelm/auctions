@@ -7,6 +7,8 @@ const UserSchema = new Schema({
     match: /\S+@\S+\.\S+/,
     lowercase: true,
     required: true,
+    unique: true,
+    index: true
   },
 
   // firstName: {
