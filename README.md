@@ -13,3 +13,41 @@ correct method on the models.
 
 Model-validation is handled within the model-schema. Authentication is done
 with passport using a local-strategy.
+
+## Use
+
+Starting the application
+
+    npm start
+    localhost:3000/graphql
+
+Testing the application
+
+    npm test
+
+Create a user (copy and paste):
+
+    mutation {
+      signup(
+        email: "mail@hoogle.nom",
+        password: "abcd1234",
+        firstName: "Kees",
+        lastName: "van de Koekjesfabriek",
+        chamberOfCommerce: "123456789a", 
+        companyName: "Hoogle.nom",
+        usertype: "seller"
+      ) {
+        id
+        email
+      }
+    }
+
+Query:
+
+    query {
+      currentUser {
+        id
+        email
+        usertype
+      }
+    }
