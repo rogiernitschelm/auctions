@@ -3,7 +3,7 @@ import {
 } from 'graphql';
 
 import UserType from '../../types/user_type';
-import { signup } from '../../../authentication';
+import { signup } from '../../../models';
 
 export default {
   signup: {

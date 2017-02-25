@@ -2,7 +2,7 @@ import {
   GraphQLString,
 } from 'graphql';
 import UserType from '../../types/user_type';
-import { login } from '../../../authentication';
+import { login } from '../../../models';
 
 export default {
   login: {

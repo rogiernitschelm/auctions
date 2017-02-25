@@ -1,4 +1,17 @@
-export { default as Auction } from './auction';
-export { default as User } from './user';
 export { default as Bid } from './bid';
-export { createAuction, removeAuction } from './auction';
+
+export {
+  default as Auction,
+  createAuction,
+  removeAuction
+} from './auction';
+
+export {
+  default as User,
+  userSchematic,
+  login,
+  signup,
+  logout,
+  removeAccount,
+  updateAccount
+} from './user';
