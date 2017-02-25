@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { validUser, invalidUser, validUserHacked } from '../../seeds/user_seeds';
+import { validUser, invalidUser, validUserHacked } from './user_seeds';
 import { User } from '../../../models';
 
 describe('Creating a user', () => {

@@ -1,10 +1,12 @@
-import { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLInt } from 'graphql';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLInt, GraphQLString } from 'graphql';
 
 export default new GraphQLObjectType({
   name: 'BidType',
   fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
     bidder: { type: new GraphQLNonNull(GraphQLID) },
     amount: { type: new GraphQLNonNull(GraphQLInt) },
-    auctionId: { type: new GraphQLNonNull(GraphQLID) },
+    auction: { type: new GraphQLNonNull(GraphQLID) },
+    createdAt: { type: new GraphQLNonNull(GraphQLString) }
   })
 });

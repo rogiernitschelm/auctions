@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { validUser } from '../../seeds/user_seeds';
+import { validUser } from './user_seeds';
 import { User } from '../../../models';
 
 describe('Removing a user', () => {

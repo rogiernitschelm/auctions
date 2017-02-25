@@ -11,6 +11,7 @@ export default new GraphQLObjectType({
     updatedAt: { type: GraphQLString },
     description: { type: new GraphQLNonNull(GraphQLString) },
     type: { type: new GraphQLNonNull(GraphQLString) },
-    endDateTime: { type: GraphQLString }
+    endDateTime: { type: new GraphQLNonNull(GraphQLString) },
+    owner: { type: new GraphQLNonNull(GraphQLID) }
   })
 });
