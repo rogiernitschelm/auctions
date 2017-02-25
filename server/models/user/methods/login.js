@@ -1,6 +1,6 @@
 import passport from 'passport';
 
-export default ({ email, password, req }) => {
+export default ({ args: { email, password }, req }) => {
   if (req.user) {
     throw new Error('You are already logged in.');
   }

@@ -19,10 +19,9 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      return funnel({ req, args, mutationType: 'updateAccount' });
-      // return User.update({ _id: user._id }, attributes)
-      //   .catch(error => error)
-      //   .then(() => user);
+      if (!req.user) throw new Error('You need to be logged in.');
+
+      return funnel({ req, args, requestType: 'updateAccount' });
     }
   },
 };

@@ -6,14 +6,28 @@ import {
 } from '../../authorization';
 
 export default request => {
-  switch (request.req.user.usertype) {
+  const { req, args, requestType } = request;
+
+  if (!req.user) {
+    return GuestAuthorization({
+      req,
+      args,
+      requestType
+    });
+  }
+
+  if (requestType === 'logout') {
+    return req.logout();
+  }
+
+  switch (req.user.usertype) {
     case 'admin':
-      return AdminAuthorization(request);
+      return AdminAuthorization({ req, args, requestType });
     case 'seller':
-      return SellerAuthorization(request);
+      return SellerAuthorization({ req, args, requestType });
     case 'buyer':
-      return BuyerAuthorization(request);
+      return BuyerAuthorization({ req, args, requestType });
     default:
-      return GuestAuthorization(request);
+      return GuestAuthorization({ req, args, requestType });
   }
 };

@@ -6,12 +6,8 @@ import {
   removeAuction
 } from '../models';
 
-export default ({ req, args, mutationType }) => {
-  const { user, user: { id, usertype } } = req;
-
-  if (!user) {
-    throw new Error('You need to be logged in as a seller to continue.');
-  }
+export default ({ req, args, requestType }) => {
+  const { user: { id, usertype } } = req;
 
   if (!usertype.includes('seller' || 'admin')) {
     throw new Error('You need to be a seller or administrator.');
@@ -21,18 +17,18 @@ export default ({ req, args, mutationType }) => {
     throw new Error('An id has been passed, but you are not an administrator.');
   }
 
-  switch (mutationType) {
+  switch (requestType) {
     case 'updateAccount':
       return updateAccount(id, args);
     case 'removeAccount':
-      return removeAccount(id);
-    case 'createAuction':
-      return createAuction();
-    case 'updateAuction':
-      return updateAuction();
-    case 'removeAuction':
-      return removeAuction();
+      return removeAccount(id, req.user);
+    // case 'createAuction':
+    //   return createAuction();
+    // case 'updateAuction':
+    //   return updateAuction();
+    // case 'removeAuction':
+    //   return removeAuction();
     default:
-      throw new Error('Valid mutation-type is missing.');
+      throw new Error('Valid requset-type is missing.');
   }
 };
