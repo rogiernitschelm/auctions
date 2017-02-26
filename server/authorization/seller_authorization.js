@@ -6,6 +6,7 @@ import {
   updateAuction,
   removeAuction,
 } from '../models';
+import { validateOwner, validateNoBids, validateNoActiveAuctions } from './helpers';
 
 export default ({ req, args, requestType }) => {
   const { user, user: { id, usertype } } = req;
@@ -14,19 +15,13 @@ export default ({ req, args, requestType }) => {
     throw new Error('You need to be a seller or administrator.');
   }
 
-  const validateOwner = (ownerId, sellerId) => {
-    if (String(ownerId) === sellerId) {
-      return;
-    }
-
-    throw new Error('You are not the owner.');
-  };
-
   switch (requestType) {
     case 'updateAccountMutation':
       return updateAccount(id, args);
 
     case 'removeAccountMutation':
+      validateNoActiveAuctions(user);
+
       return removeAccount(id, user);
 
     case 'createAuctionMutation':
@@ -34,18 +29,20 @@ export default ({ req, args, requestType }) => {
 
     case 'updateAuctionMutation':
     return Auction.findById(args.id)
-      .then(result => {
-        validateOwner(result._owner, id);
-        
+      .then(auction => {
+        validateNoBids(auction);
+        validateOwner(auction._owner, id);
+
         return updateAuction(id, args);
       });
 
     case 'removeAuctionMutation':
       return Auction.findById(args.id)
-        .then(result => {
-          validateOwner(result._owner, id);
+        .then(auction => {
+          validateNoBids(auction);
+          validateOwner(auction._owner, id);
 
-          return removeAuction(id, user);
+          return removeAuction(auction);
         });
 
     default:

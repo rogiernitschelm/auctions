@@ -17,6 +17,7 @@ export default new GraphQLObjectType({
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
     bids: { type: new GraphQLList(BidType) },
-    auctions: { type: new GraphQLList(AuctionType) }
+    auctions: { type: new GraphQLList(AuctionType) },
+    activeAuctions: { type: new GraphQLList(AuctionType) }
   })
 });

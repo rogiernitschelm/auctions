@@ -51,10 +51,10 @@ export const schematic = {
   //   max: 999999
   // },
   //
-  // endDateTime: {
-  //   type: Date,
-  //   required: true
-  // },
+  endDateTime: {
+    type: Date,
+    required: true
+  },
   //
   // startDateTime: {
   //   type: Date,

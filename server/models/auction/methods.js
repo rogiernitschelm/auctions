@@ -4,8 +4,8 @@ export const createAuction = (id, args) => {
   return Auction.create({ ...args, _owner: id });
 };
 
-export const removeAuction = (id, auction) => {
-  return Auction.findById(id).then(foundAuction => foundAuction.remove()).then(() => auction);
+export const removeAuction = auction => {
+  return auction.remove().then(() => auction);
 };
 
 export const updateAuction = (id, args, req) => {
