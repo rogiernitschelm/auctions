@@ -4,7 +4,10 @@ import { Strategy } from 'passport-local';
 
 const User = mongoose.model('user');
 
-passport.serializeUser((user, done) => { done(null, user.id); });
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
 passport.deserializeUser((id, done) => {
   User.findById(id, (error, user) => {
     done(error, user);

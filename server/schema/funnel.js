@@ -3,7 +3,7 @@ import {
   GuestAuthorization,
   AdminAuthorization,
   BuyerAuthorization
-} from '../../authorization';
+} from '../authorization';
 
 export default request => {
   const { req, args, requestType } = request;
@@ -16,7 +16,7 @@ export default request => {
     });
   }
 
-  if (requestType === 'logout') {
+  if (requestType === 'logoutMutation') {
     return req.logout();
   }
 

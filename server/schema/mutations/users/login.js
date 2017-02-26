@@ -2,7 +2,7 @@ import {
   GraphQLString,
 } from 'graphql';
 import UserType from '../../types/user_type';
-import funnel from '../funnel';
+import funnel from '../../funnel';
 
 export default {
   login: {
@@ -14,7 +14,7 @@ export default {
     resolve(parentValue, args, req) {
       if (req.user) throw new Error('You are already logged in.');
 
-      return funnel({ args, req, requestType: 'login' });
+      return funnel({ args, req, requestType: 'loginMutation' });
     }
   },
 };

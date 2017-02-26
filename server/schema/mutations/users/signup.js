@@ -1,7 +1,7 @@
 import {
   GraphQLString,
 } from 'graphql';
-import funnel from '../funnel';
+import funnel from '../../funnel';
 import UserType from '../../types/user_type';
 
 export default {
@@ -21,9 +21,9 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      if (req.user) throw new Error('You already have an account.');      
+      if (req.user) throw new Error('You already have an account.');
 
-      return funnel({ args, req, requestType: 'signup' });
+      return funnel({ args, req, requestType: 'signupMutation' });
     }
   },
 };

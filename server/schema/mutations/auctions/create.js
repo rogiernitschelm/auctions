@@ -1,6 +1,6 @@
 import { GraphQLString, GraphQLInt } from 'graphql';
 import AuctionType from '../../types/auction_type';
-import { createAuction } from '../../../models';
+import funnel from '../../funnel';
 
 export default {
   createAuction: {
@@ -13,7 +13,9 @@ export default {
       startingPrice: { type: GraphQLInt }
     },
     resolve(parentValue, args, req) {
-      return createAuction({ ...args, req });
+      if (!req.user) throw new Error('You must be logged in as a seller.');
+
+      return funnel({ args, req, requestType: 'createAuctionMutation' });
     }
   }
 };

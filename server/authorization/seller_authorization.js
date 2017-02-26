@@ -1,33 +1,53 @@
 import {
+  Auction,
   updateAccount,
   removeAccount,
   createAuction,
   updateAuction,
-  removeAuction
+  removeAuction,
 } from '../models';
 
 export default ({ req, args, requestType }) => {
-  const { user: { id, usertype } } = req;
+  const { user, user: { id, usertype } } = req;
 
   if (!usertype.includes('seller' || 'admin')) {
     throw new Error('You need to be a seller or administrator.');
   }
 
-  if ((args.id || args._id) && usertype !== 'admin') {
-    throw new Error('An id has been passed, but you are not an administrator.');
-  }
+  const validateOwner = (ownerId, sellerId) => {
+    if (String(ownerId) === sellerId) {
+      return;
+    }
+
+    throw new Error('You are not the owner.');
+  };
 
   switch (requestType) {
-    case 'updateAccount':
+    case 'updateAccountMutation':
       return updateAccount(id, args);
-    case 'removeAccount':
-      return removeAccount(id, req.user);
-    // case 'createAuction':
-    //   return createAuction();
-    // case 'updateAuction':
-    //   return updateAuction();
-    // case 'removeAuction':
-    //   return removeAuction();
+
+    case 'removeAccountMutation':
+      return removeAccount(id, user);
+
+    case 'createAuctionMutation':
+      return createAuction(id, args);
+
+    case 'updateAuctionMutation':
+    return Auction.findById(args.id)
+      .then(result => {
+        validateOwner(result._owner, id);
+        
+        return updateAuction(id, args);
+      });
+
+    case 'removeAuctionMutation':
+      return Auction.findById(args.id)
+        .then(result => {
+          validateOwner(result._owner, id);
+
+          return removeAuction(id, user);
+        });
+
     default:
       throw new Error('Valid requset-type is missing.');
   }

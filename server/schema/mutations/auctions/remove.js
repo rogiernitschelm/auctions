@@ -1,6 +1,6 @@
 import { GraphQLID } from 'graphql';
 import AuctionType from '../../types/auction_type';
-import { removeAuction } from '../../../models';
+import funnel from '../../funnel';
 
 export default {
   removeAuction: {
@@ -8,8 +8,10 @@ export default {
     args: {
       id: { type: GraphQLID },
     },
-    resolve(parentValue, { id }, req) {
-      return removeAuction({ id, req });
+    resolve(parentValue, args, req) {
+      if (!req.user) throw new Error('You must be logged in as the owner.');
+
+      return funnel({ args, req, requestType: 'removeAuctionMutation' });
     }
   }
 };

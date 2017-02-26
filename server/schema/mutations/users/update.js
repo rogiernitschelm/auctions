@@ -1,6 +1,6 @@
 import { GraphQLString, GraphQLID } from 'graphql';
 import UserType from '../../types/user_type';
-import funnel from '../funnel';
+import funnel from '../../funnel';
 
 export default {
   updateAccount: {
@@ -21,7 +21,7 @@ export default {
     resolve(parentValue, args, req) {
       if (!req.user) throw new Error('You need to be logged in.');
 
-      return funnel({ req, args, requestType: 'updateAccount' });
+      return funnel({ req, args, requestType: 'updateAccountMutation' });
     }
   },
 };

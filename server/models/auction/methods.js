@@ -1,19 +1,14 @@
 import { Auction } from '../';
 
-export const createAuction = ({ ...args, req }) =>
-  Auction.create({ ...args, _owner: req.user.id });
-
-export const removeAuction = ({ id, req }) => {
-  const auctionToDelete = Auction.findById(id, (error, auction) => {
-    if (auction._owner.equals(req.user._id) || req.user.usertype === 'admin') {
-      return auction.remove();
-    }
-  });
-
-  return auctionToDelete;
+export const createAuction = (id, args) => {
+  return Auction.create({ ...args, _owner: id });
 };
 
-export const updateAuction = ({ id, ...args, req }) => {
+export const removeAuction = (id, auction) => {
+  return Auction.findById(id).then(foundAuction => foundAuction.remove()).then(() => auction);
+};
+
+export const updateAuction = (id, args, req) => {
   return Auction.findById(id)
     .then(auction => {
       if (auction._bids.length > 0) {
