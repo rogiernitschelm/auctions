@@ -1,5 +1,5 @@
 import UserType from '../../types/user_type';
-import funnel from '../../funnel';
+import router from '../../../router';
 
 export default {
   removeAccount: {
@@ -7,7 +7,7 @@ export default {
     resolve(parentValue, args, req) {
       if (!req.user) throw new Error('You do not have an account.');
 
-      return funnel({ req, args, requestType: 'removeAccountMutation' });
+      return router({ req, args, requestType: 'removeAccountMutation' });
     }
   },
 };
