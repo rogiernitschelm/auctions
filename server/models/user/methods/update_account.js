@@ -1,5 +1,3 @@
 import User from '../';
 
-export default (id, args) => {
-  return User.findByIdAndUpdate(id, args);
-};
+export default (id, args) => User.findByIdAndUpdate(id, args);

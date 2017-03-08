@@ -8,7 +8,6 @@ export default new GraphQLObjectType({
   name: 'Mutation',
   fields: () => ({
     ...auctionMutations,
-    ...userMutations,
-
+    ...userMutations
   })
 });

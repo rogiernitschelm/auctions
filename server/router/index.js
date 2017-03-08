@@ -28,6 +28,7 @@ export default request => {
     case 'buyer':
       return BuyerController({ req, args, requestType });
     default:
-      return GuestController({ req, args, requestType });
+      throw new Error(`You are unable to access the required controller.
+      Your usertype may not be correctly defined.`);
   }
 };
