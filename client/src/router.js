@@ -1,12 +1,11 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Application } from './namespaces/application';
 
-import Account from './namespaces/account/component';
-console.log(Account, "a")
-export default (
-  <Router history={browserHistory}>
-    <Route path="/" component={Account}>
-
-    </Route>
-  </Router>
-);
+export default () => {
+  return (
+    <BrowserRouter>
+      <Route path="/" component={Application} />
+    </BrowserRouter>
+  )
+}

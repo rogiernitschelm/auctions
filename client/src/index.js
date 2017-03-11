@@ -1,32 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createNetworkInterface, ApolloClient, ApolloProvider } from 'react-apollo';
 
-import Router from './router';
 import './style/index.scss';
-
-
-const networkInterface = createNetworkInterface({
-  uri: '/graphql',
-  opts: {
-    credentials: 'same-origin'
-  }
-});
-
-const client = new ApolloClient({
-  dataIdFromObject: object => object.id,
-  networkInterface
-});
+import Root from './provider';
 
 ReactDOM.render(
-  <div>
-    testaaaaaabasdadssaddasdas
-  </div>,
-
+  <Root />,
   document.querySelector('#root')
 );
-
-
-/* <ApolloProvider client={client}>
-  <Router />
-</ApolloProvider>, */
