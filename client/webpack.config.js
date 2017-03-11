@@ -12,11 +12,14 @@ module.exports = {
      'app': [
        'babel-polyfill',
        'react-hot-loader/patch',
+       'webpack-dev-server/client?http://localhost:8080',
+       'webpack/hot/only-dev-server',
        './src/index'
      ]
   },
   output: {
     path: path.join(__dirname, 'dist'),
+    publicPath: '/dist',
     filename: 'bundle.js'
   },
   module: {
@@ -40,5 +43,13 @@ module.exports = {
   },
   plugins: [
     extractSass,
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ],
+  devServer: {
+    compress: true,
+    port: 8080,
+    hot: true
+  }
+
 };

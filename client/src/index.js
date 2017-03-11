@@ -5,6 +5,7 @@ import { createNetworkInterface, ApolloClient, ApolloProvider } from 'react-apol
 import Router from './router';
 import './style/index.scss';
 
+
 const networkInterface = createNetworkInterface({
   uri: '/graphql',
   opts: {
@@ -18,9 +19,14 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <div/>,
-  // <ApolloProvider client={client}>
-  //   <Router />
-  // </ApolloProvider>,
+  <div>
+    testaaaaaabasdadssaddasdas
+  </div>,
+
   document.querySelector('#root')
 );
+
+
+/* <ApolloProvider client={client}>
+  <Router />
+</ApolloProvider>, */
