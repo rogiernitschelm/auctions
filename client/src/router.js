@@ -1,13 +1,10 @@
 import React from 'react';
-
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { AccountRoutes } from './namespaces/account';
+import { Router, Route, browserHistory } from 'react-router';
 
 export default (
   <Router history={browserHistory}>
     <Route path="/">
-      <AccountRoutes />
-      <IndexRoute />
+
     </Route>
   </Router>
 );

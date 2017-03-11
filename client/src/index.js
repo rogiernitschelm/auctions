@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createNetworkInterface, ApolloClient, ApolloProvider } from 'react-apollo';
 
-// import Router from './router';
-// import reducer from './reducer';
+import Router from './router';
 import './style/index.scss';
 
 const networkInterface = createNetworkInterface({
@@ -18,13 +17,10 @@ const client = new ApolloClient({
   networkInterface
 });
 
-const Root = () => {
-  return (
-    <ApolloProvider client={client} />
-  );
-};
-
 ReactDOM.render(
-  <Root />,
+  <div/>,
+  // <ApolloProvider client={client}>
+  //   <Router />
+  // </ApolloProvider>,
   document.querySelector('#root')
 );
