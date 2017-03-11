@@ -9,8 +9,6 @@ export default {
       id: { type: GraphQLID },
     },
     resolve(parentValue, args, req) {
-      if (!req.user) throw new Error('You must be logged in as the owner.');
-
       return router({ args, req, requestType: 'updateAuctionMutation' });
     }
   }

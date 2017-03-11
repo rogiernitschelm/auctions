@@ -9,11 +9,7 @@ import {
 import { validateOwner, validateNoBids, validateNoActiveAuctions } from './helpers';
 
 export default ({ req, args, requestType }) => {
-  const { user, user: { id, usertype } } = req;
-
-  if (!usertype.includes('seller' || 'admin')) {
-    throw new Error('You need to be a seller or administrator.');
-  }
+  const { user, user: { id } } = req;
 
   switch (requestType) {
     case 'updateAccountMutation':

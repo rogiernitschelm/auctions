@@ -4,10 +4,6 @@ import {
 } from '../models';
 
 export default ({ req, args, requestType }) => {
-  if (req.user) {
-    throw new Error('You already have an account.');
-  }
-
   switch (requestType) {
     case 'signupMutation':
       return signup({ req, args });

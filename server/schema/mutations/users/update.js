@@ -20,8 +20,6 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      if (!req.user) throw new Error('You need to be logged in.');
-
       return router({ req, args, requestType: 'updateAccountMutation' });
     }
   },

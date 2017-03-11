@@ -13,8 +13,6 @@ export default {
       startingPrice: { type: GraphQLInt }
     },
     resolve(parentValue, args, req) {
-      if (!req.user) throw new Error('You must be logged in as a seller.');
-
       return router({ args, req, requestType: 'createAuctionMutation' });
     }
   }

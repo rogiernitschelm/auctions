@@ -12,8 +12,6 @@ export default {
       password: { type: GraphQLString }
     },
     resolve(parentValue, args, req) {
-      if (req.user) throw new Error('You are already logged in.');
-
       return router({ args, req, requestType: 'loginMutation' });
     }
   },

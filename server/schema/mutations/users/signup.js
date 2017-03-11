@@ -21,8 +21,6 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      if (req.user) throw new Error('You already have an account.');
-
       return router({ args, req, requestType: 'signupMutation' });
     }
   },
