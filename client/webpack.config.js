@@ -9,7 +9,7 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-     'app': [
+     app: [
        'babel-polyfill',
        'react-hot-loader/patch',
        'webpack-dev-server/client?http://localhost:8080',
