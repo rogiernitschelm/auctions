@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 export const Navigation = ({ children }) => (
-  <div className="auction-navigation">
+  <div className="navigation-bar">
     <nav className="navbar">
       {children}
     </nav>
