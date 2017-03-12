@@ -1,13 +1,13 @@
 import React from 'react';
 import { Footer, Navigation } from './';
-import { Container } from '../common';
+import { ContainerFluid } from '../common';
 
 export default props => {
   return (
-    <Container>
+    <ContainerFluid>
       <Navigation />
       {props.children}
       <Footer />
-    </Container>
+    </ContainerFluid>
   );
 };

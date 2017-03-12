@@ -14,14 +14,3 @@ export const Button = ({
     </button>
   );
 };
-
-export const ButtonGroup = ({ children, size = null }) => {
-  const buttonGroupClassName =
-  `btn-group ${size ? `btn-group-${size}` : null} pull-right btn-group-right`;
-
-  return (
-    <div className={buttonGroupClassName}>
-      {children}
-    </div>
-  );
-};

@@ -1,6 +1,5 @@
-@import './bootstrap/bootstrap.scss';
+@import './bootstrap/bootstrap';
 @import '../namespaces/common/common';
-
-* {
-  color: red;
-}
+@import './variables';
+@import './custom/links';
+@import './custom/buttons';
