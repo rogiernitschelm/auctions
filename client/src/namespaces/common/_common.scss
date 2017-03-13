@@ -1,14 +1,39 @@
 .navigation-bar {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid $light-grey;
   margin-top: 10px;
   padding-bottom: 12px;
+
+  a {
+    font-size: $navigation-link-size;
+    letter-spacing: 1.3px;
+    font-weight: $navigation-link-weight;
+  }
 }
 
 .footer {
-  height: 130px;
-  padding-top: 20px;
-  min-height: 20%;
-  border-top: 1px solid #cccccc;
+  position: fixed;
+  height: 160px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24 14 14 14;
+  border-top: 1px solid $light-grey;
+
+  li {
+    list-style-type: none;
+
+    a {
+      font-weight: $footer-link-weight;
+      font-size: $footer-link-size;
+    }
+  }
+
+  h5 {
+    font-size: $footer-title-size;
+    color: $medium-grey;
+    font-weight: $footer-title-weight;
+    margin-bottom: 10px;
+  }
 }
 
 .container-fluid {

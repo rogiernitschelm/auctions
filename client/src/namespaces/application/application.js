@@ -2,14 +2,12 @@ import React from 'react';
 import { Footer, Navigation } from './';
 import { ContainerFluid, Container } from '../common';
 
-export default props => (
+export default ({ children }) => (
   <ContainerFluid>
-    <div className="nav-and-content">
-      <Navigation />
+    <Navigation />
       <Container>
-        {props.children}
+        {children}
       </Container>
-    </div>
     <Footer />
   </ContainerFluid>
 );

@@ -1,0 +1,31 @@
+{
+  "footer": {
+    "about": {
+      "title": "Abous us",
+      "links": [
+        { "text": "link1", "path": "/" },
+        { "text": "link2", "path": "/" },
+        { "text": "link3", "path": "/" },
+        { "text": "link4", "path": "/" }
+      ]
+    },
+    "contact": {
+      "title": "Contact us",
+      "links": [
+        { "text": "link5", "path": "/" },
+        { "text": "link6", "path": "/" },
+        { "text": "link7", "path": "/" },
+        { "text": "link8", "path": "/" }
+      ]
+    },
+    "opportunities": {
+      "title": "Opportunities",
+      "links": [
+        { "text": "link9", "path": "/" },
+        { "text": "link10", "path": "/" },
+        { "text": "link11", "path": "/" },
+        { "text": "link12", "path": "/" }
+      ]
+    }
+  }
+}

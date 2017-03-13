@@ -1,50 +1,15 @@
 import React from 'react';
-import { Footer, Column, Row, Container } from '../common';
+import { Footer, FooterLinks, Column, Row, Container } from '../common';
+import json from './customization';
 
 export default () => {
   return (
     <Footer>
       <Container>
         <Row>
-          <Column columns={{ lg: 3, md: 3 }}>
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </Column>
-
-          <Column columns={{ lg: 3, md: 3 }}>
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </Column>
-
-          <Column columns={{ lg: 3, md: 3 }}>
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </Column>
-
-          <Column columns={{ lg: 3, md: 3 }}>
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </Column>
+          <FooterLinks {...json.footer.about} />
+          <FooterLinks {...json.footer.contact} />
+          <FooterLinks {...json.footer.opportunities} />
         </Row>
       </Container>
     </Footer>

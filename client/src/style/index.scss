@@ -1,7 +1,11 @@
 @import './bootstrap/bootstrap';
-@import '../namespaces/common/common';
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+
 @import './variables';
+@import './custom/fonts';
 @import './custom/links';
 @import './custom/buttons';
 @import './custom/body';
+
 @import '../namespaces/application/application';
+@import '../namespaces/common/common';
