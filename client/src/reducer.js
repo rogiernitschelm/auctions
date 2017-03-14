@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
-
-const state = () => [];
+import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
+import { guestReducer } from './namespaces/guest';
 
 export default combineReducers({
-  state,
-  routing
+  guest: guestReducer,
+  routing: routerReducer,
+  form: formReducer
 });

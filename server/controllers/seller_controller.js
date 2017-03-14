@@ -17,27 +17,24 @@ export default ({ req, args, requestType }) => {
 
     case 'removeAccountMutation':
       validateNoActiveAuctions(user);
-
       return removeAccount(id, user);
 
     case 'createAuctionMutation':
       return createAuction(id, args);
 
     case 'updateAuctionMutation':
-    return Auction.findById(args.id)
-      .then(auction => {
-        validateNoBids(auction);
-        validateOwner(auction._owner, id);
-
-        return updateAuction(id, args);
-      });
+      return Auction.findById(args.id)
+        .then(auction => {
+          validateNoBids(auction);
+          validateOwner(auction._owner, id);
+          return updateAuction(id, args);
+        });
 
     case 'removeAuctionMutation':
       return Auction.findById(args.id)
         .then(auction => {
           validateNoBids(auction);
           validateOwner(auction._owner, id);
-
           return removeAuction(auction);
         });
 
