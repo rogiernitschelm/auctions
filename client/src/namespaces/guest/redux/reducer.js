@@ -14,8 +14,8 @@ const defaultState = {
   loading: false
 };
 
-export default (state = defaultState, action) => {
-  switch (action) {
+export default (state = defaultState, { type, payload }) => {
+  switch (type) {
     case CREATE_ACCOUNT:
     case LOGIN:
       return { ...state, loading: true };
