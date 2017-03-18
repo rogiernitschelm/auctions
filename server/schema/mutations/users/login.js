@@ -2,7 +2,7 @@ import {
   GraphQLString,
 } from 'graphql';
 import UserType from '../../types/user_type';
-import router from '../../../router';
+import { login } from '../../../models';
 
 export default {
   login: {
@@ -12,7 +12,11 @@ export default {
       password: { type: GraphQLString }
     },
     resolve(parentValue, args, req) {
-      return router({ args, req, requestType: 'loginMutation' });
+      if (!req.user) {
+        return login({ args, req });
+      }
+
+      throw Error('You are already logged in.');
     }
   },
 };

@@ -1,7 +1,7 @@
 import { GraphQLString, GraphQLID } from 'graphql';
 
 import UserType from '../../types/user_type';
-import router from '../../../router';
+import { updateAccount } from '../../../models';
 
 export default {
   updateAccount: {
@@ -20,7 +20,11 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      return router({ req, args, requestType: 'updateAccountMutation' });
+      if (!req.user) {
+        return updateAccount({ req, args });
+      }
+
+      throw Error('You are not logged in.');
     }
   },
 };

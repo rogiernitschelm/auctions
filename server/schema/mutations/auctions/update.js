@@ -1,6 +1,6 @@
 import { GraphQLID } from 'graphql';
 import AuctionType from '../../types/auction_type';
-import router from '../../../router';
+import { updateAuction } from '../../../models';
 
 export default {
   updateAuction: {
@@ -9,7 +9,11 @@ export default {
       id: { type: GraphQLID },
     },
     resolve(parentValue, args, req) {
-      return router({ args, req, requestType: 'updateAuctionMutation' });
+      if (req.user && req.user.usertype === 'seller') {
+        return updateAuction({ args, req });
+      }
+
+      throw Error('You have to be logged in as the owner of this auction.');
     }
   }
 };

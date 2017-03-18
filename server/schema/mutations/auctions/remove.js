@@ -1,6 +1,6 @@
 import { GraphQLID } from 'graphql';
 import AuctionType from '../../types/auction_type';
-import router from '../../../router';
+import { removeAuction } from '../../../models';
 
 export default {
   removeAuction: {
@@ -9,7 +9,11 @@ export default {
       id: { type: GraphQLID },
     },
     resolve(parentValue, args, req) {
-      return router({ args, req, requestType: 'removeAuctionMutation' });
+      if (req.user && req.user.usertype === 'seller') {
+        return removeAuction({ args, req });
+      }
+
+      throw Error('You have to be logged in as the owner of this auction.');
     }
   }
 };

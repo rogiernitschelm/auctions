@@ -1,7 +1,7 @@
 import {
   GraphQLString,
 } from 'graphql';
-import router from '../../../router';
+import { signup } from '../../../models';
 import UserType from '../../types/user_type';
 
 export default {
@@ -21,7 +21,11 @@ export default {
     },
 
     resolve(parentValue, args, req) {
-      return router({ args, req, requestType: 'signupMutation' });
+      if (!req.user) {
+        return signup({ args, req });
+      }
+
+      throw Error('You already have an account.');
     }
   },
 };

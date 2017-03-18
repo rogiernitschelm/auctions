@@ -1,6 +1,6 @@
 import { GraphQLString, GraphQLInt } from 'graphql';
 import AuctionType from '../../types/auction_type';
-import router from '../../../router';
+import { createAuction } from '../../../models';
 
 export default {
   createAuction: {
@@ -13,7 +13,11 @@ export default {
       startingPrice: { type: GraphQLInt }
     },
     resolve(parentValue, args, req) {
-      return router({ args, req, requestType: 'createAuctionMutation' });
+      if (req.user.userType === 'seller') {
+        return createAuction({ args, req });
+      }
+
+      throw Error('Only sellers can create auctions.');
     }
   }
 };
