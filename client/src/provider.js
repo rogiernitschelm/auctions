@@ -9,7 +9,7 @@ import Router, { middleware } from './router';
 const combinedMiddlewares = [middleware, ReduxThunk];
 
 const networkInterface = createNetworkInterface({
-  uri: '/graphql',
+  uri: 'http://localhost:3000/graphql',
   opts: {
     credentials: 'same-origin'
   }

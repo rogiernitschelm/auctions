@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-
-import { userSchematic } from '../../../../../server/models/user/schema.js';
-import { formValidator as validate } from '../../../helpers';
+import { graphql } from 'react-apollo';
+// import { userSchematic } from '../../../../../server/models/user/schema.js';
+// import { formValidator as validate } from '../../../helpers';
 import { Form, Input, Button } from '../../common';
+import { createAccountMutation } from '../graphql/mutations';
 
 @reduxForm({
   form: 'createAccount',
@@ -18,7 +19,8 @@ class CreateAccount extends Component {
   }
 
   onSubmit(props) {
-     console.log("SUBMITTED", props)
+    this.props.mutate().then(data => console.log(data))
+    .catch(error => console.log(error.message))
   }
 
   render() {
@@ -31,4 +33,4 @@ class CreateAccount extends Component {
   }
 }
 
-export default CreateAccount;
+export default graphql(createAccountMutation)(CreateAccount);

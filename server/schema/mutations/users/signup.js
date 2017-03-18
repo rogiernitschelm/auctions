@@ -21,6 +21,8 @@ export default {
     },
 
     resolve(parentValue, args, req) {
+      console.log(args, "ARGS")
+      console.log(req, "REQ")
       if (!req.user) {
         return signup({ args, req });
       }

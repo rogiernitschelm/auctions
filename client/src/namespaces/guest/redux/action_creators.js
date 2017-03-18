@@ -7,11 +7,11 @@ const {
   CREATE_ACCOUNT_FAILURE
 } = actions;
 
-export const startRequestCreateAccount = () => ({ type: CREATE_ACCOUNT });
-export const finishRequestCreateAccount = () => ({ type: CREATE_ACCOUNT });
-
-export const createAccount = accountInformation => {
+export const createAccount = userInformationGQL => {
   return dispatch => {
-    dispatch(startRequestCreateAccount());
+    // post stuff to api
+
+    // .then dispatch success / or .catch failure
+
   };
 };

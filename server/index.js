@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import expressGraphQL from 'express-graphql';
 import connectMongo from 'connect-mongo';
+import cors from 'cors';
 
 import developmentConfiguration from './configuration/development';
 import schema from './schema';
@@ -56,6 +57,12 @@ application.use(session({
     autoReconnect: true
   })
 }));
+
+application.use(cors());
+application.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  next();
+});
 
 application.use(passport.initialize());
 application.use(passport.session());
