@@ -10,6 +10,8 @@ export const Form = props => {
     }
   };
 
+  console.warn(onSubmit)
+
   return (
     <div className="container">
       <div className="row">

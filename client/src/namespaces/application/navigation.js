@@ -51,7 +51,7 @@ export default props => {
     return (
       <Column columns={{ xs: 5, sm: 4 }} offsets={{ sm: 2 }}>
         <NavList>
-          <NavLink type="link">Create account</NavLink>
+          <NavLink to="/guest/create_account" type="link">Create account</NavLink>
           <NavLink type="link">About us</NavLink>
         </NavList>
       </Column>

@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
-import GuestComponent from './component';
+import CreateAccount from './children/create_account';
 
-import { formValidator as validate } from '../../helpers';
-import { userSchematic } from '../../../../server/models/user/schema.js';
-
-@reduxForm({
-  form: 'createAccount',
-  fields: ['email'],
-  // validate
-})
 class GuestContainer extends Component {
-  onSubmit(props) {
-    console.log("SUBMITTED", props)
-  }
-
   render() {
-    return (
-      <GuestComponent {...this.props} onSubmit={::this.onSubmit} />
-    );
+    if (this.props.location.pathname === '/guest/create_account') {
+      return <CreateAccount />;
+    }
+    return <div />;
   }
 }
 
