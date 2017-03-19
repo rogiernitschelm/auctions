@@ -11,7 +11,7 @@ const combinedMiddlewares = [middleware, ReduxThunk];
 const networkInterface = createNetworkInterface({
   uri: 'http://localhost:3000/graphql',
   opts: {
-    credentials: 'same-origin'
+    credentials: 'include'
   }
 });
 

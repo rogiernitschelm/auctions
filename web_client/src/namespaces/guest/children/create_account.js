@@ -20,7 +20,7 @@ class CreateAccount extends Component {
 
   onSubmit(props) {
     this.props.mutate().then(data => console.log(data))
-    .catch(error => console.log(error.message))
+    .catch(error => console.log(error.message));
   }
 
   render() {

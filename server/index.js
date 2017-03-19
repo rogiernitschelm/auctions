@@ -12,6 +12,10 @@ import './application/authentication';
 
 const DB_URI = 'mongodb://localhost/test1';
 const PORT = 3000;
+const corsOptions = {
+  origin: 'http://localhost:8080',
+  credentials: true
+};
 
 const MongoStore = connectMongo(session);
 const application = express();
@@ -32,12 +36,7 @@ application.use(session({
   })
 }));
 
-application.use(cors());
-application.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  next();
-});
-
+application.use(cors(corsOptions));
 application.use(passport.initialize());
 application.use(passport.session());
 application.use('/graphql', expressGraphQL({
