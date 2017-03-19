@@ -1,13 +1,11 @@
 import {
   GraphQLObjectType,
 } from 'graphql';
-import auctionMutations from './auctions';
-import userMutations from './users';
+import userMutations from './models/user/mutations';
 
 export default new GraphQLObjectType({
   name: 'Mutation',
   fields: () => ({
-    ...auctionMutations,
     ...userMutations
   })
 });

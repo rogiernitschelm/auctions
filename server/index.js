@@ -6,44 +6,18 @@ import expressGraphQL from 'express-graphql';
 import connectMongo from 'connect-mongo';
 import cors from 'cors';
 
-import developmentConfiguration from './configuration/development';
-import schema from './schema';
-import './models';
-import '../server/authentication';
+import { schema } from './application/index';
+
+import './application/authentication';
+
+const DB_URI = 'mongodb://localhost/test1';
+const PORT = 3000;
 
 const MongoStore = connectMongo(session);
-
-let PORT;
-let MONGO_URI;
-
-switch (process.env.NODE_ENV) {
-
-  case 'production':
-    PORT = developmentConfiguration.port;
-    MONGO_URI = developmentConfiguration.mongoDBUri;
-    break;
-
-  case 'development':
-    PORT = developmentConfiguration.port;
-    MONGO_URI = developmentConfiguration.mongoDBUri;
-    break;
-
-  case 'testing':
-    PORT = developmentConfiguration.port;
-    MONGO_URI = developmentConfiguration.mongoDBUri;
-    break;
-
-  default:
-    PORT = developmentConfiguration.port;
-    MONGO_URI = developmentConfiguration.mongoDBUri;
-    break;
-
-}
-
 const application = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
+mongoose.connect(DB_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to MongoDB instance.'))
   .on('error', () => console.log('Error occured connecting to MongoDB instance.'));
@@ -53,7 +27,7 @@ application.use(session({
   saveUninitialized: true,
   secret: 'abcd1234',
   store: new MongoStore({
-    url: MONGO_URI,
+    url: DB_URI,
     autoReconnect: true
   })
 }));

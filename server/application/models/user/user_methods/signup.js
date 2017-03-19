@@ -1,6 +1,10 @@
 import User from '../model';
 
 export default ({ req, args }) => {
+  if (req.user) {
+    throw new Error('You already have an account.');
+  }
+
   const user = new User({ req, ...args });
 
   if (!args.email || !args.password) {
