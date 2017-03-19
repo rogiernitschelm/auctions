@@ -1,12 +1,8 @@
 import React from 'react';
 import { createNetworkInterface, ApolloClient, ApolloProvider } from 'react-apollo';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
-
-import reducer from './reducer';
-import Router, { middleware } from './router';
-
-const combinedMiddlewares = [middleware, ReduxThunk];
+import { combineReducers, createStore } from 'redux';
+import { reducer as form } from 'redux-form';
+import Router from './router';
 
 const networkInterface = createNetworkInterface({
   uri: 'http://localhost:3000/graphql',
@@ -15,11 +11,7 @@ const networkInterface = createNetworkInterface({
   }
 });
 
-const store = createStore(
-  reducer,
-  applyMiddleware(...combinedMiddlewares)
-);
-
+const store = createStore(combineReducers({ form }));
 const client = new ApolloClient({
   dataIdFromObject: object => object.id,
   networkInterface

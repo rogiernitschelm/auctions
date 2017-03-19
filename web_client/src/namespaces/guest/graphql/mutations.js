@@ -1,16 +1,20 @@
 import gql from 'graphql-tag';
 
 export const createAccountMutation = gql`
-  mutation {
+  mutation signup(
+    $email: String,
+    $password: String,
+    # $firstName: String,
+    # $lastName: String,
+    $usertype: String
+  ) {
     signup(
-      email: "maiaaazasl@hoogle.nom",
-      password: "abcd1234",
-      firstName: "Kees",
-      lastName: "van de Koekjesfabriek",
-      usertype: "seller"
+      email: $email,
+      password: $password
+      usertype: $usertype
     ) {
-      id
       email
+      id
     }
   }
 `;

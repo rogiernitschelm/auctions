@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { RequireNoSession } from '../authentication';
 import CreateAccount from './children/create_account';
 
-class GuestContainer extends Component {
+@RequireNoSession
+export default class GuestContainer extends Component {
   render() {
     if (this.props.location.pathname === '/guest/create_account') {
       return <CreateAccount />;
@@ -9,5 +11,3 @@ class GuestContainer extends Component {
     return <div />;
   }
 }
-
-export default GuestContainer;

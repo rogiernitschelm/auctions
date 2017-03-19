@@ -15,12 +15,18 @@ export const NavList = ({ children }) => (
   </ul>
 );
 
-export const NavLink = ({ to = '/', children, type = 'link' }) => {
+export const NavButton = ({ children, onClick }) => (
+  <button className='btn btn-primary' onClick={onClick}>
+    {children}
+  </button>
+);
+
+export const NavLink = ({ to = '/', children, onClick, type = 'link' }) => {
   const linkType = type === 'button' ? 'btn btn-primary' : '';
 
   if (type === 'logo') {
     return (
-      <RouterLink to={to} className={`${linkType} nav-link`}>
+      <RouterLink to={to} className={`${linkType} nav-link`} onClick={onClick}>
         {children}
       </RouterLink>
     );
@@ -28,7 +34,7 @@ export const NavLink = ({ to = '/', children, type = 'link' }) => {
 
   return (
     <li className="nav-item">
-      <RouterLink to={to} className={`${linkType} nav-link`}>
+      <RouterLink to={to} className={`${linkType} nav-link`} onClick={onClick}>
         {children}
       </RouterLink>
     </li>

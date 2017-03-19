@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo';
 // import { formValidator as validate } from '../../../helpers';
 import { Form, Input, Button } from '../../common';
 import { createAccountMutation } from '../graphql/mutations';
+import { currentUser } from '../../../fragments';
 
 @reduxForm({
   form: 'createAccount',
@@ -15,17 +16,27 @@ class CreateAccount extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { errors: [] };
     this.onSubmit = ::this.onSubmit;
   }
 
-  onSubmit(props) {
-    this.props.mutate().then(data => console.log(data))
-    .catch(error => console.log(error.message));
+  onSubmit({ email }) {
+    this.props.mutate({
+      variables: { email, password: "abcd1234", usertype: 'seller' },
+      refetchQueries: [{ query: currentUser }]
+    })
+    .then(() => this.setState({ errors: [] }))
+    .catch(response => this.setState({ errors: response.graphQLErrors }));
   }
 
   render() {
     return (
-      <Form title="Maak account" {...this.props} onSubmit={this.onSubmit}>
+      <Form
+        {...this.props}
+        errors={this.state.errors}
+        title="Maak account"
+        onSubmit={this.onSubmit}
+      >
         <Input name="email" type="email" placeholder="email" label="E-mail" />
         <Button type="submit">Submit</Button>
       </Form>

@@ -10,8 +10,8 @@ export default {
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString },
-      firstName: { type: GraphQLString },
-      lastName: { type: GraphQLString },
+      // firstName: { type: GraphQLString },
+      // lastName: { type: GraphQLString },
       usertype: { type: GraphQLString }
     },
 

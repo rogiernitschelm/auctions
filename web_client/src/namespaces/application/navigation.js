@@ -3,11 +3,20 @@ import { graphql } from 'react-apollo';
 
 import { logoutMutation } from './graphql';
 import { Navigation, Row, NavLink, Column } from '../common';
+
+import { currentUser } from '../../fragments';
 import SessionLinks from './children/session_links';
 import NoSessionLinks from './children/no_session_links';
 import BuyerLinks from './children/buyer_links';
 
 class NavigationBar extends Component {
+  logout() {
+    this.props.mutate({
+      refetchQueries: [{ query: currentUser }]
+    }).then(data => console.log(data))
+    .catch(error => console.log(error.message));
+  }
+
   renderUserSpecificLinks() {
     switch (this.props.usertype) {
       case 'buyer':
@@ -21,16 +30,13 @@ class NavigationBar extends Component {
   }
 
   renderSessionSpecificLinks() {
-    if (['seller', 'buyer', 'admin'].includes(this.props.usertype)) {
-      return <SessionLinks onLogoutClick={() => console.log("click")} />;
+    if (this.props.data.currentUser) {
+      if (['seller', 'buyer', 'admin'].includes(this.props.data.currentUser.usertype)) {
+        return <SessionLinks onLogoutClick={::this.logout} />;
+      }
     }
 
     return <NoSessionLinks />;
-  }
-
-  logout() {
-    this.props.mutate().then(data => console.log(data))
-    .catch(error => console.log(error.message))
   }
 
   render() {
@@ -41,8 +47,6 @@ class NavigationBar extends Component {
             <NavLink type="logo">LOGO</NavLink>
           </Column>
 
-          <a onClick={::this.logout}>Logout</a>
-
           {this.renderUserSpecificLinks()}
           {this.renderSessionSpecificLinks()}
 
@@ -52,4 +56,4 @@ class NavigationBar extends Component {
   }
 }
 
-export default graphql(logoutMutation)(NavigationBar);
+export default graphql(currentUser)(graphql(logoutMutation)(NavigationBar));

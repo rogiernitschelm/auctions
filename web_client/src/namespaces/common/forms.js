@@ -2,11 +2,22 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 export const Form = props => {
-  const { title, children, handleSubmit, onSubmit } = props;
+  const { title, children, handleSubmit, onSubmit, errors = [] } = props;
 
   const renderTitle = () => {
     if (title) {
       return <h4>{title}</h4>;
+    }
+  };
+
+  const renderErrors = () => {
+    if (errors) {
+      return errors.map(({ message }) => (
+        <div key={message} className="alert alert-danger" role="alert">
+          <strong>{message}</strong>
+        </div>
+        )
+      );
     }
   };
 
@@ -15,6 +26,7 @@ export const Form = props => {
       <div className="row">
         <form className="form col-12" onSubmit={handleSubmit(onSubmit)}>
           {renderTitle()}
+          {renderErrors()}
           {children}
         </form>
       </div>
