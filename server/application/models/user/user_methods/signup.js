@@ -23,7 +23,10 @@ export default ({ req, args }) => {
     .then(createdUser => {
       return new Promise((resolve, reject) => {
         req.logIn(createdUser, error => {
-          if (error) { reject(error); }
+          if (error) {
+            reject(error);
+          }
+
           resolve(createdUser);
         });
       });
