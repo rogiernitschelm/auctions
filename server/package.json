@@ -8,7 +8,7 @@
     "start": "node dist/index.js",
     "clean": "rimraf dist",
     "dev": "nodemon index.js --exec babel-node --presets es2015 latest",
-    "build": "babel . --out-dir ./dist --presets=latest --ignore='node_modules', 'dist'",
+    "build": "mkdir dist && babel . -d dist --presets=latest --ignore='node_modules', 'dist'",
     "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min' --compilers js:babel-core/register './tests'"
   },
   "devDependencies": {
