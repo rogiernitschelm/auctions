@@ -1,7 +1,14 @@
 {
   "extends": "rallycoding",
+  "plugins": ["babel"],
+      "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
   "rules": {
+    "generator-star-spacing":0,
     "arrow-body-style": 0,
     "no-underscore-dangle": 0,
+    "space-before-function-paren": 0
     }
 }
