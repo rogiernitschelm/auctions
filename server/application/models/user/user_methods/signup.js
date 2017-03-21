@@ -1,34 +1,29 @@
 import User from '../model';
 
-export default ({ req, args }) => {
+export default async ({ req, args }) => {
   if (req.user) {
     throw new Error('You already have an account.');
   }
 
-  const user = new User({ req, ...args });
-
   if (!args.email || !args.password) {
     throw new Error('You must provide an email and password.');
   }
+  
+  const user = new User({ req, ...args });
+  const foundUser = await User.findOne({ email: args.email });
 
-  return User.findOne({ email: args.email })
-    .then(existingUser => {
-      if (existingUser) {
-        throw new Error('This e-mail is in use.');
+  if (foundUser) {
+    throw new Error('This e-mail is already in use.');
+  }
+
+  const savedUser = await user.save();
+  return new Promise((resolve, reject) => {
+    req.login(savedUser, error => {
+      if (error) {
+        reject(error);
       }
 
-      return user.save();
-    })
-
-    .then(createdUser => {
-      return new Promise((resolve, reject) => {
-        req.logIn(createdUser, error => {
-          if (error) {
-            reject(error);
-          }
-
-          resolve(createdUser);
-        });
-      });
+      resolve(savedUser);
     });
+  });
 };
