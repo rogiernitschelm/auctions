@@ -1,15 +1,15 @@
+import User from '../model';
 import { isLoggedIn } from '../../helpers/authorization_helper';
 
-export default ({ req }) => {
+export default ({ req, args }) => {
   isLoggedIn(req);
 
   return new Promise((resolve, reject) => {
-    req.user.remove(error => {
+    req.user.update(args, error => {
       if (error) {
         reject(error);
       }
-
-      resolve('success');
     });
+    resolve(req.user);
   });
 };
