@@ -12,18 +12,21 @@ $info: #ffffff;
 $info-dark: #ffffff;
 
 $white: #FFFFFF;
-$light-grey: #f5f5f5;
-$medium-grey: #b3b3b3;
-
+$light-grey: #fcfcfc;
+$lightmed-grey: #d4d9dd;
+$medium-grey: #bfbfbf;
+$dark-grey: #666666;
 // Fonts
 
-$font-family: 'Roboto', 'sans-serif';
-$font-text: 14px;
+$font-family: 'Roboto', sans-serif;
+$font-family-fat: 'Varela Round', sans-serif;
+$font-text: 13px;
 $font-h1: 34px;
-$font-h2: 26px;
-$font-h3: 20px;
-$font-h4: 16px;
-$font-h5: 14px;
+$font-h2: 28px;
+$font-h3: 24px;
+$font-h4: 22px;
+$font-h5: 16px;
+$font-placeholder: 14px;
 
 // Buttons
 
@@ -34,7 +37,7 @@ $primary-button-font-hover: $white;
 
 // Navigation
 
-$navigation-link-size: 15px;
+$navigation-link-size: 14px;
 $navigation-link-weight: 300;
 
 // Footer

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { logoutMutation, currentUser } from 'gql';
-import { Navigation, Row, NavLink, Column } from 'common';
+import { Navigation, Row, NavLink, Column, Container } from 'common';
 
 import SessionLinks from './children/session_links';
 import NoSessionLinks from './children/no_session_links';
@@ -40,15 +40,17 @@ class NavigationBar extends Component {
   render() {
     return (
       <Navigation>
-        <Row>
-          <Column columns={{ xs: 2 }}>
-            <NavLink type="logo">LOGO</NavLink>
-          </Column>
+        <Container>
+          <Row>
+            <Column columns={{ xs: 2, offset: 1 }}>
+              <NavLink type="logo">LOGO</NavLink>
+            </Column>
 
-          {this.renderUserSpecificLinks()}
-          {this.renderSessionSpecificLinks()}
+            {this.renderUserSpecificLinks()}
+            {this.renderSessionSpecificLinks()}
 
-        </Row>
+          </Row>
+        </Container>      
       </Navigation>
     );
   }

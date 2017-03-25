@@ -38,8 +38,11 @@ class CreateAccount extends Component {
         title="Maak account"
         onSubmit={this.onSubmit}
       >
-        <Input name="email" type="email" placeholder="email" label="E-mail" />
-        <Button type="submit">Submit</Button>
+        <Input name="email" type="email" label="hendrik@bedrijfsmail.nl" />
+        <Input name="fname" type="text" label="Hendrik-Alexander" />
+        <Input name="lname" type="text" label="'De Boer'" />
+        <Input name="usertype" type="text" label="Ben je bieder of aanbieder?" />
+        <Button type="submit" size="lg">Submit</Button>
       </Form>
     );
   }

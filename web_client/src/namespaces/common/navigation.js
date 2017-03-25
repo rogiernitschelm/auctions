@@ -22,7 +22,7 @@ export const NavButton = ({ children, onClick }) => (
 );
 
 export const NavLink = ({ to = '/', children, onClick, type = 'link' }) => {
-  const linkType = type === 'button' ? 'btn btn-primary' : '';
+  const linkType = type === 'button' ? 'btn btn-outline-primary' : '';
 
   if (type === 'logo') {
     return (

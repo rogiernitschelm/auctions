@@ -6,6 +6,6 @@ export default ({ children }) => (
   <ContainerFluid>
     <Navigation />
       {children}
-    <Footer />
+    {/* <Footer /> */}
   </ContainerFluid>
 );

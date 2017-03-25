@@ -1,5 +1,5 @@
 .navigation-bar {
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid $lightmed-grey;
   margin-top: 10px;
   padding-bottom: 12px;
 
@@ -42,12 +42,36 @@
 
 .container {
   form.form {
-    border: 1px solid $light-grey;
-    padding: 20px;
-    margin: 16px;
+    border: 2px solid $lightmed-grey;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 2px;
 
-    h3 {
-      margin-bottom: 20px;
+    h4.form-title {
+      padding-bottom: 30px;
+      color: $dark-grey;
+    }
+
+    button {
+      margin-top: 24px;
+    }
+
+    label {
+      font-size: $font-text
+    }
+
+    input {
+      height: 50px;
+      padding-left: 20px;
+      border-radius: 2px;
+      border: 2px solid $lightmed-grey;
+      background-color: $light-grey;
+      font-weight: 300;
+      font-size: $font-placeholder;
+      font-style: italic;
+    }
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+      color: $medium-grey;
     }
   }
 }

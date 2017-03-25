@@ -6,7 +6,7 @@ export const Form = props => {
 
   const renderTitle = () => {
     if (title) {
-      return <h4>{title}</h4>;
+      return <h4 className="form-title">{title}</h4>;
     }
   };
 
@@ -23,8 +23,8 @@ export const Form = props => {
 
   return (
     <div className="container">
-      <div className="row">
-        <form className="form col-12" onSubmit={handleSubmit(onSubmit)}>
+      <div className="row justify-content-md-center">
+        <form className="form col-11 col-md-10 col-lg-8 col-xl-6" onSubmit={handleSubmit(onSubmit)}>
           {renderTitle()}
           {renderErrors()}
           {children}
@@ -37,7 +37,7 @@ export const Form = props => {
 const renderField = ({ label, type, name, input, placeholder }) => {
   return (
     <fieldset className="form-group">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} className="sr-only">{label}</label>
       <input
         {...input}
         name={name}
