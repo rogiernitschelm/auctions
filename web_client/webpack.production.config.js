@@ -1,7 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const extractSass = new ExtractTextPlugin({ filename: 'style.css' });
 
 module.exports = {
@@ -39,5 +37,12 @@ module.exports = {
         })
     }]
   },
-  plugins: [extractSass]
+  resolve: {
+    alias: {
+      fragments: path.resolve(__dirname, 'src', 'fragments')
+    }
+  },
+  plugins: [
+    extractSass
+  ]
 };

@@ -33,6 +33,13 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      helpers: path.resolve(__dirname, 'src', 'helpers'),
+      gql: path.resolve(__dirname, 'src', 'gql'),
+      common: path.resolve(__dirname, 'src', 'namespaces', 'common')
+    }
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()

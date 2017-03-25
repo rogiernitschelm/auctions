@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 
-import { currentUser } from '../../fragments';
+import { currentUser } from 'gql';
 
 export default ComposedComponent => {
   class RequireNoSession extends Component {

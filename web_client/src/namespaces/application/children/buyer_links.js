@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column, NavList, NavLink } from '../../common';
+import { Column, NavList, NavLink } from 'common';
 
 export default () => (
   <Column columns={{ xs: 5, sm: 4 }}>

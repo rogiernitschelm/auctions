@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column, NavList, NavLink } from '../../common';
+import { Column, NavList, NavLink } from 'common';
 
 export default ({ onLogoutClick }) => {
   return (

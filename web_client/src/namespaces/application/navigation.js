@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 
-import { logoutMutation } from './graphql';
-import { Navigation, Row, NavLink, Column } from '../common';
+import { logoutMutation } from 'gql';
+import { Navigation, Row, NavLink, Column } from 'common';
 
-import { currentUser } from '../../fragments';
+import { currentUser } from 'gql';
 import SessionLinks from './children/session_links';
 import NoSessionLinks from './children/no_session_links';
 import BuyerLinks from './children/buyer_links';

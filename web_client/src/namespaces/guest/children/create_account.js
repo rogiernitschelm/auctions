@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
+import { currentUser } from 'gql';
+import { formValidator as validate } from 'helpers';
 // import { userSchematic } from '../../../../../server/models/user/schema.js';
-// import { formValidator as validate } from '../../../helpers';
-import { Form, Input, Button } from '../../common';
+import { Form, Input, Button } from 'common';
 import { createAccountMutation } from '../graphql/mutations';
-import { currentUser } from '../../../fragments';
+
 
 @reduxForm({
   form: 'createAccount',
