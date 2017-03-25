@@ -1,14 +1,13 @@
 import User from '../model';
+import { isNotLoggedIn } from '../../helpers/authorization_helper';
 
 export default async ({ req, args }) => {
-  if (req.user) {
-    throw new Error('You already have an account.');
-  }
+  isNotLoggedIn(req);
 
   if (!args.email || !args.password) {
     throw new Error('You must provide an email and password.');
   }
-  
+
   const user = new User({ req, ...args });
   const foundUser = await User.findOne({ email: args.email });
 
@@ -17,6 +16,7 @@ export default async ({ req, args }) => {
   }
 
   const savedUser = await user.save();
+
   return new Promise((resolve, reject) => {
     req.login(savedUser, error => {
       if (error) {
