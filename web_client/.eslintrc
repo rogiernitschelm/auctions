@@ -6,5 +6,8 @@
   "globals": {
     "document": true,
     "window": true
+  },
+  "settings": {
+    "import/core-modules": [ "common", "gql", "helpers" ]
   }
 }

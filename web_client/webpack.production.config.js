@@ -39,7 +39,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      fragments: path.resolve(__dirname, 'src', 'fragments')
+      helpers: path.resolve(__dirname, 'src', 'helpers'),
+      gql: path.resolve(__dirname, 'src', 'gql'),
+      common: path.resolve(__dirname, 'src', 'namespaces', 'common')
     }
   },
   plugins: [

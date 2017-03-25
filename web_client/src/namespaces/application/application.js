@@ -1,6 +1,6 @@
 import React from 'react';
-import { Footer, Navigation } from './';
 import { ContainerFluid } from 'common';
+import { Footer, Navigation } from './';
 
 export default ({ children }) => (
   <ContainerFluid>
