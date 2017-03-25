@@ -1,4 +1,4 @@
-import { isLoggedIn } from '../../helpers/authorization_helper';
+import { isLoggedIn } from '../../../helpers';
 
 export default ({ req }) => {
   isLoggedIn(req);

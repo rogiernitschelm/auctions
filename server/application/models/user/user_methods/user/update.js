@@ -1,5 +1,4 @@
-import User from '../model';
-import { isLoggedIn } from '../../helpers/authorization_helper';
+import { isLoggedIn } from '../../../helpers';
 
 export default ({ req, args }) => {
   isLoggedIn(req);

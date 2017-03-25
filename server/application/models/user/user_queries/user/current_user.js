@@ -1,4 +1,4 @@
-import UserType from '../usertype';
+import UserType from '../../usertype';
 
 export default {
   type: UserType,

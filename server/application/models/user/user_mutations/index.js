@@ -1,4 +1,4 @@
-export { default as signup } from './signup';
-export { default as logout } from './logout';
-export { default as deleteUser } from './delete';
-export { default as updateUser } from './update';
+export { default as signup } from './user/signup';
+export { default as logout } from './user/logout';
+export { default as deleteUser } from './user/delete';
+export { default as updateUser } from './user/update';
