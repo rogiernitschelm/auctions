@@ -18,6 +18,7 @@ class CreateAccountForm extends Component {
   }
 
   onSubmit({ email, firstname, lastname, usertype, password }) {
+    console.log(email, firstname, lastname, usertype, password)
     this.props.mutate({
       variables: { email, firstname, lastname, password, usertype },
       refetchQueries: [{ query: currentUser }]
@@ -89,7 +90,7 @@ class CreateAccountForm extends Component {
         />
 
         <Input
-          name="kvk"
+          name="coc"
           type="text"
           label={COC.label}
           placeholder={COC.placeholder}

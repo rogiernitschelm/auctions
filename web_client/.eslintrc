@@ -8,6 +8,12 @@
     "window": true
   },
   "settings": {
-    "import/core-modules": [ "common", "gql", "helpers", "customization/guest" ]
+    "import/core-modules": [
+    "common",
+    "gql",
+    "helpers",
+    "customization/guest",
+    "customization/validations" 
+    ]
   }
 }

@@ -39,7 +39,7 @@ export const Form = props => {
         </div>
 
         {renderErrors()}
-        
+
         {children}
         <div className="form-group row">
           <div className="col-12">
@@ -69,9 +69,9 @@ const renderField = props => {
   } = props;
 
   const renderErrors = errors => {
-    return errors.map(errorMessage => {
+    return Object.keys(errors).map(key => {
       return (
-        <span className="error-span" key={errorMessage}>{errorMessage}</span>
+        <span className="error-span" key={key}>{errors[key].message}</span>
       );
     });
   };
@@ -114,7 +114,7 @@ const renderField = props => {
           placeholder={placeholder}
           type={type}
         />
-        {touched && error && renderErrors(error)}
+        {touched && error && <span className="error-span">{error}</span>}
     </div>
   </div>
   );

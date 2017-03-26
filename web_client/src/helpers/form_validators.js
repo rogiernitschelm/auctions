@@ -1,68 +1,43 @@
 import validationSchema from 'customization/validations';
+const { user } = validationSchema;
 
-const checkMinimalLength = (length, value) => {
-  if (value.length < length) {
-    return false;
-  }
+const checkMinimalLength = (length, value) => value.length > length;
+const checkMaximumLength = (length, value) => value.length < length;
 
-  return true;
-};
-
-const checkMaximumLength = (length, value) => {
-  if (value.length > length) {
-    return false;
-  }
-
-  return true;
-};
-
+// Validates a field based on server-side validation-requirements like min/max
+//
 const validateField = (key, value, fieldSchema) => {
-  const errors = [];
 
-  if (fieldSchema.min) {
-    if (!checkMinimalLength(fieldSchema.min, value)) {
-      errors.push(Error('Voldoet niet aan de minimale lengte'));
-    }
+  if (key === 'repeatpassword') { return; }
+
+  if (fieldSchema.min && !checkMinimalLength(fieldSchema.min, value)) {
+    return 'Voldoet niet aan de minimale lengte';
   }
 
-  if (fieldSchema.max) {
-    if (!checkMaximumLength(fieldSchema.max, value)) {
-      errors.push(Error('Voldoet niet aan de maximale lengte'));
-    }
+  if (fieldSchema.max && !checkMaximumLength(fieldSchema.max, value)) {
+    return 'Voldoet niet aan de maximale lengte';
   }
 
-  return errors;
-};
-
-const validateRepeatedPassword = (password, repeatPassword) => {
-  if (password === repeatPassword) {
-    return true;
+  if (fieldSchema.required && !value) {
+    return `${key} - Dit veld is vereist.`;
   }
 
-  return false;
+  return;
 };
 
 export const userValidator = values => {
-  const userModel = validationSchema.user;
-  const fieldValues = Object.keys(values);
   const errors = {};
 
-  for (const key of fieldValues) {
-    const fieldSchema = userModel[key];
+  for (const key of Object.keys(values)) {
+    const error = validateField(key, values[key], user[key]);
 
-    if (key === 'repeatpassword') {
-      const passwordMatch = validateRepeatedPassword(values.password, values[key]);
-      if (!passwordMatch) {
-        errors.repeatPassword = Error('Wachtwoord komt niet overeen.').message;
-      }
+    if (error) {
+      errors[key] = error;
     }
+  }
 
-    if (fieldSchema) {
-      const errorsPresent = validateField(key, values[key], fieldSchema);
-      if (errorsPresent) {
-        errors[key] = errorsPresent.map(error => error.message);
-      }
-    }
+  if (values.password !== values.repeatedPassword) {
+    errors.repeatedPassword = 'De wachtwoorden komen niet overeen.';
   }
 
   return errors;
