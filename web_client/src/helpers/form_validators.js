@@ -34,6 +34,14 @@ const validateField = (key, value, fieldSchema) => {
   return errors;
 };
 
+const validateRepeatedPassword = (password, repeatPassword) => {
+  if (password === repeatPassword) {
+    return true;
+  }
+
+  return false;
+};
+
 export const userValidator = values => {
   const userModel = validationSchema.user;
   const fieldValues = Object.keys(values);
@@ -41,6 +49,13 @@ export const userValidator = values => {
 
   for (const key of fieldValues) {
     const fieldSchema = userModel[key];
+
+    if (key === 'repeatpassword') {
+      const passwordMatch = validateRepeatedPassword(values.password, values[key]);
+      if (!passwordMatch) {
+        errors.repeatPassword = Error('Wachtwoord komt niet overeen.').message;
+      }
+    }
 
     if (fieldSchema) {
       const errorsPresent = validateField(key, values[key], fieldSchema);

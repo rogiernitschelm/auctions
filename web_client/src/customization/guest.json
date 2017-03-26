@@ -26,6 +26,10 @@
       "label": "Wachtwoord",
       "placeholder": "Minimaal 8 karakters..."
     },
+    "REPEAT_PASSWORD": {
+      "label": "Bevestig",
+      "placeholder": "Herhaal je wachtwoord"
+    },
     "COMPANY": {
       "label": "Bedrijfsnaam",
       "placeholder": "Shell NV..."

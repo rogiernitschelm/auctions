@@ -37,6 +37,7 @@ class CreateAccountForm extends Component {
       SUBMIT,
       TITLE,
       USERTYPE,
+      REPEAT_PASSWORD,
     } = json.form;
 
     return (
@@ -94,13 +95,20 @@ class CreateAccountForm extends Component {
           placeholder={COC.placeholder}
         />
 
-        <br />
+        <hr />
 
         <Input
           name="password"
           type="password"
           label={PASSWORD.label}
           placeholder={PASSWORD.placeholder}
+        />
+
+        <Input
+          name="repeatpassword"
+          type="password"
+          label={REPEAT_PASSWORD.label}
+          placeholder={REPEAT_PASSWORD.placeholder}
         />
 
         <br />
