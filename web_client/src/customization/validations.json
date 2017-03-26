@@ -1,0 +1,41 @@
+{
+   "user": {
+      "email": {
+         "match": {},
+         "lowercase": true,
+         "required": true,
+         "unique": true,
+         "index": true
+      },
+      "firstname": {
+         "required": true,
+         "min": 2,
+         "max": 25
+      },
+      "lastname": {
+         "required": true,
+         "min": 2,
+         "max": 25
+      },
+      "password": {
+         "required": true,
+         "match": {}
+      },
+      "usertype": {
+         "enum": [
+            "seller",
+            "buyer"
+         ],
+         "required": true
+      },
+      "coc": {
+         "required": true
+      },
+      "company": {
+         "required": true
+      }
+   },
+   "auction": {},
+   "bids": {},
+   "messages": {}
+}

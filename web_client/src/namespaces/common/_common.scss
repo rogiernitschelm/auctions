@@ -42,19 +42,28 @@
 }
 
 .form {
+  label {
+    margin-top: 4px;
+  }
+
+  .form-group {
+    margin: 10px;
+  }
+
   .form-title {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
+  span.error-span {
+    font-size: $font-text;
+    color: $warning;
+    padding-left: 0px;
+    margin-left: 0px;
   }
 
   input, textarea, select {
     border-radius: 2px !important;
-    font-weight: 300;
     -webkit-appearance: none;
-  }
-
-
-  label {
-    font-size: 18px;
   }
 }

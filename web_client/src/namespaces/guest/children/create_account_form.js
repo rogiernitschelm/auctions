@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import { currentUser } from 'gql';
-import { formValidator as validate } from 'helpers';
+import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
 
 import { Form, Input, Button } from 'common';
 import { createAccountMutation } from '../graphql/mutations';
 
-@reduxForm({ form: 'createAccount', fields: Object.keys(json.form) })// validate })
+@reduxForm({ form: 'createAccount', fields: Object.keys(json.form), validate })
 class CreateAccountForm extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +45,7 @@ class CreateAccountForm extends Component {
         errors={this.state.errors}
         title={TITLE}
         onSubmit={this.onSubmit}
+        submit={SUBMIT}
         className="create-account-form"
       >
         <Input
@@ -77,7 +78,7 @@ class CreateAccountForm extends Component {
           options={USERTYPE.options}
         />
 
-        <br />
+        <hr />
 
         <Input
           name="company"
@@ -103,10 +104,6 @@ class CreateAccountForm extends Component {
         />
 
         <br />
-
-        <Button type="submit" className="btn-lg btn-block" size="lg">
-          {SUBMIT}<i className="material-icons">navigate_next</i>
-        </Button>
       </Form>
     );
   }

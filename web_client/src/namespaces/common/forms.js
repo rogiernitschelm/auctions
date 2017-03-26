@@ -2,7 +2,15 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 export const Form = props => {
-  const { title, children, handleSubmit, onSubmit, className, errors = [] } = props;
+  const {
+    title,
+    children,
+    handleSubmit,
+    onSubmit,
+    className,
+    submit = 'Submit',
+    errors = [],
+  } = props;
 
   const renderTitle = () => {
     if (title) {
@@ -24,15 +32,50 @@ export const Form = props => {
   return (
     <div className="container">
       <form className={`form ${className}`} onSubmit={handleSubmit(onSubmit)}>
-        {renderTitle()}
+        <div className="form-group row">
+          <div className="col-12">
+            {renderTitle()}
+          </div>
+        </div>
+
         {renderErrors()}
+        
         {children}
+        <div className="form-group row">
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary btn-lg btn-block" size="lg">
+              {submit}<i className="material-icons">navigate_next</i>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
 };
 
-const renderField = ({ label, type, name, input, placeholder, autoFocus, options = {} }) => {
+const renderField = props => {
+  const {
+    label,
+    type,
+    name,
+    input,
+    placeholder,
+    autoFocus,
+    options = {},
+    meta: {
+      error,
+      touched
+    }
+  } = props;
+
+  const renderErrors = errors => {
+    return errors.map(errorMessage => {
+      return (
+        <span className="error-span" key={errorMessage}>{errorMessage}</span>
+      );
+    });
+  };
+
   if (type === 'select') {
     const renderOptions = () => options.map(option => {
       const { value, text } = option;
@@ -61,7 +104,7 @@ const renderField = ({ label, type, name, input, placeholder, autoFocus, options
 
   return (
     <div className="form-group row">
-      <label htmlFor={name} className="col-sm-4 col-form-label">{label}</label>
+      <label htmlFor={name} className="col-sm-4 col-form-label align-middle">{label}</label>
       <div className="col-sm-8">
         <input
           {...input}
@@ -71,6 +114,7 @@ const renderField = ({ label, type, name, input, placeholder, autoFocus, options
           placeholder={placeholder}
           type={type}
         />
+        {touched && error && renderErrors(error)}
     </div>
   </div>
   );

@@ -1,5 +1,5 @@
 * {
-  font-family: $font-family;
+  font-family: $font-family-fat;
 }
 
 h1, h2, h3, h4, h5 {
@@ -20,6 +20,28 @@ h3 {
 
 h4 {
   font-size: $font-h4;
+}
+
+label, input, textarea, select {
+  font-size: $font-text !important;
+  font-weight: 300;
+}
+
+::-webkit-input-placeholder {
+  color: $medium-grey;
+  font-size: $font-text;
+}
+::-moz-placeholder {
+  color: $medium-grey;
+  font-size: $font-text;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+  color: $medium-grey;
+  font-size: $font-text;
+} /* ie */
+input:-moz-placeholder {
+  color: $medium-grey;
+  font-size: $font-text;
 }
 
 .material-icons {
