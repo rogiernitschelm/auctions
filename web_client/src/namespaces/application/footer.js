@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer, FooterLinks, Column, Row, Container } from 'common';
+import { Footer, FooterLinks, Row, Container } from 'common';
 import json from './customization';
 
 export default () => {

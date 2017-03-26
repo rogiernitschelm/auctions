@@ -13,7 +13,7 @@ import { createAccountMutation } from '../graphql/mutations';
   fields: ['email'],
   // validate
 })
-class CreateAccount extends Component {
+class CreateAccountForm extends Component {
   constructor(props) {
     super(props);
 
@@ -37,6 +37,7 @@ class CreateAccount extends Component {
         errors={this.state.errors}
         title="Maak account"
         onSubmit={this.onSubmit}
+        className="create-account-form"
       >
         <Input name="email" type="email" label="hendrik@bedrijfsmail.nl" />
         <Input name="fname" type="text" label="Hendrik-Alexander" />
@@ -48,4 +49,4 @@ class CreateAccount extends Component {
   }
 }
 
-export default graphql(createAccountMutation)(CreateAccount);
+export default graphql(createAccountMutation)(CreateAccountForm);

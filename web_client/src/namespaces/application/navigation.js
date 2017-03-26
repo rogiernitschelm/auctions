@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { logoutMutation, currentUser } from 'gql';
-import { Navigation, Row, NavLink, Column, Container } from 'common';
-
-import SessionLinks from './children/session_links';
-import NoSessionLinks from './children/no_session_links';
-import BuyerLinks from './children/buyer_links';
+import { Navigation, NavLink } from 'common';
 
 class NavigationBar extends Component {
   logout() {
@@ -15,42 +11,19 @@ class NavigationBar extends Component {
     .catch(error => console.log(error.message));
   }
 
-  renderUserSpecificLinks() {
-    switch (this.props.usertype) {
-      case 'buyer':
-        return <BuyerLinks />;
-
-      default:
-        return (
-          <Column columns={{ xs: 5, sm: 4 }} />
-        );
-    }
-  }
-
   renderSessionSpecificLinks() {
     if (this.props.data.currentUser) {
-      if (['seller', 'buyer', 'admin'].includes(this.props.data.currentUser.usertype)) {
-        return <SessionLinks onLogoutClick={::this.logout} />;
-      }
+      return <NavLink onLogoutClick={::this.logout} />;
     }
 
-    return <NoSessionLinks />;
+    return <NavLink to="/guest/create_account" type="button">Maak account</NavLink>;
   }
 
   render() {
     return (
       <Navigation>
-        <Container>
-          <Row>
-            <Column columns={{ xs: 2, offset: 1 }}>
-              <NavLink type="logo">LOGO</NavLink>
-            </Column>
-
-            {this.renderUserSpecificLinks()}
-            {this.renderSessionSpecificLinks()}
-
-          </Row>
-        </Container>      
+        <NavLink>Over ons</NavLink>
+        {this.renderSessionSpecificLinks()}
       </Navigation>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 export const Form = props => {
-  const { title, children, handleSubmit, onSubmit, errors = [] } = props;
+  const { title, children, handleSubmit, onSubmit, className, errors = [] } = props;
 
   const renderTitle = () => {
     if (title) {
@@ -22,15 +22,11 @@ export const Form = props => {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-md-center">
-        <form className="form col-11 col-md-10 col-lg-8 col-xl-6" onSubmit={handleSubmit(onSubmit)}>
-          {renderTitle()}
-          {renderErrors()}
-          {children}
-        </form>
-      </div>
-    </div>
+    <form className={`form ${className}`} onSubmit={handleSubmit(onSubmit)}>
+      {renderTitle()}
+      {renderErrors()}
+      {children}
+    </form>
   );
 };
 

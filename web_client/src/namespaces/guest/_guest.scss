@@ -1,0 +1,13 @@
+.guest-container {
+  .jumbotron {
+    border-radius: 0;
+    background-color: $white;
+    margin-bottom: 0px;
+  }
+}
+
+.create-account-form {
+  @media (min-width: 768px) {
+    margin-top: 64px !important;  
+  }
+}
