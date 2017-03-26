@@ -3,16 +3,12 @@ import { reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import { currentUser } from 'gql';
 import { formValidator as validate } from 'helpers';
-// import { userSchematic } from '../../../../../server/models/user/schema.js';
+import json from 'customization/guest';
+
 import { Form, Input, Button } from 'common';
 import { createAccountMutation } from '../graphql/mutations';
 
-
-@reduxForm({
-  form: 'createAccount',
-  fields: ['email', 'firstname', 'lastname', 'usertype'],
-  // validate
-})
+@reduxForm({ form: 'createAccount', fields: Object.keys(json.form) })// validate })
 class CreateAccountForm extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +18,6 @@ class CreateAccountForm extends Component {
   }
 
   onSubmit({ email, firstname, lastname, usertype, password }) {
-    console.log(email, firstname, lastname, usertype, password)
     this.props.mutate({
       variables: { email, firstname, lastname, password, usertype },
       refetchQueries: [{ query: currentUser }]
@@ -32,37 +27,85 @@ class CreateAccountForm extends Component {
   }
 
   render() {
-    const options = [
-      { text: 'Aanbieder', value: 'seller' },
-      { text: 'Bieder', value: 'buyer' }
-    ];
+    const {
+      COC,
+      COMPANY,
+      EMAIL,
+      FIRSTNAME,
+      LASTNAME,
+      PASSWORD,
+      SUBMIT,
+      TITLE,
+      USERTYPE,
+    } = json.form;
 
     return (
       <Form
         {...this.props}
         errors={this.state.errors}
-        title="Maak account aan"
+        title={TITLE}
         onSubmit={this.onSubmit}
         className="create-account-form"
       >
-        <Input name="email" type="email" label="E-mail" placeholder="hendrik@bedrijfsmail.nl" autoFocus />
-        <Input name="firstname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
-        <Input name="lastname" type="text" label="Achternaam" placeholder="'De Boer'" />
-        <Input name="usertype" type="select" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" options={options} />
+        <Input
+          name="email"
+          type="email"
+          label={EMAIL.label}
+          placeholder={EMAIL.placeholder}
+          autoFocus
+        />
+
+        <Input
+          name="firstname"
+          type="text"
+          label={FIRSTNAME.label}
+          placeholder={FIRSTNAME.placeholder}
+        />
+
+        <Input
+          name="lastname"
+          type="text"
+          label={LASTNAME.label}
+          placeholder={LASTNAME.placeholder}
+        />
+
+        <Input
+          name="usertype"
+          type="select"
+          label={USERTYPE.label}
+          placeholder={USERTYPE.placeholder}
+          options={USERTYPE.options}
+        />
 
         <br />
 
-        <Input name="company" type="text" label="Bedrijfsnaam" placeholder="Bedrijfsnaam" />
-        <Input name="kvk" type="text" label="Kvk" placeholder="Kvk-nummer van je organisatie" />
+        <Input
+          name="company"
+          type="text"
+          label={COMPANY.label}
+          placeholder={COMPANY.placeholder}
+        />
+
+        <Input
+          name="kvk"
+          type="text"
+          label={COC.label}
+          placeholder={COC.placeholder}
+        />
 
         <br />
 
-        <Input name="password" type="password" label="Wachtwoord" placeholder="Minimaal 8 tekens..." options={options} />
+        <Input
+          name="password"
+          type="password"
+          label={PASSWORD.label}
+          placeholder={PASSWORD.placeholder}
+        />
 
         <br />
 
         <Button type="submit" className="btn-lg btn-block" size="lg">
-          Maak aan!<i className="material-icons">navigate_next</i>
+          {SUBMIT}<i className="material-icons">navigate_next</i>
         </Button>
       </Form>
     );

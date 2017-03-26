@@ -37,7 +37,8 @@ module.exports = {
     alias: {
       helpers: path.resolve(__dirname, 'src', 'helpers'),
       gql: path.resolve(__dirname, 'src', 'gql'),
-      common: path.resolve(__dirname, 'src', 'namespaces', 'common')
+      common: path.resolve(__dirname, 'src', 'namespaces', 'common'),
+      customization: path.resolve(__dirname, 'src', 'customization')
     }
   },
   plugins: [

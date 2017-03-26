@@ -1,0 +1,38 @@
+{
+  "form": {
+    "TITLE": "Maak account aan",
+    "SUBMIT": "Maak account aan!",
+    "EMAIL": {
+      "label": "E-mail",
+      "placeholder": "jan@mail.com..."
+    },
+    "FIRSTNAME": {
+      "label": "Voornaam",
+      "placeholder": "Jan... "
+    },
+    "LASTNAME": {
+      "label": "Achternaam",
+      "placeholder": "De Boer..."
+    },
+    "USERTYPE": {
+      "label": "Soort gebruiker",
+      "placeholder": "Ben je een aanbieder van advertentieruimte? Of wil je zelf bieden?",
+      "options": [
+        { "text": "Bieder", "value": "buyer" },
+        { "text": "Aanbieder", "value": "seller"}
+      ]
+    },
+    "PASSWORD": {
+      "label": "Wachtwoord",
+      "placeholder": "Minimaal 8 karakters..."
+    },
+    "COMPANY": {
+      "label": "Bedrijfsnaam",
+      "placeholder": "Shell NV..."
+    },
+    "COC": {
+      "label": "Kvk-nummer",
+      "placeholder": "Het kvk-nummer van jouw bedrijf..."
+    }
+  }
+}

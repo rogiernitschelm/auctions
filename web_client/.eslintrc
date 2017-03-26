@@ -8,6 +8,6 @@
     "window": true
   },
   "settings": {
-    "import/core-modules": [ "common", "gql", "helpers" ]
+    "import/core-modules": [ "common", "gql", "helpers", "customization/guest" ]
   }
 }
