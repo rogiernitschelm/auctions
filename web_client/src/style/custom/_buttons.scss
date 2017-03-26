@@ -18,11 +18,11 @@
 }
 
 .btn-outline-primary {
-  border: 2px solid $primary-button;
+  border: 0.2em solid $primary-button;
   color: $primary-button;
 
   &:hover {
-    border: 2px solid $primary-button-hover;
+    border: 0.2em solid $primary-button-hover;
     color: $primary-button-hover;
     background-color: $white;
   }

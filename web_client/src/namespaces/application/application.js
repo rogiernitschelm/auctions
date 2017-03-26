@@ -1,11 +1,10 @@
 import React from 'react';
-import { ContainerFluid } from 'common';
-import { Footer, Navigation } from './';
+import { Navigation } from './';
 
 export default ({ children }) => (
-  <ContainerFluid>
+  <main>
     <Navigation />
       {children}
     {/* <Footer /> */}
-  </ContainerFluid>
+  </main>
 );
