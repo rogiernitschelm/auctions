@@ -13,7 +13,7 @@ class NavigationBar extends Component {
 
   renderSessionSpecificLinks() {
     if (this.props.data.currentUser) {
-      return <NavLink onLogoutClick={::this.logout} />;
+      return <NavLink onClick={::this.logout}>Uitloggen</NavLink>;
     }
 
     return <NavLink to="/guest/create_account" type="button">Maak account</NavLink>;
@@ -22,7 +22,6 @@ class NavigationBar extends Component {
   render() {
     return (
       <Navigation>
-        <NavLink>Over ons</NavLink>
         {this.renderSessionSpecificLinks()}
       </Navigation>
     );

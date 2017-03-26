@@ -5,12 +5,13 @@ export const Button = ({
   type = 'submit',
   children,
   size = 'md',
-  onClick = null
+  onClick = null,
+  className
 }) => {
   const buttonClassName = `btn btn-${color} ${size ? `btn-${size}` : ''}`;
 
   return (
-    <button className={buttonClassName} type={type} onClick={onClick}>
+    <button className={`${buttonClassName} ${className}`} type={type} onClick={onClick}>
       {children}
     </button>
   );

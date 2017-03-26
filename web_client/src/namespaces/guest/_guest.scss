@@ -1,15 +1,17 @@
 .guest-container {
   .jumbotron {
     border-radius: 0;
-    background-color: $white;
-    @media (max-width: 767px) {
+    background-color: inherit;
+    @media (min-width: 768px) {
       margin-bottom: -30px;
     }
   }
 }
 
 .create-account-form {
-  @media (min-width: 768px) {
+  background-color: $white;
+
+  @media (min-width: 1024px) {
     margin-top: 64px !important;
   }
 }

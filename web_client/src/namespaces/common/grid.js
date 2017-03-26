@@ -4,8 +4,8 @@ export const Container = ({ children, className }) => (
   <div className={`container ${className}`}>{children}</div>
 );
 
-export const ContainerFluid = ({ children }) => (
-  <div className="container-fluid">{children}</div>
+export const ContainerFluid = ({ children, className }) => (
+  <div className={`container-fluid ${className}`}>{children}</div>
 );
 
 export const Row = ({ children }) => <div className="row">{children}</div>;

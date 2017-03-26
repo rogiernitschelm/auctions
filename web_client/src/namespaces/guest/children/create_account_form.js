@@ -35,7 +35,7 @@ class CreateAccountForm extends Component {
       <Form
         {...this.props}
         errors={this.state.errors}
-        title="Maak account"
+        title="Maak account aan"
         onSubmit={this.onSubmit}
         className="create-account-form"
       >
@@ -43,7 +43,12 @@ class CreateAccountForm extends Component {
         <Input name="fname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
         <Input name="lname" type="text" label="Achternaam" placeholder="'De Boer'" />
         <Input name="usertype" type="text" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" />
-        <Button type="submit" size="lg">Submit</Button>
+
+        <br />
+
+        <Button type="submit" className="btn-lg btn-block" size="lg">
+          Maak aan!<i className="material-icons">navigate_next</i>
+        </Button>
       </Form>
     );
   }
