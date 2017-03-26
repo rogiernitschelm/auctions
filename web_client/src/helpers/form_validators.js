@@ -4,10 +4,7 @@ const { user } = validationSchema;
 const checkMinimalLength = (length, value) => value.length > length;
 const checkMaximumLength = (length, value) => value.length < length;
 
-// Validates a field based on server-side validation-requirements like min/max
-//
 const validateField = (key, value, fieldSchema) => {
-
   if (key === 'repeatpassword') { return; }
 
   if (fieldSchema.min && !checkMinimalLength(fieldSchema.min, value)) {
@@ -20,6 +17,14 @@ const validateField = (key, value, fieldSchema) => {
 
   if (fieldSchema.required && !value) {
     return `${key} - Dit veld is vereist.`;
+  }
+
+  if (key === 'email') {
+    const regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+    if (!regex.test(value)) {
+      return 'Dit is geen valide e-mailadres';
+    }
   }
 
   return;

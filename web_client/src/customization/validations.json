@@ -1,7 +1,6 @@
 {
    "user": {
       "email": {
-         "match": {},
          "lowercase": true,
          "required": true,
          "unique": true,
