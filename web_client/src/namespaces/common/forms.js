@@ -22,37 +22,41 @@ export const Form = props => {
   };
 
   return (
-    <form className={`form ${className}`} onSubmit={handleSubmit(onSubmit)}>
-      {renderTitle()}
-      {renderErrors()}
-      {children}
-    </form>
+    <div className="container">
+      <form className={`form ${className}`} onSubmit={handleSubmit(onSubmit)}>
+        {renderTitle()}
+        {renderErrors()}
+        {children}
+      </form>
+    </div>
   );
 };
 
 const renderField = ({ label, type, name, input, placeholder }) => {
   return (
-    <fieldset className="form-group">
-      <label htmlFor={name} className="sr-only">{label}</label>
-      <input
-        {...input}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="form-control"
-      />
-    </fieldset>
+    <div className="form-group row">
+      <label htmlFor={name} className="col-sm-4 col-form-label">{label}</label>
+      <div className="col-sm-8">
+        <input
+          {...input}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          className="form-control"
+        />
+    </div>
+  </div>
   );
 };
 
-export const Input = ({ name, type, label }) => {
+export const Input = ({ name, type, label, placeholder }) => {
   return (
     <Field
       name={name}
       type={type}
       label={label}
       component={renderField}
-      placeholder={label}
+      placeholder={placeholder}
     />
   );
 };

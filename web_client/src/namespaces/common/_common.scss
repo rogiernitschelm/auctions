@@ -38,3 +38,19 @@
     margin-bottom: 10px;
   }
 }
+
+.form {
+  .form-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    border-radius: 2px;
+    font-weight: 300;
+  }
+
+  label {
+    font-size: 18px;
+  }
+}

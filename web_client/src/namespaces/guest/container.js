@@ -11,10 +11,10 @@ export default class GuestContainer extends Component {
       return (
         <Container className="guest-container">
           <Row>
-            <Column columns={{ xs: 12, md: 6 }}>
+            <Column columns={{ xs: 12, lg: 6 }}>
               <CreateAccountInfo />
             </Column>
-            <Column columns={{ xs: 12, md: 6 }}>
+            <Column columns={{ xs: 12, lg: 6 }}>
               <CreateAccountForm />
             </Column>
           </Row>

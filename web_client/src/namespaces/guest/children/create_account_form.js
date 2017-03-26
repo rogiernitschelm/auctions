@@ -39,10 +39,10 @@ class CreateAccountForm extends Component {
         onSubmit={this.onSubmit}
         className="create-account-form"
       >
-        <Input name="email" type="email" label="hendrik@bedrijfsmail.nl" />
-        <Input name="fname" type="text" label="Hendrik-Alexander" />
-        <Input name="lname" type="text" label="'De Boer'" />
-        <Input name="usertype" type="text" label="Ben je bieder of aanbieder?" />
+        <Input name="email" type="email" label="E-mail" placeholder="hendrik@bedrijfsmail.nl" />
+        <Input name="fname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
+        <Input name="lname" type="text" label="Achternaam" placeholder="'De Boer'" />
+        <Input name="usertype" type="text" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" />
         <Button type="submit" size="lg">Submit</Button>
       </Form>
     );

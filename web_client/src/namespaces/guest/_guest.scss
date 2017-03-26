@@ -2,12 +2,14 @@
   .jumbotron {
     border-radius: 0;
     background-color: $white;
-    margin-bottom: 0px;
+    @media (max-width: 767px) {
+      margin-bottom: -30px;
+    }
   }
 }
 
 .create-account-form {
   @media (min-width: 768px) {
-    margin-top: 64px !important;  
+    margin-top: 64px !important;
   }
 }
