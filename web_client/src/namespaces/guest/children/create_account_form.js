@@ -45,11 +45,20 @@ class CreateAccountForm extends Component {
         onSubmit={this.onSubmit}
         className="create-account-form"
       >
-        <Input name="email" type="email" label="E-mail" placeholder="hendrik@bedrijfsmail.nl" />
+        <Input name="email" type="email" label="E-mail" placeholder="hendrik@bedrijfsmail.nl" autoFocus />
         <Input name="firstname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
         <Input name="lastname" type="text" label="Achternaam" placeholder="'De Boer'" />
         <Input name="usertype" type="select" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" options={options} />
+
+        <br />
+
+        <Input name="company" type="text" label="Bedrijfsnaam" placeholder="Bedrijfsnaam" />
+        <Input name="kvk" type="text" label="Kvk" placeholder="Kvk-nummer van je organisatie" />
+
+        <br />
+
         <Input name="password" type="password" label="Wachtwoord" placeholder="Minimaal 8 tekens..." options={options} />
+
         <br />
 
         <Button type="submit" className="btn-lg btn-block" size="lg">

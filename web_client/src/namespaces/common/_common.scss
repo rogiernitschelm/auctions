@@ -47,10 +47,12 @@
     margin-bottom: 20px;
   }
 
-  input {
-    border-radius: 2px;
+  input, textarea, select {
+    border-radius: 2px !important;
     font-weight: 300;
+    -webkit-appearance: none;
   }
+
 
   label {
     font-size: 18px;

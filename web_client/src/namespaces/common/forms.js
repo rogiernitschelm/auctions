@@ -32,7 +32,7 @@ export const Form = props => {
   );
 };
 
-const renderField = ({ label, type, name, input, placeholder, options = {} }) => {
+const renderField = ({ label, type, name, input, placeholder, autoFocus, options = {} }) => {
   if (type === 'select') {
     const renderOptions = () => options.map(option => {
       const { value, text } = option;
@@ -47,10 +47,10 @@ const renderField = ({ label, type, name, input, placeholder, options = {} }) =>
         <div className="col-sm-8">
           <select
             {...input}
-            name={name}
-            type={type}
-            placeholder={placeholder}
             className="form-control"
+            name={name}
+            placeholder={placeholder}
+            type={type}
           >
             {renderOptions()}
           </select>
@@ -65,25 +65,27 @@ const renderField = ({ label, type, name, input, placeholder, options = {} }) =>
       <div className="col-sm-8">
         <input
           {...input}
-          name={name}
-          type={type}
-          placeholder={placeholder}
+          autoFocus={autoFocus}
           className="form-control"
+          name={name}
+          placeholder={placeholder}
+          type={type}
         />
     </div>
   </div>
   );
 };
 
-export const Input = ({ name, type, label, placeholder, options }) => {
+export const Input = ({ name, type, label, placeholder, options, autoFocus }) => {
   return (
     <Field
-      options={options}
-      name={name}
-      type={type}
-      label={label}
+      autoFocus={autoFocus}
       component={renderField}
+      label={label}
+      name={name}
+      options={options}
       placeholder={placeholder}
+      type={type}
     />
   );
 };
