@@ -16,6 +16,7 @@ export default {
     },
 
     resolve(parentValue, args, req) {
+      console.log(args)
       return signup({ args, req });
     }
   }

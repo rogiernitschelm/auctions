@@ -32,7 +32,33 @@ export const Form = props => {
   );
 };
 
-const renderField = ({ label, type, name, input, placeholder }) => {
+const renderField = ({ label, type, name, input, placeholder, options = {} }) => {
+  if (type === 'select') {
+    const renderOptions = () => options.map(option => {
+      const { value, text } = option;
+      return (
+        <option key={value} value={value}>{text}</option>
+      );
+    });
+
+    return (
+      <div className="form-group row">
+        <label htmlFor={name} className="col-sm-4 col-form-label">{label}</label>
+        <div className="col-sm-8">
+          <select
+            {...input}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            className="form-control"
+          >
+            {renderOptions()}
+          </select>
+      </div>
+    </div>
+    );
+  }
+
   return (
     <div className="form-group row">
       <label htmlFor={name} className="col-sm-4 col-form-label">{label}</label>
@@ -49,9 +75,10 @@ const renderField = ({ label, type, name, input, placeholder }) => {
   );
 };
 
-export const Input = ({ name, type, label, placeholder }) => {
+export const Input = ({ name, type, label, placeholder, options }) => {
   return (
     <Field
+      options={options}
       name={name}
       type={type}
       label={label}

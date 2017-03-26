@@ -10,7 +10,7 @@ import { createAccountMutation } from '../graphql/mutations';
 
 @reduxForm({
   form: 'createAccount',
-  fields: ['email'],
+  fields: ['email', 'firstname', 'lastname', 'usertype'],
   // validate
 })
 class CreateAccountForm extends Component {
@@ -21,9 +21,10 @@ class CreateAccountForm extends Component {
     this.onSubmit = ::this.onSubmit;
   }
 
-  onSubmit({ email }) {
+  onSubmit({ email, firstname, lastname, usertype, password }) {
+    console.log(email, firstname, lastname, usertype, password)
     this.props.mutate({
-      variables: { email, password: "abcd1234", usertype: 'seller' },
+      variables: { email, firstname, lastname, password, usertype },
       refetchQueries: [{ query: currentUser }]
     })
     .then(() => this.setState({ errors: [] }))
@@ -31,6 +32,11 @@ class CreateAccountForm extends Component {
   }
 
   render() {
+    const options = [
+      { text: 'Aanbieder', value: 'seller' },
+      { text: 'Bieder', value: 'buyer' }
+    ];
+
     return (
       <Form
         {...this.props}
@@ -40,10 +46,10 @@ class CreateAccountForm extends Component {
         className="create-account-form"
       >
         <Input name="email" type="email" label="E-mail" placeholder="hendrik@bedrijfsmail.nl" />
-        <Input name="fname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
-        <Input name="lname" type="text" label="Achternaam" placeholder="'De Boer'" />
-        <Input name="usertype" type="text" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" />
-
+        <Input name="firstname" type="text" label="Voornaam" placeholder="Hendrik-Alexander" />
+        <Input name="lastname" type="text" label="Achternaam" placeholder="'De Boer'" />
+        <Input name="usertype" type="select" label="Gebruiker" placeholder="Ben je bieder of aanbieder?" options={options} />
+        <Input name="password" type="password" label="Wachtwoord" placeholder="Minimaal 8 tekens..." options={options} />
         <br />
 
         <Button type="submit" className="btn-lg btn-block" size="lg">
