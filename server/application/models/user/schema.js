@@ -3,26 +3,26 @@ import { Schema } from 'mongoose';
 export const schematic = {
   email: {
     type: String,
-    match: /^[a-z0-9]+(\\\\.[_a-z0-9]+)*@[a-z0-9-]+(\\\\.[a-z0-9-]+)*(\\\\.[a-z]{2,15})$/,
+    match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
     lowercase: true,
     required: true,
     unique: true,
     index: true
   },
-
-  firstname: {
-    type: String,
-    required: true,
-    min: 2,
-    max: 25,
-  },
-
-  lastname: {
-    type: String,
-    required: true,
-    min: 2,
-    max: 25,
-  },
+  //
+  // firstname: {
+  //   type: String,
+  //   required: true,
+  //   min: 2,
+  //   max: 25,
+  // },
+  //
+  // lastname: {
+  //   type: String,
+  //   required: true,
+  //   min: 2,
+  //   max: 25,
+  // },
 
   password: {
     type: String,
@@ -36,15 +36,15 @@ export const schematic = {
     required: true
   },
 
-  coc: {
-    type: String,
-    required: true
-  },
-
-  company: {
-    type: String,
-    required: true
-  },
+  // coc: {
+  //   type: String,
+  //   required: true
+  // },
+  //
+  // company: {
+  //   type: String,
+  //   required: true
+  // },
   //
   // infix: {
   //   type: String,

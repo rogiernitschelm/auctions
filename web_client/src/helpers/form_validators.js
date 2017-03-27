@@ -20,7 +20,7 @@ const validateField = (key, value, fieldSchema) => {
   }
 
   if (key === 'email') {
-    const regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const regex = new RegExp(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/);
 
     if (!regex.test(value)) {
       return 'Dit is geen valide e-mailadres';

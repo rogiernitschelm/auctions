@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import passport from 'passport';
 import { Strategy } from 'passport-local';
-
-const User = mongoose.model('user');
+import User from '../models/user/model';
+// const User = mongoose.model('user');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

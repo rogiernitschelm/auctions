@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "nodemon index.js --exec babel-node --presets es2015 latest",
-    "build": "rimraf dist && mkdir dist && yarn run validation && babel . -d dist --presets=latest --ignore='node_modules, *test*', 'dist'",
-    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min' --compilers js:babel-core/register './tests'",
+    "build": "rimraf dist && mkdir dist && yarn run validation && babel . -d dist --presets=latest --ignore='node_modules, *test*, *.spec.*, validation_script.js', 'dist'",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min' --compilers js:babel-core/register './application'",
     "validation": "node validation_script.js"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "eslint-config-rallycoding": "^3.2.0",
     "eslint-plugin-babel": "^4.1.1",
     "graphql-tools": "^0.10.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.1"
   },
