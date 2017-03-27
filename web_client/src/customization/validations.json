@@ -7,16 +7,6 @@
          "unique": true,
          "index": true
       },
-      "firstname": {
-         "required": true,
-         "min": 2,
-         "max": 25
-      },
-      "lastname": {
-         "required": true,
-         "min": 2,
-         "max": 25
-      },
       "password": {
          "required": true,
          "match": {}
@@ -26,12 +16,6 @@
             "seller",
             "buyer"
          ],
-         "required": true
-      },
-      "coc": {
-         "required": true
-      },
-      "company": {
          "required": true
       }
    },

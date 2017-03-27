@@ -3,7 +3,7 @@ import { Schema } from 'mongoose';
 export const schematic = {
   email: {
     type: String,
-    match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+    // match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
     lowercase: true,
     required: true,
     unique: true,
