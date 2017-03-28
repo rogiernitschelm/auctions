@@ -25,8 +25,24 @@ UserSchema.pre('save', function save(next) {
   });
 });
 
-UserSchema.pre('update', function () {
-  this.update({}, { $set: { updatedAt: new Date() } });
+UserSchema.pre('update', function (next) {
+  const user = this._update.$set;
+
+  // dry this up, and only enable this when password is being changed .
+  bcrypt.genSalt(10, (genSaltError, salt) => {
+    if (genSaltError) {
+      return next(genSaltError);
+    }
+
+    bcrypt.hash(user.password, salt, null, (hashError, hash) => {
+      if (hashError) {
+        return next(hashError);
+      }
+
+      user.password = hash;
+      next();
+    });
+  });
 });
 
 UserSchema
