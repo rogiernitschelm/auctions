@@ -10,28 +10,22 @@ UserSchema.pre('save', function save(next) {
     return next();
   }
 
-  passwordEncryptor(user)
-    .then(() => next());
+  passwordEncryptor(user.password)
+    .then(result => {
+      user.password = result;
+      return next();
+    });
 });
 
 UserSchema.pre('update', function (next) {
   const user = this._update.$set;
 
-  if (this._update.$set.password) {
-    console.warn(
-      `
-      WARNING: Do not use update-middleware for updating secure
-      information. Pre-save validations are not ran on these mutations.
-      Please use find() and then save().
+  passwordEncryptor(user.password)
+    .then(result => {
+      user.password = result;
 
-      The password you have provided has still been securely encrypted. This
-      warning is merely to encourage changing methods.
-      `
-    );
-
-    passwordEncryptor(user)
-      .then(() => next());
-  }
+      return next();
+    });
 });
 
 UserSchema
