@@ -20,10 +20,15 @@ UserSchema.pre('update', function (next) {
   if (this._update.$set.password) {
     console.warn(
       `
-      WARNING: You are not supposed to use update-middleware for updating secure
-      information. Please use find() and then save().
+      WARNING: Do not use update-middleware for updating secure
+      information. Pre-save validations are not ran on these mutations.
+      Please use find() and then save().
+
+      The password you have provided has still been securely encrypted. This
+      warning is merely to encourage changing methods.
       `
     );
+
     passwordEncryptor(user)
       .then(() => next());
   }
