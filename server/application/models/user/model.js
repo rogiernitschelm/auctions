@@ -1,6 +1,7 @@
-import bcrypt from 'bcrypt-nodejs';
+import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import UserSchema from './schema';
+import { passwordEncryptor } from '../helpers/authentication_helper';
 
 UserSchema.pre('save', function save(next) {
   const user = this;
@@ -9,40 +10,15 @@ UserSchema.pre('save', function save(next) {
     return next();
   }
 
-  bcrypt.genSalt(10, (genSaltError, salt) => {
-    if (genSaltError) {
-      return next(genSaltError);
-    }
-
-    bcrypt.hash(user.password, salt, null, (hashError, hash) => {
-      if (hashError) {
-        return next(hashError);
-      }
-
-      user.password = hash;
-      next();
-    });
-  });
+  user.password = passwordEncryptor(user)
+    .then(() => next());
 });
 
 UserSchema.pre('update', function (next) {
   const user = this._update.$set;
 
-  // dry this up, and only enable this when password is being changed .
-  bcrypt.genSalt(10, (genSaltError, salt) => {
-    if (genSaltError) {
-      return next(genSaltError);
-    }
-
-    bcrypt.hash(user.password, salt, null, (hashError, hash) => {
-      if (hashError) {
-        return next(hashError);
-      }
-
-      user.password = hash;
-      next();
-    });
-  });
+  user.password = passwordEncryptor(user)
+    .then(() => next());
 });
 
 UserSchema
