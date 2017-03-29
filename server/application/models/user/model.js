@@ -13,6 +13,7 @@ UserSchema.pre('save', function save(next) {
   passwordEncryptor(user.password)
     .then(result => {
       user.password = result;
+      
       return next();
     });
 });
