@@ -3,11 +3,11 @@ import { Schema } from 'mongoose';
 export const schematic = {
   email: {
     type: String,
-    // match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+    match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
     lowercase: true,
     required: true,
     unique: true,
-    index: true
+    index: true,
   },
   //
   // firstname: {
@@ -27,7 +27,11 @@ export const schematic = {
   password: {
     type: String,
     required: true,
-    match: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    minlength: 8,
+    match: [
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      'Requires at least one number, and one letter.'
+    ]
   },
 
   usertype: {

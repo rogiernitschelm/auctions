@@ -1,4 +1,4 @@
-import { signup, logout, deleteUser, updateUser, login } from './user_mutations';
+import { signup, logout, deleteUser, updateUser, login, changePassword } from './user_mutations';
 
 export default {
   ...login,
@@ -6,4 +6,5 @@ export default {
   ...logout,
   ...deleteUser,
   ...updateUser,
+  ...changePassword
 };

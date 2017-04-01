@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "dev": "nodemon index.js --exec babel-node --presets es2015 latest",
     "build": "rimraf dist && mkdir dist && yarn run validation && babel . -d dist --presets=latest --ignore='node_modules, *test*, *.spec.*, validation_script.js', 'dist'",
-    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min' --compilers js:babel-core/register --require babel-polyfill './application'",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min' --compilers js:babel-core/register --require babel-polyfill './tests'",
     "validation": "node validation_script.js"
   },
   "devDependencies": {
@@ -39,6 +39,7 @@
     "mongoose": "4.7.1",
     "node-fetch": "^1.6.3",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "supertest": "^3.0.0"
   }
 }

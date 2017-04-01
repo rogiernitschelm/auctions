@@ -13,13 +13,17 @@ UserSchema.pre('save', function save(next) {
   passwordEncryptor(user.password)
     .then(result => {
       user.password = result;
-      
+
       return next();
     });
 });
 
 UserSchema.pre('update', function (next) {
   const user = this._update.$set;
+
+  if (!user.password) {
+   return next();
+  }
 
   passwordEncryptor(user.password)
     .then(result => {
@@ -29,12 +33,10 @@ UserSchema.pre('update', function (next) {
     });
 });
 
-UserSchema
-  .methods
-  .comparePassword = function comparePassword(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, (error, isMatch) => {
-    callback(error, isMatch);
-  });
+UserSchema.methods.comparePassword =
+  function comparePassword(candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, (error, isMatch) =>
+      cb(error, isMatch));
 };
 
 export default mongoose.model('user', UserSchema);

@@ -1,11 +1,8 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import * as actions from '../';
+import * as actions from '../../application/models/helpers/authorization_helper';
 
-const { isLoggedIn, isNotLoggedIn, isBuyer, isSeller, isAdmin } = actions;
-
-const seller = { user: { usertype: 'seller' } };
-const buyer = { user: { usertype: 'buyer' } };
+const { isLoggedIn } = actions;
 
 describe('Authorization', () => {
   describe('the isLoggedIn-helper', () => {

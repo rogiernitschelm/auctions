@@ -1,13 +1,19 @@
 import passport from 'passport';
 
-export default (req, user) => {
+export default (req, { email, password }) => {
   return new Promise((resolve, reject) => {
     passport.authenticate('local', (error, userFound) => {
       if (!userFound) {
         reject('Invalid credentials');
       }
 
-      req.login(user, () => resolve(user));
-    })({ body: { email: user.email, password: user.password } });
+      req.login(userFound, notFoundError => {
+        if (notFoundError) {
+          reject(notFoundError);
+        }
+
+        resolve(userFound);
+      });
+    })({ body: { email, password } });
   });
 };

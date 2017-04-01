@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { beforeEach, before } from 'mocha';
 
 before(() => {
   mongoose.Promise = global.Promise;
@@ -11,7 +12,7 @@ before(() => {
 });
 
 beforeEach(done => {
-  mongoose.connection.collections.users.drop(() =>{
+  mongoose.connection.collections.users.drop(() => {
     done();
   });
 });
