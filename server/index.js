@@ -1,13 +1,12 @@
 import express from 'express';
-import passport from 'passport';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import expressGraphQL from 'express-graphql';
 import connectMongo from 'connect-mongo';
 import cors from 'cors';
-import { schema } from './application/index';
 
-import './application/authentication';
+import { schema } from './application/index';
+import passport from './application/authentication';
 
 const DB_URI = 'mongodb://localhost/test1';
 const PORT = 3000;

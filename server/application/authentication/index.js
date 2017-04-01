@@ -1,8 +1,6 @@
-import mongoose from 'mongoose';
 import passport from 'passport';
 import { Strategy } from 'passport-local';
 import User from '../models/user/model';
-// const User = mongoose.model('user');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -39,3 +37,5 @@ passport.use(new Strategy({ usernameField: 'email' },
     });
   }
 ));
+
+export default passport;
