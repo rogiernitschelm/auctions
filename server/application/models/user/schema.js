@@ -29,7 +29,7 @@ export const schematic = {
     required: true,
     minlength: 8,
     match: [
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/,
       'Requires at least one number, and one letter.'
     ]
   },
