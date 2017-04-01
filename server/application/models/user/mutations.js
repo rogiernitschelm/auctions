@@ -1,10 +1,21 @@
-import { signup, logout, deleteUser, updateUser, login, changePassword } from './user_mutations';
+import {
+  adminDeleteUser,
+  adminUpdateUser,
+  changePassword,
+  deleteUser,
+  login,
+  logout,
+  signup,
+  updateUser,
+} from './user_mutations';
 
 export default {
-  ...login,
-  ...signup,
-  ...logout,
+  ...adminDeleteUser,
+  ...adminUpdateUser,
+  ...changePassword,
   ...deleteUser,
+  ...login,
+  ...logout,
+  ...signup,
   ...updateUser,
-  ...changePassword
 };

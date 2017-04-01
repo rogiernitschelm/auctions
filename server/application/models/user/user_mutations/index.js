@@ -1,6 +1,9 @@
-export { default as signup } from './user/signup';
-export { default as logout } from './user/logout';
-export { default as deleteUser } from './user/delete';
-export { default as updateUser } from './user/update';
-export { default as login } from './user/login';
-export { default as changePassword } from './user/change_password';
+export { default as signup } from './signup';
+export { default as logout } from './logout';
+export { default as deleteUser } from './delete';
+export { default as updateUser } from './update';
+export { default as login } from './login';
+export { default as changePassword } from './change_password';
+
+export { default as adminDeleteUser } from './admin_only/admin_delete_user';
+export { default as adminUpdateUser } from './admin_only/admin_update_user';

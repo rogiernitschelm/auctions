@@ -1,8 +1,8 @@
 import {
   GraphQLString,
 } from 'graphql';
-import { updateUser } from '../../user_methods';
-import UserType from '../../usertype';
+import { updateUser } from '../user_methods';
+import UserType from '../usertype';
 
 export default {
   updateUser: {

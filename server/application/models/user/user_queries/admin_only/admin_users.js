@@ -1,10 +1,10 @@
 import { GraphQLList } from 'graphql';
-import User from '../../model';
 import UserType from '../../usertype';
+import { adminQueryUsers } from '../../user_methods';
 
 export default {
   type: new GraphQLList(UserType),
-  resolve() {
-    return User.find({});
+  resolve(parentValue, args, req) {
+    return adminQueryUsers({ req });
   }
 };

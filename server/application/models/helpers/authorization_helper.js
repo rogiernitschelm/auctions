@@ -3,6 +3,7 @@ const sessionError = Error('You already have an account.');
 const noBuyerError = Error('You are not a buyer.');
 const noSellerError = Error('You are not a seller.');
 const noAdminError = Error('You are not an admin.');
+const isSelfError = Error('You cannot delete yourself with the admin method.');
 
 const buyer = ({ usertype }) => usertype === 'buyer';
 const seller = ({ usertype }) => usertype === 'seller';
@@ -21,7 +22,7 @@ export const isNotLoggedIn = ({ user }) => {
 };
 
 export const isBuyer = ({ req: { user } }) => {
-  if (buyer(user)) {
+  if (buyer(user) || admin(user)) {
     return true;
   }
 
@@ -29,7 +30,7 @@ export const isBuyer = ({ req: { user } }) => {
 };
 
 export const isSeller = ({ req: { user } }) => {
-  if (seller(user)) {
+  if (seller(user) || admin(user)) {
     return true;
   }
 
@@ -42,4 +43,12 @@ export const isAdmin = ({ req: { user } }) => {
   }
 
   throw noAdminError;
+};
+
+export const isNotSelf = ({ req: { user }, args: { userId } }) => {
+  if (user._id !== userId) {
+    return true;
+  }
+
+  throw isSelfError;
 };

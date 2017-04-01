@@ -1,5 +1,5 @@
-import UserType from '../../usertype';
-import { deleteUser } from '../../user_methods';
+import UserType from '../usertype';
+import { deleteUser } from '../user_methods';
 
 export default {
   deleteUser: {

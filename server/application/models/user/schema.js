@@ -36,7 +36,7 @@ export const schematic = {
 
   usertype: {
     type: String,
-    enum: ['seller', 'buyer'],
+    enum: ['seller', 'buyer', 'admin'], //TODO: for debuggin
     required: true
   },
 

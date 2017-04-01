@@ -2,8 +2,8 @@ import {
   GraphQLString,
   GraphQLNonNull
 } from 'graphql';
-import { changePassword } from '../../user_methods';
-import UserType from '../../usertype';
+import { changePassword } from '../user_methods';
+import UserType from '../usertype';
 
 export default {
   changePassword: {

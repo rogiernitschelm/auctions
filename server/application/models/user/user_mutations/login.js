@@ -1,8 +1,8 @@
 import {
   GraphQLString,
 } from 'graphql';
-import UserType from '../../usertype';
-import { login } from '../../user_methods';
+import UserType from '../usertype';
+import { login } from '../user_methods';
 
 export default {
   login: {

@@ -1,5 +1,5 @@
-import UserType from '../../usertype';
-import { logout } from '../../user_methods';
+import UserType from '../usertype';
+import { logout } from '../user_methods';
 
 export default {
   logout: {
