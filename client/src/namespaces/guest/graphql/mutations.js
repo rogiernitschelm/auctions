@@ -4,14 +4,20 @@ export const createAccountMutation = gql`
   mutation signup(
     $email: String,
     $password: String,
-    # $firstName: String,
-    # $lastName: String,
+    $firstname: String,
+    $lastname: String,
+    $coc: String,
+    $company: String,
     $usertype: String
   ) {
     signup(
       email: $email,
       password: $password
       usertype: $usertype
+      firstname: $firstname
+      lastname: $lastname
+      coc: $coc
+      company: $company
     ) {
       email
       id

@@ -10,12 +10,15 @@ export default {
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString },
-      // firstName: { type: GraphQLString },
-      // lastName: { type: GraphQLString },
+      firstname: { type: GraphQLString },
+      lastname: { type: GraphQLString },
+      company: { type: GraphQLString },
+      coc: { type: GraphQLString },
       usertype: { type: GraphQLString }
     },
 
     resolve(parentValue, args, req) {
+      console.log(args)
       return signup({ args, req });
     }
   }

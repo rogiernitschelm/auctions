@@ -17,9 +17,9 @@ class CreateAccountForm extends Component {
     this.onSubmit = ::this.onSubmit;
   }
 
-  onSubmit({ email, firstname, lastname, usertype, password }) {
+  onSubmit({ email, firstname, lastname, usertype, coc, company, password }) {
     this.props.mutate({
-      variables: { email, firstname, lastname, password, usertype },
+      variables: { email, firstname, lastname, password, usertype, coc, company },
       refetchQueries: [{ query: currentUser }]
     })
     .then(() => this.setState({ errors: [] }))
@@ -39,8 +39,6 @@ class CreateAccountForm extends Component {
       USERTYPE,
       REPEAT_PASSWORD,
     } = json.form;
-
-    console.log(this.props)
 
     return (
       <Form
