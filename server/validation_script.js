@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const userSchematic = require('./models/user/schema').schematic;
 
-const file = '../web_client/src/customization/validations.json';
+const file = '../client/src/customization/validations.json';
 const validationsSchema = {
   user: userSchematic,
   auction: {},
