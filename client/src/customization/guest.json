@@ -1,7 +1,9 @@
 {
   "form": {
-    "TITLE": "Maak account aan",
-    "SUBMIT": "Maak account aan!",
+    "TITLE_SIGNUP": "Maak account aan",
+    "TITLE_LOGIN": "Log in",
+    "SUBMIT_SIGNUP": "Maak account aan!",
+    "SUBMIT_LOGIN": "Login!",
     "EMAIL": {
       "label": "E-mail",
       "placeholder": "jan@mail.com..."

@@ -6,7 +6,20 @@ import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
 import { Form, Input } from 'common';
 
-@reduxForm({ form: 'createAccount', fields: Object.keys(json.form), validate })
+const {
+  COC,
+  COMPANY,
+  EMAIL,
+  FIRSTNAME,
+  LASTNAME,
+  PASSWORD,
+  REPEAT_PASSWORD,
+  SUBMIT_SIGNUP,
+  TITLE_SIGNUP,
+  USERTYPE,
+} = json.form;
+
+@reduxForm({ form: 'signup', fields: Object.keys(json.form), validate })
 class SignupForm extends Component {
   constructor(props) {
     super(props);
@@ -25,27 +38,14 @@ class SignupForm extends Component {
   }
 
   render() {
-    const {
-      COC,
-      COMPANY,
-      EMAIL,
-      FIRSTNAME,
-      LASTNAME,
-      PASSWORD,
-      REPEAT_PASSWORD,
-      SUBMIT,
-      TITLE,
-      USERTYPE,
-    } = json.form;
-
     return (
       <Form
         {...this.props}
         errors={this.state.errors}
-        title={TITLE}
+        title={TITLE_SIGNUP}
         onSubmit={this.onSubmit}
-        submit={SUBMIT}
-        className="create-account-form"
+        submit={SUBMIT_SIGNUP}
+        className="signup-form"
       >
         <Input
           name="email"

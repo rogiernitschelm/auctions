@@ -1,10 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
 import Container from './container';
+import SignupForm from './children/signup_form';
+import LoginForm from './children/login_form';
 
 export default () => (
-  <Route path="/guest" component={Container} >
-    <Route path="/create_account" />
-    <Route path="/login" />
-  </Route>
+  <Container >
+    <Switch path="/guest">
+      <Route path="/guest/create_account" component={SignupForm} />
+      <Route path="/guest/login" component={LoginForm} />
+    </Switch>
+  </Container>
 );
