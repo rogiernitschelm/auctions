@@ -9,12 +9,17 @@
       },
       "password": {
          "required": true,
-         "match": {}
+         "minlength": 8,
+         "match": [
+            {},
+            "Requires at least one number, and one letter."
+         ]
       },
       "usertype": {
          "enum": [
             "seller",
-            "buyer"
+            "buyer",
+            "admin"
          ],
          "required": true
       }

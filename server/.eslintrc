@@ -10,6 +10,7 @@
     "generator-star-spacing":0,
     "arrow-body-style": 0,
     "no-underscore-dangle": 0,
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "no-useless-escape": 0
   }
 }
