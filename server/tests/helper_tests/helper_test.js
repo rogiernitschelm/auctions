@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import * as actions from '../../application/models/helpers/authorization_helper';
+import * as actions from '../../helpers/authorization_helper';
 
 const { isLoggedIn } = actions;
 

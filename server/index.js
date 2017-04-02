@@ -5,8 +5,10 @@ import expressGraphQL from 'express-graphql';
 import connectMongo from 'connect-mongo';
 import cors from 'cors';
 
-import { schema } from './application/index';
-import passport from './application/authentication';
+import { schema } from './models/index';
+import passport from './authentication';
+
+const development = process.env.NODE_ENV !== 'production';
 
 const DB_URI = 'mongodb://localhost/test1';
 const PORT = 3000;
@@ -23,6 +25,8 @@ mongoose.connect(DB_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to MongoDB instance.'))
   .on('error', () => console.log('Error occured connecting to MongoDB instance.'));
+if (development) mongoose.set('debug', true);
+
 
 application.use(session({
   resave: true,

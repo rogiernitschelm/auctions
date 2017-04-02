@@ -1,4 +1,4 @@
-import { isAdmin, isNotSelf } from '../../../helpers';
+import { isAdmin, isNotSelf } from '../../../../helpers';
 import User from '../../model';
 
 export default ({ req, args }) => {

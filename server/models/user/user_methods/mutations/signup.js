@@ -1,5 +1,5 @@
-import User from '../model';
-import { isNotLoggedIn } from '../../helpers';
+import User from '../../model';
+import { isNotLoggedIn } from '../../../../helpers';
 
 export default async ({ req, args }) => {
   isNotLoggedIn(req);

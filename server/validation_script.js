@@ -1,7 +1,7 @@
 require('babel-register');
 const fs = require('fs');
 const path = require('path');
-const userSchematic = require('./application/models/user/schema').schematic;
+const userSchematic = require('./models/user/schema').schematic;
 
 const file = '../web_client/src/customization/validations.json';
 const validationsSchema = {

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
 
 import { validUser } from '../test_models';
-import User from '../../application/models/user/model';
+import User from '../../models/user/model';
 
 describe('User', () => {
   let user;

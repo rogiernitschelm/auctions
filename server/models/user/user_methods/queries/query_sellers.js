@@ -1,5 +1,5 @@
-import User from '../model';
-import * as actions from '../../helpers/authorization_helper';
+import User from '../../model';
+import * as actions from '../../../../helpers/authorization_helper';
 
 const { isBuyer } = actions;
 

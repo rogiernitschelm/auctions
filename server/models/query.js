@@ -1,17 +1,17 @@
 import { GraphQLObjectType } from 'graphql';
 import {
   adminUsers,
-  currentUser,
   buyers,
+  currentUser,
   sellers,
-} from './models/user/user_queries';
+} from './user/user_queries';
 
 export default new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
     adminUsers,
-    currentUser,
     buyers,
+    currentUser,
     sellers,
   })
 });
