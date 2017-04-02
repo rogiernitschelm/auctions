@@ -6,10 +6,12 @@ import SignupForm from './children/signup_form';
 import LoginForm from './children/login_form';
 
 export default () => (
-  <Container >
-    <Switch path="/guest">
-      <Route path="/guest/create_account" component={SignupForm} />
-      <Route path="/guest/login" component={LoginForm} />
+  <Route path="/guest">
+    <Switch>
+      <Container path="/guest">
+        <Route path="/guest/create_account" component={SignupForm} />
+        <Route path="/guest/login" component={LoginForm} />
+      </Container>
     </Switch>
-  </Container>
+  </Route>
 );
