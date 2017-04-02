@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const createAccountMutation = gql`
+export default gql`
   mutation signup(
     $email: String,
     $password: String,

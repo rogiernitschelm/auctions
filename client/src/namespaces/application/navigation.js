@@ -16,7 +16,12 @@ class NavigationBar extends Component {
       return <NavLink onClick={::this.logout}>Uitloggen</NavLink>;
     }
 
-    return <NavLink to="/guest/create_account" type="button">Maak account</NavLink>;
+    return (
+      <div className="btn-group">
+        <NavLink to="/guest/create_account" type="button">Maak account</NavLink>
+        <NavLink to="/guest/login" type="button">Login</NavLink>
+      </div>
+    );
   }
 
   render() {

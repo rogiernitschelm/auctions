@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export default () => (
   <div className="jumbotron">
@@ -10,4 +10,4 @@ export default () => (
       <a className="btn btn-primary btn-lg" href="#" role="button">Meer weten?</a>
     </p>
   </div>
-)
+);

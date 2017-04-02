@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Column } from 'common';
 import { RequireNoSession } from '../authentication';
-import CreateAccountForm from './children/create_account_form';
-import CreateAccountInfo from './children/create_account_info';
+import SignupForm from './children/signup_form';
+import SignupInfo from './children/signup_info';
 
 @RequireNoSession
 export default class GuestContainer extends Component {
@@ -12,10 +12,10 @@ export default class GuestContainer extends Component {
         <Container className="guest-container">
           <Row>
             <Column columns={{ xs: 12, lg: 6 }}>
-              <CreateAccountInfo />
+              <SignupInfo />
             </Column>
             <Column columns={{ xs: 12, lg: 6 }}>
-              <CreateAccountForm />
+              <SignupForm />
             </Column>
           </Row>
         </Container>

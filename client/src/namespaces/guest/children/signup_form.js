@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
-import { currentUser } from 'gql';
+import { currentUser, signUpMutation } from 'gql';
 import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
-
 import { Form, Input } from 'common';
-import { createAccountMutation } from '../graphql/mutations';
 
 @reduxForm({ form: 'createAccount', fields: Object.keys(json.form), validate })
-class CreateAccountForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
 
@@ -34,10 +32,10 @@ class CreateAccountForm extends Component {
       FIRSTNAME,
       LASTNAME,
       PASSWORD,
+      REPEAT_PASSWORD,
       SUBMIT,
       TITLE,
       USERTYPE,
-      REPEAT_PASSWORD,
     } = json.form;
 
     return (
@@ -117,4 +115,4 @@ class CreateAccountForm extends Component {
   }
 }
 
-export default graphql(createAccountMutation)(CreateAccountForm);
+export default graphql(signUpMutation)(SignupForm);

@@ -16,3 +16,5 @@ export const Button = ({
     </button>
   );
 };
+
+export const ButtonGroup = ({ children }) => <div className="btn-group">{children}</div>;
