@@ -3,5 +3,7 @@ export const validUser = {
   firstname: 'Kees',
   lastname: 'Boer',
   usertype: 'seller',
-  password: 'abcd1234'
+  password: 'abcd1234',
+  coc: '123456aa',
+  company: 'Hoogle.nom'
 };

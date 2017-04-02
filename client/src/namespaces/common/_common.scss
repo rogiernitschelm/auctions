@@ -5,7 +5,7 @@
 .navigation-bar {
   border-bottom: 1px solid $light-grey;
   padding-bottom: 10px;
-  padding-top: 8px;
+  padding-top: 10px;
   height: 60px;
 
   a {
@@ -42,6 +42,8 @@
 }
 
 .form {
+  padding-bottom: 10px;
+
   label {
     margin-top: 4px;
   }
