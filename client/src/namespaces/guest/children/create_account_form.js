@@ -5,7 +5,7 @@ import { currentUser } from 'gql';
 import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
 
-import { Form, Input, Button } from 'common';
+import { Form, Input } from 'common';
 import { createAccountMutation } from '../graphql/mutations';
 
 @reduxForm({ form: 'createAccount', fields: Object.keys(json.form), validate })
@@ -18,7 +18,6 @@ class CreateAccountForm extends Component {
   }
 
   onSubmit({ email, firstname, lastname, usertype, password }) {
-    console.log(email, firstname, lastname, usertype, password)
     this.props.mutate({
       variables: { email, firstname, lastname, password, usertype },
       refetchQueries: [{ query: currentUser }]
@@ -40,6 +39,8 @@ class CreateAccountForm extends Component {
       USERTYPE,
       REPEAT_PASSWORD,
     } = json.form;
+
+    console.log(this.props)
 
     return (
       <Form

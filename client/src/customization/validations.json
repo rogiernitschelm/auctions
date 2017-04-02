@@ -7,6 +7,16 @@
          "unique": true,
          "index": true
       },
+      "firstname": {
+         "required": true,
+         "min": 2,
+         "max": 25
+      },
+      "lastname": {
+         "required": true,
+         "min": 2,
+         "max": 25
+      },
       "password": {
          "required": true,
          "minlength": 8,
@@ -21,6 +31,12 @@
             "buyer",
             "admin"
          ],
+         "required": true
+      },
+      "coc": {
+         "required": true
+      },
+      "company": {
          "required": true
       }
    },

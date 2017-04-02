@@ -9,12 +9,14 @@ easy form handling.
 ## Use
 
 Starting the server:
+
     ```bash
     cd server
     yarn run validation && yarn run dev
     ```
 
 Starting the client:
+
     ```bash
     cd client
     yarn run dev
@@ -22,11 +24,10 @@ Starting the client:
 
 Graphiql for playing around:
 
-    ```
     localhost:3000/graphql
-    ```
 
 Testing the server
+
     ```bash
     cd server
     yarn run test
