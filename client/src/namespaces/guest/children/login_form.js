@@ -51,7 +51,6 @@ class LoginForm extends Component {
         />
 
         <Input
-          autoFocus
           label={PASSWORD.label}
           name="password"
           placeholder={PASSWORD.placeholder}

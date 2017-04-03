@@ -5,7 +5,7 @@ export default gql`
     $email: String,
     $password: String,
   ) {
-    signup(
+    login(
       email: $email,
       password: $password
     ) {
