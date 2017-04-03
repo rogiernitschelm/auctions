@@ -3,7 +3,9 @@ import { graphql } from 'react-apollo';
 import { logoutMutation, currentUser } from 'gql';
 import { Navigation, NavLink } from 'common';
 
-class NavigationBar extends Component {
+@graphql(currentUser)
+@graphql(logoutMutation)
+export default class NavigationBar extends Component {
   logout() {
     this.props.mutate({
       refetchQueries: [{ query: currentUser }]
@@ -32,5 +34,3 @@ class NavigationBar extends Component {
     );
   }
 }
-
-export default graphql(currentUser)(graphql(logoutMutation)(NavigationBar));

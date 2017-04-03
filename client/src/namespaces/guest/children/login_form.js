@@ -13,8 +13,10 @@ const {
   TITLE_LOGIN,
 } = json.form;
 
+@graphql(currentUser)
+@graphql(loginMutation)
 @reduxForm({ form: 'login', fields: Object.keys(json.form), validate })
-class LoginForm extends Component {
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
 
@@ -63,5 +65,3 @@ class LoginForm extends Component {
     );
   }
 }
-
-export default graphql(loginMutation)(LoginForm);

@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { currentUser } from 'gql';
 
 export default ComposedComponent => {
+  @graphql(currentUser)
   class RequireNoSession extends Component {
     state = { redirect: false };
 
@@ -22,5 +23,5 @@ export default ComposedComponent => {
     }
   }
 
-  return graphql(currentUser)(RequireNoSession);
+  return RequireNoSession;
 };
