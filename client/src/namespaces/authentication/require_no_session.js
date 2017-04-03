@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-
+import { Redirect } from 'react-router-dom';
 import { currentUser } from 'gql';
 
 export default ComposedComponent => {
   class RequireNoSession extends Component {
-    componentWillMount() {
-      if (this.props.data.currentUser) {
-        this.props.push('/');
-      }
-    }
+    state = { redirect: false };
 
     componentWillUpdate(nextProps) {
-      const { data, push } = this.props;
-
-      if (!data.currentUser && nextProps.data.currentUser) {
-        push('/');
+      if (!this.props.data.currentUser && nextProps.data.currentUser) {
+        this.setState({ redirect: true });
       }
     }
 
     render() {
+      if (this.state.redirect) {
+        return <Redirect to="/" />;
+      }
+
       return <ComposedComponent {...this.props} />;
     }
   }
