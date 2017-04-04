@@ -9,8 +9,14 @@ export default ComposedComponent => {
     state = { redirect: false };
 
     componentWillUpdate(nextProps) {
-      if (!this.props.data.currentUser && nextProps.data.currentUser) {
+      const { data } = this.props;
+
+      if (!data.currentUser && nextProps.data.currentUser) {
         this.setState({ redirect: true });
+      }
+
+      if (data.currentUser && !nextProps.data.currentUser) {
+        this.setState({ redirect: false });
       }
     }
 

@@ -20,8 +20,8 @@ export default class NavigationBar extends Component {
 
     return (
       <div className="btn-group">
-        <NavLink to="/guest/create_account" type="button">Maak account</NavLink>
-        <NavLink to="/guest/login" type="button">Login</NavLink>
+        <NavLink to="/create_account" type="button">Maak account</NavLink>
+        <NavLink to="/" type="button">Login</NavLink>
       </div>
     );
   }
