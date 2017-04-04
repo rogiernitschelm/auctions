@@ -21,9 +21,8 @@ export default ComposedComponent => {
     }
 
     render() {
-      if (this.state.redirect) {
-        return <Redirect to="/" />;
-      }
+      if (this.state.redirect) return <Redirect to="/" />;
+      if (this.props.data.loading) return <div>Loading yo</div>;
 
       return <ComposedComponent {...this.props} />;
     }
