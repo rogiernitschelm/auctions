@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.development.config.js --history-api-fallback --open",
-    "build": "yarn run clean && webpack -p --config ./webpack.production.config.js ",
+    "build": "yarn run clean && webpack --config ./webpack.production.config.js ",
     "clean": "rimraf dist"
   },
   "dependencies": {
