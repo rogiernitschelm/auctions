@@ -8,7 +8,7 @@ export const ContainerFluid = ({ children, className }) => (
   <div className={`container-fluid ${className}`}>{children}</div>
 );
 
-export const Row = ({ children }) => <div className="row">{children}</div>;
+export const Row = props => <div className={`row ${props.className}`}>{props.children}</div>;
 
 export const Column = ({ columns = {}, offsets = {}, children }) => {
   let className = '';

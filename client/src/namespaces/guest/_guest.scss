@@ -1,4 +1,5 @@
 .guest-container {
+  background-color: $light-grey;
   .jumbotron {
     border-radius: 0;
     background-color: inherit;
@@ -10,8 +11,24 @@
 
 .signup-form, .login-form {
   background-color: $white;
-
+  margin-bottom: 60px;
   @media (min-width: 1024px) {
     margin-top: 64px !important;
+  }
+}
+
+.commercial-info {
+  padding-top: 60px;
+  background-color: #fff;
+  text-align: center;
+
+  p {
+    font-size: 13px;
+    padding: 30px;
+  }
+
+  .material-icons {
+    color: $light-grey;
+    font-size: 120px;
   }
 }
