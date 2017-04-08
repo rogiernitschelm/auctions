@@ -10,4 +10,4 @@ export { default as adminUpdateUser } from './mutations/admin_update_user';
 export { default as queryCurrentUser } from './queries/query_current_user';
 export { default as querySellers } from './queries/query_sellers';
 export { default as queryBuyers } from './queries/query_buyers';
-export { default as adminQueryUsers } from './queries/admin_query_users';
+export { default as queryUsers } from './queries/query_users';

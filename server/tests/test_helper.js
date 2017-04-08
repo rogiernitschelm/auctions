@@ -1,14 +1,28 @@
 import mongoose from 'mongoose';
-import { beforeEach, before } from 'mocha';
+import { beforeEach } from 'mocha';
 
-before(() => {
-  mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://localhost/auction_tests');
-  mongoose.connection
-    .once('open', () => console.log('Ready for testing.'))
-    .on('error', error => {
-      console.warn('An error occured.', error);
-    });
+const mongoUri = 'mongodb://localhost/auction_tests';
+
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoUri, {
+  server: {
+    auto_reconnect: true,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 1000
+  }
+});
+
+export const connection = mongoose.connection;
+
+connection.on('error', error => {
+  if (error.message.code === 'ETIMEOUT') {
+    console.log(error);
+    mongoose.connect(mongoUri);
+  }
+});
+
+connection.once('open', () => {
+  console.log(`MongoDB successfully connected to ${mongoUri}`);
 });
 
 beforeEach(done => {
@@ -16,11 +30,3 @@ beforeEach(done => {
     done();
   });
 });
-
-export const validUser = {
-  email: 'mail@hoogle.nom',
-  firstname: 'Kees',
-  lastname: 'Boer',
-  usertype: 'seller',
-  password: 'abcd1234'
-};

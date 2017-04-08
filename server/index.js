@@ -25,7 +25,7 @@ mongoose.connect(DB_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to MongoDB instance.'))
   .on('error', () => console.log('Error occured connecting to MongoDB instance.'));
-if (development) mongoose.set('debug', true);
+// if (development) mongoose.set('debug', true);
 
 
 application.use(session({
@@ -46,8 +46,8 @@ application.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-application.listen(PORT, () => {
+const server = application.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-export default application;
+export default server;

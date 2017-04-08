@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 import {
-  adminUsers,
+  users,
   buyers,
   currentUser,
   sellers,
@@ -9,7 +9,7 @@ import {
 export default new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
-    adminUsers,
+    users,
     buyers,
     currentUser,
     sellers,
