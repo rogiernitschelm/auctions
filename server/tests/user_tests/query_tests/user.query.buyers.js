@@ -6,7 +6,7 @@ import schema from '../../../models/schema';
 import { validBuyer, validSeller } from '../../test_models';
 import User from '../../../models/user/model';
 
-describe('GraphQL sellers', () => {
+describe('GraphQL buyers', () => {
   let query;
 
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('GraphQL sellers', () => {
     `;
   });
 
-  it('should return a list of sellers', async () => {
+  it('should return a list of buyers', async () => {
     const user = new User(validSeller);
     const buyer1 = new User(validBuyer);
     const buyer2 = new User(Object.assign(validBuyer, { email: 'abc@mail.com' }));

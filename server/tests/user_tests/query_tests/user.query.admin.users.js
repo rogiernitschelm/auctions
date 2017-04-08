@@ -56,7 +56,7 @@ describe('GraphQL users', () => {
     expect(data.users).to.eq(null);
   });
 
-  it('should not return a list of users if the current user is a seller', async () => {
+  it('should not return a list of users if the current user is a buyer', async () => {
     const buyer = new User(validBuyer);
 
     const validUser1 = new User(validUser);

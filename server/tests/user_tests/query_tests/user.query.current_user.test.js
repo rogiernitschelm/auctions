@@ -25,7 +25,7 @@ describe('GraphQL currentUser', () => {
   it('should return null when the user is not logged in', async () => {
     const parentValue = {};
     const req = {};
-    const result = await graphql(schema, query, parentValue, req)
+    const result = await graphql(schema, query, parentValue, req);
     const { data } = result;
 
     expect(data.currentUser).to.eq(null);
