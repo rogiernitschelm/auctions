@@ -38,9 +38,6 @@ describe('GraphQL buyers', () => {
       query {
         buyers {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -55,9 +52,6 @@ describe('GraphQL buyers', () => {
       query {
         buyers(limit: 10) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -72,9 +66,6 @@ describe('GraphQL buyers', () => {
       query {
         buyers(limit: 10, offset: 8) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;

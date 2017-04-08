@@ -38,9 +38,6 @@ describe('GraphQL sellers query', () => {
       query {
         sellers {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -55,9 +52,6 @@ describe('GraphQL sellers query', () => {
       query {
         sellers(limit: 10) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -72,9 +66,6 @@ describe('GraphQL sellers query', () => {
       query {
         sellers(limit: 10, offset: 8) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;

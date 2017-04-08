@@ -37,9 +37,6 @@ describe('GraphQL users', () => {
       query {
         users {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -54,9 +51,6 @@ describe('GraphQL users', () => {
       query {
         users(limit: 10) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
@@ -71,9 +65,6 @@ describe('GraphQL users', () => {
       query {
         users(limit: 10, offset: 8) {
           email
-          firstname
-          lastname
-          id
         }
       }
     `;
