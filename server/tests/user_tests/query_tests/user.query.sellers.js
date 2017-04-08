@@ -3,14 +3,21 @@ import { expect } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
 
 import schema from '../../../models/schema';
-import { validBuyer, validSeller } from '../../test_models';
+import { validBuyer, insertUsers } from '../../test_models';
 import User from '../../../models/user/model';
 
-describe('GraphQL sellers', () => {
-  let query;
+describe('GraphQL sellers query', () => {
+  let user;
+  let req;
 
-  beforeEach(() => {
-    query = `
+  beforeEach(async () => {
+    user = new User(validBuyer);
+    await user.save();
+    req = { user };
+  });
+
+  it('should return a list of sellers', async () => {
+    const query = `
       query {
         sellers {
           email
@@ -20,22 +27,60 @@ describe('GraphQL sellers', () => {
         }
       }
     `;
+
+    insertUsers('seller', 3);
+    const result = await graphql(schema, query, {}, req);
+    expect(result.data.sellers.length).to.eq(3);
   });
 
-  it('should return a list of sellers', async () => {
-    const user = new User(validBuyer);
-    const seller1 = new User(validSeller);
-    const seller2 = new User(Object.assign(validSeller, { email: 'abc@mail.com' }));
-    const seller3 = new User(Object.assign(validSeller, { email: 'ddd@mail.com' }));
+  it('should return a limited size of sellers (50)', async () => {
+    const query = `
+      query {
+        sellers {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
 
-    await [seller1, seller2, seller3].forEach(userObject => userObject.save());
-    await user.save();
+    insertUsers('seller', 51);
+    const result = await graphql(schema, query, {}, req);
+    expect(result.data.sellers.length).to.eq(50);
+  });
 
-    const parentValue = {};
-    const req = { user };
-    const result = await graphql(schema, query, parentValue, req);
-    const { data } = result;
+  it('should correctly limit the size of sellers', async () => {
+    const query = `
+      query {
+        sellers(limit: 10) {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
 
-    expect(data.sellers.length).to.eq(3);
+    insertUsers('seller', 11);
+    const result = await graphql(schema, query, {}, req);
+    expect(result.data.sellers.length).to.eq(10);
+  });
+
+  it('should correctly offset the query of sellers', async () => {
+    const query = `
+      query {
+        sellers(limit: 10, offset: 8) {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
+
+    insertUsers('seller', 10);
+    const result = await graphql(schema, query, {}, req);
+    expect(result.data.sellers.length).to.eq(2);
   });
 });

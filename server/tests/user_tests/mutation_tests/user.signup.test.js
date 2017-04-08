@@ -91,7 +91,7 @@ describe('GraphQL signup mutation', () => {
         mutation {
           signup(
             email: "mail@moogle.nom",
-            password:"abcd123",
+            password:"abcd1234",
             firstname:"Henk",
             lastname: "Keesma",
             coc: "12345",
@@ -109,5 +109,30 @@ describe('GraphQL signup mutation', () => {
       const foundUser = await User.findOne({ email: 'mail@moogle.nom' });
       expect(foundUser).to.eq(null);
     });
+
+    // it('does not sign a user up when the usertype admin is provided\n', async () => {
+    //   const query = `
+    //     mutation {
+    //       signup(
+    //         email: "mail@moogle.nom",
+    //         password:"abcd1234",
+    //         usertype: "admin",
+    //         firstname:"Henk",
+    //         lastname: "Keesma",
+    //         coc: "12345",
+    //         company:"ING"
+    //       ) {
+    //         email
+    //       }
+    //     }
+    //   `;
+    //
+    //   await request(application)
+    //     .post('/graphql')
+    //     .send({ query });
+    //
+    //   const foundUser = await User.findOne({ email: 'mail@moogle.nom' });
+    //   expect(foundUser).to.eq(null);
+    // });
   });
 });

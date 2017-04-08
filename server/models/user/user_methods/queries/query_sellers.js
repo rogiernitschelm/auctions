@@ -3,8 +3,14 @@ import * as actions from '../../../../helpers/authorization_helper';
 
 const { isBuyer } = actions;
 
-export default ({ req }) => {
+export default ({ req, args }) => {
   isBuyer({ req });
 
-  return User.find({ usertype: 'seller' });
+  const {
+    limit = 50,
+    sort = { date: -1 },
+    offset = 0
+  } = args;
+
+  return User.find({ usertype: 'seller' }).skip(offset).limit(limit).sort(sort);
 };
