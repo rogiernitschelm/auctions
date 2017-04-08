@@ -3,14 +3,21 @@ import { expect } from 'chai';
 import { describe, beforeEach, it } from 'mocha';
 
 import schema from '../../../models/schema';
-import { validAdmin, validUser, validSeller, validBuyer } from '../../test_models';
+import { validAdmin, insertUsers } from '../../test_models';
 import User from '../../../models/user/model';
 
 describe('GraphQL users', () => {
-  let query;
+  let user;
+  let req;
 
-  beforeEach(() => {
-    query = `
+  beforeEach(async () => {
+    user = new User(validAdmin);
+    await user.save();
+    req = { user };
+  });
+
+  it('should return a list of users', async () => {
+    const query = `
       query {
         users {
           email
@@ -20,56 +27,59 @@ describe('GraphQL users', () => {
         }
       }
     `;
+    insertUsers('buyer', 3);
+    const result = await graphql(schema, query, {}, req);
+    expect(result.data.users.length).to.eq(3);
   });
 
-  it('should return a list of users', async () => {
-    const admin = new User(validAdmin);
+  it('should return a limited size of users (50)', async () => {
+    const query = `
+      query {
+        users {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
 
-    const validUser1 = new User(validUser);
-    const validUser2 = new User(Object.assign(validUser, { email: 'abc@mail.com' }));
-    const validUser3 = new User(Object.assign(validUser, { email: 'ddd@mail.com' }));
-
-    await [validUser1, validUser2, validUser3].forEach(userObject => userObject.save());
-    await admin.save();
-
-    const req = { user: admin };
+    insertUsers('buyer', 51);
     const result = await graphql(schema, query, {}, req);
-    const { data } = result;
-
-    expect(data.users.length).to.eq(4);
+    expect(result.data.users.length).to.eq(50);
   });
 
-  it('should not return a list of users if the current user is a seller', async () => {
-    const seller = new User(validSeller);
+  it('should correctly limit the size of users', async () => {
+    const query = `
+      query {
+        users(limit: 10) {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
 
-    const validUser1 = new User(validUser);
-    const validUser2 = new User(Object.assign(validUser, { email: 'abc@mail.com' }));
-    const validUser3 = new User(Object.assign(validUser, { email: 'ddd@mail.com' }));
-
-    await [validUser1, validUser2, validUser3].forEach(userObject => userObject.save());
-    await seller.save();
-
-    const req = { user: seller };
+    insertUsers('seller', 11);
     const result = await graphql(schema, query, {}, req);
-    const { data } = result;
-
-    expect(data.users).to.eq(null);
+    expect(result.data.users.length).to.eq(10);
   });
 
-  it('should not return a list of users if the current user is a buyer', async () => {
-    const buyer = new User(validBuyer);
+  it('should correctly offset the query of users', async () => {
+    const query = `
+      query {
+        users(limit: 10, offset: 8) {
+          email
+          firstname
+          lastname
+          id
+        }
+      }
+    `;
 
-    const validUser1 = new User(validUser);
-    const validUser2 = new User(Object.assign(validUser, { email: 'abc@mail.com' }));
-    const validUser3 = new User(Object.assign(validUser, { email: 'ddd@mail.com' }));
-
-    await [validUser1, validUser2, validUser3].forEach(userObject => userObject.save());
-    await buyer.save();
-
-    const req = { user: buyer };
+    insertUsers('buyer', 10);
     const result = await graphql(schema, query, {}, req);
-    const { data } = result;
-
-    expect(data.users).to.eq(null);
+    expect(result.data.users.length).to.eq(2);
   });
 });

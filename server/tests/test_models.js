@@ -1,48 +1,50 @@
 import User from '../models/user/model';
 
 export const validUser = {
+  coc: '123456aa',
+  company: 'Hoogle.nom',
   email: 'mail@hoogle.nom',
   firstname: 'Kees',
   lastname: 'Boer',
-  usertype: 'seller',
   password: 'abcd1234',
-  coc: '123456aa',
-  company: 'Hoogle.nom'
+  usertype: 'seller',
 };
 
 export const validSeller = {
+  coc: '123456aa',
+  company: 'Hoogle.nom',
   email: 'mail@hoogle.nom',
   firstname: 'Annemarie',
   lastname: 'en friends',
-  usertype: 'seller',
   password: 'abcd1234',
-  coc: '123456aa',
-  company: 'Hoogle.nom'
+  usertype: 'seller',
 };
 
 export const validAdmin = {
+  coc: '123456aa',
+  company: 'Noogle.bom',
   email: 'mail@hoogle.nom',
   firstname: 'Hermien',
   lastname: 'De Graaf',
-  usertype: 'admin',
   password: 'abcd1234',
-  coc: '123456aa',
-  company: 'Noogle.bom'
+  usertype: 'admin',
 };
 
 export const validBuyer = {
+  coc: '123456aa',
+  company: 'Boogle.dom',
   email: 'mail@hoogle.nom',
   firstname: 'Sjaak',
   lastname: 'Henksma',
-  usertype: 'buyer',
   password: 'abcd1234',
-  coc: '123456aa',
-  company: 'Boogle.dom'
+  usertype: 'buyer',
 };
 
 export const userTypes = {
+  admin: validAdmin,
   buyer: validBuyer,
-  seller: validSeller
+  seller: validSeller,
+  user: validUser,
 };
 
 const randomNumber = max => Math.floor(Math.random() * max) + 1;
@@ -62,7 +64,7 @@ export const emailGenerator = number => {
   return arrayOfEmails;
 };
 
-export const insertUsers = async (ofType, amount = 50) => {
+export const insertUsers = async (ofType = 'user', amount = 50) => {
   const users = emailGenerator(amount).map(email => {
     return {
       ...userTypes[ofType],
