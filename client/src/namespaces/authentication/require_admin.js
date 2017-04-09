@@ -8,19 +8,29 @@ export default ComposedComponent => {
   class RequireAdmin extends Component {
     state = { redirect: false };
 
+    componentWillMount() {
+      if (!this.props.data.currentUser) {
+        this.setState({ redirect: true });
+      }
+
+      if (this.props.data.currentUser === 'admin') {
+        this.setState({ redirect: false });
+      }
+    }
+
     componentWillUpdate(nextProps) {
       const { data } = this.props;
 
-      if (!data.currentUser && !data.loading) {
+      if (data.currentUser && !nextProps.data.currentUser) {
         this.setState({ redirect: true });
       }
 
-      if (data.currentUser && data.currentUser.usertype !== 'admin') {
-        this.setState({ redirect: true });
-      }
-
-      if (data.currentUser && data.currentUser.usertype === 'admin') {
+      if (!data.currentUser && nextProps.data.currentUser && nextProps.data.currentUser === 'admin') {
         this.setState({ redirect: false });
+      }
+
+      if (nextProps.data.currentUser && nextProps.data.currentUser !== 'admin') {
+        this.setState({ redirect: true });
       }
     }
 
