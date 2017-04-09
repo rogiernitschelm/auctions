@@ -6,3 +6,4 @@ export * from './forms';
 export * from './semantic';
 export * from './lists';
 export * from './tables';
+export * from './other';

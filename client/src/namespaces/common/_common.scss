@@ -78,3 +78,15 @@
     color: $white;
   }
 }
+
+.jumbotron {
+  background-color: inherit;
+  text-align: center;
+  
+  .material-icons {
+    color: $light-grey;
+    font-size: 120px;
+    margin-bottom: 20px;
+
+  }
+}

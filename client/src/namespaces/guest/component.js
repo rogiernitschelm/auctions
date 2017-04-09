@@ -3,6 +3,7 @@ import { ContainerFluid, Main } from 'common';
 import { Route } from 'react-router-dom';
 
 import CommercialInfo from './children/commercial_info';
+import Steps from './children/steps';
 import LoginComponent from './login_component';
 import SignupComponent from './signup_component';
 
@@ -16,6 +17,9 @@ export default () => (
 
     <Route exact path="/" component={CommercialInfo} />
     <Route exact path="/create_account" component={CommercialInfo} />
+
+    <Route exact path="/" component={Steps} />
+    <Route exact path="/create_account" component={Steps} />
 
   </ContainerFluid>
 );

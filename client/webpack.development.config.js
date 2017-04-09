@@ -19,6 +19,19 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: { bypassOnDebug: true }
+          }
+        ]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.join(__dirname, 'src')
