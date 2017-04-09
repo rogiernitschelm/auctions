@@ -18,21 +18,6 @@ UserSchema.pre('save', function save(next) {
     });
 });
 
-UserSchema.pre('update', function (next) {
-  const user = this._update.$set;
-
-  if (!user.password) {
-   return next();
-  }
-
-  passwordEncryptor(user.password)
-    .then(result => {
-      user.password = result;
-
-      return next();
-    });
-});
-
 UserSchema.methods.comparePassword =
   function comparePassword(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, (error, isMatch) =>

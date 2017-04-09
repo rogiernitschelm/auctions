@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
+
 import { validUser } from '../../test_models';
 import User from '../../../models/user/model';
 import application from '../../test_helper';
