@@ -1,15 +1,14 @@
 import { isLoggedIn } from '../../../../helpers';
+import User from '../../model';
 
-export default ({ req }) => {
+export default async ({ req }) => {
   isLoggedIn(req);
 
-  return new Promise((resolve, reject) => {
-    req.user.remove(error => {
-      if (error) {
-        reject(error);
-      }
-
-      resolve('success');
-    });
-  });
+  try {
+    const foundUser = await User.findById(req.user._id);
+    foundUser.remove();
+    return { status: 200 };
+  } catch (error) {
+    throw error;
+  }
 };

@@ -3,7 +3,7 @@ import User from '../models/user/model';
 export const validUser = {
   coc: '123456aa',
   company: 'Hoogle.nom',
-  email: 'mail@hoogle.nom',
+  email: 'mail@boogle.nom',
   firstname: 'Kees',
   lastname: 'Boer',
   password: 'abcd1234',
@@ -13,7 +13,7 @@ export const validUser = {
 export const validSeller = {
   coc: '123456aa',
   company: 'Hoogle.nom',
-  email: 'mail@hoogle.nom',
+  email: 'mail@zoogle.nom',
   firstname: 'Annemarie',
   lastname: 'en friends',
   password: 'abcd1234',
@@ -23,7 +23,7 @@ export const validSeller = {
 export const validAdmin = {
   coc: '123456aa',
   company: 'Noogle.bom',
-  email: 'mail@hoogle.nom',
+  email: 'mail@doogle.nom',
   firstname: 'Hermien',
   lastname: 'De Graaf',
   password: 'abcd1234',
@@ -33,7 +33,7 @@ export const validAdmin = {
 export const validBuyer = {
   coc: '123456aa',
   company: 'Boogle.dom',
-  email: 'mail@hoogle.nom',
+  email: 'mail@poogle.nom',
   firstname: 'Sjaak',
   lastname: 'Henksma',
   password: 'abcd1234',
