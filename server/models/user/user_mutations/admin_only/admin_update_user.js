@@ -8,8 +8,8 @@ export default {
     args: {
       userId: { type: GraphQLID },
       email: { type: GraphQLString },
-      firstName: { type: GraphQLString },
-      lastName: { type: GraphQLString },
+      firstname: { type: GraphQLString },
+      lastname: { type: GraphQLString },
       location: { type: GraphQLString },
     },
     resolve(parentValue, args, req) {

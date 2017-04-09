@@ -6,7 +6,7 @@ import { validAdmin, validUser } from '../../test_models';
 import User from '../../../models/user/model';
 import schema from '../../../models/schema';
 
-describe('GraphQL user update mutation', () => {
+describe('GraphQL admin user delete mutation', () => {
   let user;
 
   beforeEach(async () => {

@@ -6,7 +6,7 @@ import { validUser } from '../../test_models';
 import User from '../../../models/user/model';
 import schema from '../../../models/schema';
 
-describe('GraphQL user update mutation', () => {
+describe('GraphQL user delete mutation', () => {
   beforeEach(async () => {
     await User.create(validUser);
   });
