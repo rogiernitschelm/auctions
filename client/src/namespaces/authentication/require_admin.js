@@ -9,12 +9,15 @@ export default ComposedComponent => {
     state = { redirect: false };
 
     componentWillMount() {
-      if (!this.props.data.currentUser) {
-        this.setState({ redirect: true });
+      if (
+        this.props.data.currentUser &&
+        this.props.data.currentUser.usertype === 'admin'
+      ) {
+        this.setState({ redirect: false });
       }
 
-      if (this.props.data.currentUser === 'admin') {
-        this.setState({ redirect: false });
+      if (this.props.data.currentUser && this.props.data.currentUser.usertype !== 'admin') {
+        this.setState({ redirect: true });
       }
     }
 
@@ -25,12 +28,16 @@ export default ComposedComponent => {
         this.setState({ redirect: true });
       }
 
-      if (!data.currentUser && nextProps.data.currentUser && nextProps.data.currentUser === 'admin') {
-        this.setState({ redirect: false });
+      if (data.currentUser && data.currentUser.usertype !== 'admin') {
+        this.setState({ redirect: true });
       }
 
-      if (nextProps.data.currentUser && nextProps.data.currentUser !== 'admin') {
+      if (nextProps.data.currentUser && nextProps.data.currentUser.usertype !== 'admin') {
         this.setState({ redirect: true });
+      }
+
+      if (nextProps.data.currentUser && nextProps.data.currentUser === 'admin') {
+        this.setState({ redirect: false });
       }
     }
 
