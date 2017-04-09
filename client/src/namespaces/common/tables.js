@@ -7,7 +7,7 @@ export const Table = props => {
     <table className={`table table-striped ${className}`}>
       <thead className='table-head'>
         <tr>
-          {headers.map(header => <th>{header}</th>)}
+          {headers.map(header => <th key={header}>{header}</th>)}
         </tr>
       </thead>
       <tbody>

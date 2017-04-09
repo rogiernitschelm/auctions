@@ -1,6 +1,13 @@
 import React from 'react';
-import { Container, Row, Table, Column } from 'common';
-import { Link } from 'react-router-dom';
+import { Row, Table, Column } from 'common';
+import json from 'customization/admin';
+
+const {
+  EMAIL,
+  NAME,
+  REMOVE,
+  USERTYPE,
+} = json.users;
 
 export default class UserListComponent extends React.Component {
   constructor(props) {
@@ -25,8 +32,7 @@ export default class UserListComponent extends React.Component {
       return (
         <tr key={user.id}>
           <td>{user.email}</td>
-          <td>{user.firstname}</td>
-          <td>{user.lastname}</td>
+          <td>{`${user.firstname} ${user.lastname}`}</td>
           <td>{user.usertype}</td>
           <td>
             <i
@@ -42,11 +48,10 @@ export default class UserListComponent extends React.Component {
   }
 
   renderHeaders() {
-    return ['E-mailadres', 'Voornaam', 'Achternaam', 'Gebruikerstype', 'Verwijder'];
+    return [EMAIL, NAME, USERTYPE, REMOVE];
   }
 
   render() {
-    console.log(this.props)
     return (
       <Row>
         <Column columns={{ xs: 12 }}>

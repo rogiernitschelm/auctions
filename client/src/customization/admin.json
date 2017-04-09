@@ -1,0 +1,8 @@
+{
+  "users": {
+    "EMAIL": "E-mailadres",
+    "NAME": "Naam",
+    "USERTYPE": "Gebruikerstype",
+    "REMOVE": "Verwijder"
+  }
+}
