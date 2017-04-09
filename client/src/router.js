@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import { Application } from './namespaces/application';
-import { AccountRoutes } from './namespaces/account';
-import { GuestRoutes } from './namespaces/guest';
+import { GuestContainer } from './namespaces/guest';
+import { AdminContainer } from './namespaces/admin';
 
 const history = createBrowserHistory();
 
 export default () => (
   <BrowserRouter basename="/" history={history}>
     <Application>
-      <AccountRoutes />
-      <GuestRoutes />
+      <Switch>
+        <GuestContainer />
+        <AdminContainer path="/admin" />
+      </Switch>
     </Application>
   </BrowserRouter>
 );

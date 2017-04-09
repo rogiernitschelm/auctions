@@ -9,8 +9,7 @@ export default class NavigationBar extends Component {
   logout() {
     this.props.mutate({
       refetchQueries: [{ query: currentUser }]
-    }).then(data => console.log(data))
-    .catch(error => console.log(error.message));
+    });
   }
 
   renderSessionSpecificLinks() {

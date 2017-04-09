@@ -1,24 +1,21 @@
 import React from 'react';
-import { Row, Column, Container, ContainerFluid } from 'common';
-import SignupInfo from './children/signup_info';
-import CommercialInfo from './children/commercial_info';
+import { ContainerFluid, Main } from 'common';
+import { Route } from 'react-router-dom';
 
-export default props => (
+import CommercialInfo from './children/commercial_info';
+import LoginComponent from './login_component';
+import SignupComponent from './signup_component';
+
+export default () => (
   <ContainerFluid>
-    <main className="guest-container">
-      <Container>
-        <Row>
-          <Column columns={{ xs: 12, lg: 6 }}>
-            <SignupInfo />
-          </Column>
-          <Column columns={{ xs: 12, lg: 6 }}>
-            {props.children}
-          </Column>
-        </Row>
-      </Container>
-    </main>
-    <Container>
-      <CommercialInfo />
-    </Container>
+
+    <Main className="guest-container">
+      <Route exact path="/" component={LoginComponent} />
+      <Route exact path="/create_account" component={SignupComponent} />
+    </Main>
+
+    <Route exact path="/" component={CommercialInfo} />
+    <Route exact path="/create_account" component={CommercialInfo} />
+
   </ContainerFluid>
 );

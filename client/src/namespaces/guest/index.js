@@ -1,1 +1,1 @@
-export { default as GuestRoutes } from './routes';
+export { default as GuestContainer } from './container';

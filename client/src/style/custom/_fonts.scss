@@ -28,22 +28,22 @@ label, input, textarea, select {
 }
 
 ::-webkit-input-placeholder {
-  color: $medium-grey;
+  color: $medium-grey !important;
   font-size: $font-text;
   font-style: italic;
 }
 ::-moz-placeholder {
-  color: $medium-grey;
+  color: $medium-grey !important;
   font-size: $font-text;
   font-style: italic;
 } /* firefox 19+ */
 :-ms-input-placeholder {
-  color: $medium-grey;
+  color: $medium-grey !important;
   font-size: $font-text;
   font-style: italic;
 } /* ie */
 input:-moz-placeholder {
-  color: $medium-grey;
+  color: $medium-grey !important;
   font-size: $font-text;
   font-style: italic;
 }

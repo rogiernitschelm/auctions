@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import { currentUser, signUpMutation } from 'gql';
 import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
-import { Form, Input } from 'common';
+import { Form, Input, Column } from 'common';
 
 const {
   COC,
@@ -41,78 +41,80 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <Form
-        {...this.props}
-        errors={this.state.errors}
-        title={TITLE_SIGNUP}
-        onSubmit={this.onSubmit}
-        submit={SUBMIT_SIGNUP}
-        className="signup-form"
-      >
-        <Input
-          name="email"
-          type="email"
-          label={EMAIL.label}
-          placeholder={EMAIL.placeholder}
-          autoFocus
-        />
+      <Column columns={{ xs: 12, lg: 6 }}>
+        <Form
+          {...this.props}
+          errors={this.state.errors}
+          title={TITLE_SIGNUP}
+          onSubmit={this.onSubmit}
+          submit={SUBMIT_SIGNUP}
+          className="signup-form"
+        >
+          <Input
+            name="email"
+            type="email"
+            label={EMAIL.label}
+            placeholder={EMAIL.placeholder}
+            autoFocus
+          />
 
-        <Input
-          name="firstname"
-          type="text"
-          label={FIRSTNAME.label}
-          placeholder={FIRSTNAME.placeholder}
-        />
+          <Input
+            name="firstname"
+            type="text"
+            label={FIRSTNAME.label}
+            placeholder={FIRSTNAME.placeholder}
+          />
 
-        <Input
-          name="lastname"
-          type="text"
-          label={LASTNAME.label}
-          placeholder={LASTNAME.placeholder}
-        />
+          <Input
+            name="lastname"
+            type="text"
+            label={LASTNAME.label}
+            placeholder={LASTNAME.placeholder}
+          />
 
-        <Input
-          name="usertype"
-          type="select"
-          label={USERTYPE.label}
-          placeholder={USERTYPE.placeholder}
-          options={USERTYPE.options}
-        />
+          <Input
+            name="usertype"
+            type="select"
+            label={USERTYPE.label}
+            placeholder={USERTYPE.placeholder}
+            options={USERTYPE.options}
+          />
 
-        <hr />
+          <hr />
 
-        <Input
-          name="company"
-          type="text"
-          label={COMPANY.label}
-          placeholder={COMPANY.placeholder}
-        />
+          <Input
+            name="company"
+            type="text"
+            label={COMPANY.label}
+            placeholder={COMPANY.placeholder}
+          />
 
-        <Input
-          name="coc"
-          type="text"
-          label={COC.label}
-          placeholder={COC.placeholder}
-        />
+          <Input
+            name="coc"
+            type="text"
+            label={COC.label}
+            placeholder={COC.placeholder}
+          />
 
-        <hr />
+          <hr />
 
-        <Input
-          name="password"
-          type="password"
-          label={PASSWORD.label}
-          placeholder={PASSWORD.placeholder}
-        />
+          <Input
+            name="password"
+            type="password"
+            label={PASSWORD.label}
+            placeholder={PASSWORD.placeholder}
+          />
 
-        <Input
-          name="repeatpassword"
-          type="password"
-          label={REPEAT_PASSWORD.label}
-          placeholder={REPEAT_PASSWORD.placeholder}
-        />
+          <Input
+            name="repeatpassword"
+            type="password"
+            label={REPEAT_PASSWORD.label}
+            placeholder={REPEAT_PASSWORD.placeholder}
+          />
 
-        <br />
-      </Form>
+          <br />
+        </Form>
+      </Column>
     );
   }
 }

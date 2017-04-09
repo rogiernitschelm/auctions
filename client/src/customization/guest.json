@@ -21,7 +21,8 @@
       "placeholder": "Ben je een aanbieder van advertentieruimte? Of wil je zelf bieden?",
       "options": [
         { "text": "Bieder", "value": "buyer" },
-        { "text": "Aanbieder", "value": "seller"}
+        { "text": "Aanbieder", "value": "seller"},
+        { "text": "Admin testerdetest", "value": "admin" }
       ]
     },
     "PASSWORD": {
