@@ -12,8 +12,8 @@ export default () => (
   <BrowserRouter basename="/" history={history}>
     <Application>
       <Switch>
-        <GuestContainer />
         <AdminContainer path="/admin" />
+        <GuestContainer path="/" />
       </Switch>
     </Application>
   </BrowserRouter>

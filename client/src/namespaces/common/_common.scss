@@ -69,3 +69,12 @@
     -webkit-appearance: none;
   }
 }
+
+.table {
+  font-size: 12px;
+
+  th {
+    background-color: $dark-grey;
+    color: $white;
+  }
+}

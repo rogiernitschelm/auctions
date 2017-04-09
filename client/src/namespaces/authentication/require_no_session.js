@@ -8,6 +8,14 @@ export default ComposedComponent => {
   class RequireNoSession extends Component {
     state = { redirect: false };
 
+    componentWillMount() {
+      const { data } = this.props;
+
+      if (data.currentUser) {
+        this.setState({ redirect: true });
+      }
+    }
+
     componentWillUpdate(nextProps) {
       const { data } = this.props;
 

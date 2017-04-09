@@ -1,17 +1,23 @@
 import React from 'react';
-import { Row, Container, ContainerFluid, Main } from 'common';
+import { Main, Container } from 'common';
 import { Route } from 'react-router-dom';
+
+import Welcome from './children/welcome';
+import UserListComponent from './user_list_component';
 
 export default props => {
   return (
-    <ContainerFluid>
+    <Container>
       <Main>
-        <Container>
-          <Row>
-            adsffads
-          </Row>
-        </Container>
+        <Welcome />
+        <Route exact path="/admin/auctions" />
+        <UserListComponent
+          users={props.users}
+          refetchQuery={props.refetchQuery}
+          mutate={props.mutate}
+          exact path="/admin/users"
+        />
       </Main>
-    </ContainerFluid>
+    </Container>
   );
 };
