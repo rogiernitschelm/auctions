@@ -14,13 +14,13 @@ export default () => {
             icon="account_box"
           />
         </Column>
-        <Column columns={{ xs: 12, lg: 6 }}>
+        <Column columns={{ xs: 12, lg: 6 }} className="hidden-md-down">
           <img className="step" src={placeholder} alt="placeholder" />
         </Column>
       </Row>
       <Row>
-        <Column columns={{ xs: 12, lg: 6 }}>
-          <img  className="step" src={placeholder} alt="placeholder" />
+        <Column columns={{ xs: 12, lg: 6 }} className="hidden-md-down">
+          <img className="step" src={placeholder} alt="placeholder" />
         </Column>
         <Column columns={{ xs: 12, lg: 6 }}>
           <Jumbotron
@@ -38,8 +38,8 @@ export default () => {
             icon="tag_faces"
           />
         </Column>
-        <Column columns={{ xs: 12, lg: 6 }}>
-          <img  className="step" src={placeholder} alt="placeholder" />
+        <Column columns={{ xs: 12, lg: 6 }} className="hidden-md-down">
+          <img className="step" src={placeholder} alt="placeholder" />
         </Column>
       </Row>
     </Container>

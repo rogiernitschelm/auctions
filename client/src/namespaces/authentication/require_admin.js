@@ -28,10 +28,6 @@ export default ComposedComponent => {
         this.setState({ redirect: true });
       }
 
-      if (data.currentUser && data.currentUser.usertype !== 'admin') {
-        this.setState({ redirect: true });
-      }
-
       if (nextProps.data.currentUser && nextProps.data.currentUser.usertype !== 'admin') {
         this.setState({ redirect: true });
       }

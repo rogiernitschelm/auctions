@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import { currentUser, loginMutation } from 'gql';
 import { userValidator as validate } from 'helpers';
 import json from 'customization/guest';
-import { Form, Input, Column } from 'common';
+import { Form, Input } from 'common';
 
 const {
   EMAIL,
@@ -35,35 +35,33 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <Column columns={{ xs: 12, lg: 6 }}>
-        <Form
-          {...this.props}
-          className="login-form"
-          errors={this.state.errors}
-          onSubmit={this.onSubmit}
-          submit={SUBMIT_LOGIN}
-          title={TITLE_LOGIN}
-        >
+      <Form
+        {...this.props}
+        className="login-form"
+        errors={this.state.errors}
+        onSubmit={this.onSubmit}
+        submit={SUBMIT_LOGIN}
+        title={TITLE_LOGIN}
+      >
 
-          <Input
-            autoFocus
-            label={EMAIL.label}
-            name="email"
-            placeholder={EMAIL.placeholder}
-            type="email"
-          />
+        <Input
+          autoFocus
+          label={EMAIL.label}
+          name="email"
+          placeholder={EMAIL.placeholder}
+          type="email"
+        />
 
-          <Input
-            label={PASSWORD.label}
-            name="password"
-            placeholder={PASSWORD.placeholder}
-            type="password"
-          />
+        <Input
+          label={PASSWORD.label}
+          name="password"
+          placeholder={PASSWORD.placeholder}
+          type="password"
+        />
 
-          <br />
+        <br />
 
-        </Form>
-      </Column>
+      </Form>
     );
   }
 }

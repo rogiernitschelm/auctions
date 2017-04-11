@@ -3,7 +3,7 @@ import { Main, Container } from 'common';
 import { Route, Switch } from 'react-router-dom';
 
 import Welcome from './children/welcome';
-import UserListComponent from './user_list_component';
+import UserListComponent from './children/user_list_component';
 
 export default props => {
   return (
