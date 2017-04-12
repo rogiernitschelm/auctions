@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Column, Jumbotron } from 'common';
 
-import placeholder from '../../../assets/placeholder.png';
+import placeholder from 'assets/placeholder.png';
 
 export default () => {
   return (

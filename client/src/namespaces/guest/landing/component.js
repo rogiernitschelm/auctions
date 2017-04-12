@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, ContainerFluid, Row, Main, Column } from 'common';
+import { LoginForm } from 'forms';
 
 import CommercialInfo from './children/commercial_info';
 import Steps from './children/steps';
 import LoginInfo from './children/login_info';
-import LoginForm from '../forms/login_form';
 
 export default () => {
   return (

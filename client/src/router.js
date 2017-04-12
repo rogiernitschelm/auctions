@@ -4,9 +4,9 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 import { Application, Navigation, NotFound } from './namespaces/application';
 
-import LandingContainer from './namespaces/landing/container';
-import RegistrationContainer from './namespaces/registration/container';
-import LoginContainer from './namespaces/login/container';
+import LandingContainer from './namespaces/guest/landing/container';
+import RegistrationContainer from './namespaces/guest/registration/container';
+import LoginContainer from './namespaces/guest/login/container';
 import AdminContainer from './namespaces/admin/container';
 
 const history = createBrowserHistory();

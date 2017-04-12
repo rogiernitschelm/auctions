@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RequireNoSession } from '../authentication';
+import { RequireNoSession } from '../../authentication';
 import RegistrationComponent from './component';
 
 @RequireNoSession
