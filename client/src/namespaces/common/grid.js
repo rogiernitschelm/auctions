@@ -1,14 +1,14 @@
 import React from 'react';
 
-export const Container = ({ children, className }) => (
+export const Container = ({ children, className = '' }) => (
   <div className={`container ${className}`}>{children}</div>
 );
 
-export const ContainerFluid = ({ children, className }) => (
+export const ContainerFluid = ({ children, className = '' }) => (
   <div className={`container-fluid ${className}`}>{children}</div>
 );
 
-export const Row = props => <div className={`row ${props.className}`}>{props.children}</div>;
+export const Row = ({ children, className = '' }) => <div className={`row ${className}`}>{children}</div>;
 
 export const Column = ({ columns = {}, offsets = {}, children, className = '' }) => {
   let buildClassName = className;
