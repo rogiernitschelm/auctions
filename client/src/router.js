@@ -8,6 +8,7 @@ import LandingContainer from './namespaces/guest/landing/container';
 import RegistrationContainer from './namespaces/guest/registration/container';
 import LoginContainer from './namespaces/guest/login/container';
 import AdminContainer from './namespaces/admin/container';
+import AccountContainer from './namespaces/account/container';
 
 const history = createBrowserHistory();
 
@@ -20,7 +21,11 @@ export default () => (
         <Route component={RegistrationContainer} exact path="/registration" />
         <Route component={LoginContainer} exact path="/login" />
 
+        <Route path="/seller" />
+        <Route path="/buyer" />
         <Route component={AdminContainer} path="/admin" />
+
+        <Route path="/account" component={AccountContainer} />
 
         <Route component={NotFound} />
       </Switch>

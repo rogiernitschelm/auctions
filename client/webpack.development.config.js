@@ -52,7 +52,6 @@ module.exports = {
       authentication: path.resolve(__dirname, 'src', 'namespaces', 'authentication'),
       common: path.resolve(__dirname, 'src', 'namespaces', 'common'),
       customization: path.resolve(__dirname, 'src', 'customization'),
-      forms: path.resolve(__dirname, 'src', 'namespaces', 'forms'),
       gql: path.resolve(__dirname, 'src', 'gql'),
       helpers: path.resolve(__dirname, 'src', 'helpers'),
     }

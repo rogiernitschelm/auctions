@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import AccountComponent from './component';
+import { RequireSession } from 'authentication';
 
+@RequireSession
 class AccountContainer extends Component {
   render() {
     return (
-      <div>AccountContainer</div>
+      <AccountComponent
+        {...this.props}
+      />
     );
   }
 }

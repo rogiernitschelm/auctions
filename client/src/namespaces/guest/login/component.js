@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Main } from 'common';
-import { LoginForm } from 'forms';
+import { LoginForm } from '../forms';
 
 export default () => {
   return (
