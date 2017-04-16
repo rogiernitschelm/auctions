@@ -1,34 +1,37 @@
 import React from 'react';
 
-export const Container = ({ children, className }) => (
+export const Container = ({ children, className = '' }) => (
   <div className={`container ${className}`}>{children}</div>
 );
 
-export const ContainerFluid = ({ children, className }) => (
+export const ContainerFluid = ({ children, className = '' }) => (
   <div className={`container-fluid ${className}`}>{children}</div>
 );
 
-export const Row = props => <div className={`row ${props.className}`}>{props.children}</div>;
+export const Row = ({ children, className = '' }) => <div className={`row ${className}`}>{children}</div>;
 
-export const Column = ({ columns = {}, offsets = {}, children }) => {
-  let className = '';
+export const Column = ({ columns = {}, offsets = {}, children, className = '' }) => {
+  let buildClassName = className;
+  if (buildClassName !== '') {
+    buildClassName = `${buildClassName} `;
+  }
 
   if (offsets !== {}) {
     for (const offset of Object.keys(offsets)) {
-      className = className.concat(`offset-${offset}-${offsets[offset]} `);
+      buildClassName = buildClassName.concat(`offset-${offset}-${offsets[offset]} `);
     }
   }
 
   if (columns !== {}) {
     for (const column of Object.keys(columns)) {
-      className = className.concat(
+      buildClassName = buildClassName.concat(
         `col${column === 'xs' ? `-${columns[column]}` : `-${column}-${columns[column]}`} `
       );
     }
   }
 
   return (
-    <div className={className}>
+    <div className={buildClassName}>
       {children}
     </div>
   );

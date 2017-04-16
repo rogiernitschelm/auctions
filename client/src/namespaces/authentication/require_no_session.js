@@ -8,14 +8,6 @@ export default ComposedComponent => {
   class RequireNoSession extends Component {
     state = { redirect: false };
 
-    componentWillMount() {
-      const { data } = this.props;
-
-      if (data.currentUser) {
-        this.setState({ redirect: true });
-      }
-    }
-
     componentWillUpdate(nextProps) {
       const { data } = this.props;
 
@@ -29,8 +21,18 @@ export default ComposedComponent => {
     }
 
     render() {
-      if (this.state.redirect) return <Redirect to="/" />;
-      if (this.props.data.loading) return <div>Loading yo</div>;
+      const { data } = this.props;
+
+      if (this.state.redirect) {
+        switch (data.currentUser.usertype) {
+          case 'admin': return <Redirect to="/admin" />;
+          case 'seller': return <Redirect to="/seller" />;
+          case 'buyer': return <Redirect to="/buyer" />;
+          default: return <Redirect to="/" />;
+        }
+      }
+
+      if (data.loading) return <div>Loading yo</div>;
 
       return <ComposedComponent {...this.props} />;
     }

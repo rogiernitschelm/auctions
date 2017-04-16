@@ -48,10 +48,12 @@ module.exports = {
   },
   resolve: {
     alias: {
-      helpers: path.resolve(__dirname, 'src', 'helpers'),
-      gql: path.resolve(__dirname, 'src', 'gql'),
+      assets: path.resolve(__dirname, 'src', 'assets'),
+      authentication: path.resolve(__dirname, 'src', 'namespaces', 'authentication'),
       common: path.resolve(__dirname, 'src', 'namespaces', 'common'),
-      customization: path.resolve(__dirname, 'src', 'customization')
+      customization: path.resolve(__dirname, 'src', 'customization'),
+      gql: path.resolve(__dirname, 'src', 'gql'),
+      helpers: path.resolve(__dirname, 'src', 'helpers'),
     }
   },
   plugins: [
