@@ -8,7 +8,7 @@ import LoginInfo from './children/login_info';
 
 export default () => {
   return (
-    <Main>
+    <Main className="landing">
       <ContainerFluid className="landing-container">
         <Container>
           <Row>

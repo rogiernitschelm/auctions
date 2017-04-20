@@ -30,26 +30,24 @@ export const Form = props => {
   };
 
   return (
-    <div className="container">
-      <form className={`form ${className}`} onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group row">
-          <div className="col-12">
-            {renderTitle()}
-          </div>
+    <form className={`form ${className} container`} onSubmit={handleSubmit(onSubmit)}>
+      <div className="form-group row">
+        <div className="col-12">
+          {renderTitle()}
         </div>
+      </div>
 
-        {renderErrors()}
+      {renderErrors()}
 
-        {children}
-        <div className="form-group row">
-          <div className="col-12">
-            <button type="submit" className="btn btn-primary btn-lg btn-block" size="lg">
-              {submit}<i className="material-icons">navigate_next</i>
-            </button>
-          </div>
+      {children}
+      <div className="form-group row">
+        <div className="col-12">
+          <button type="submit" className="btn btn-primary btn-lg btn-block" size="lg">
+            {submit}<i className="material-icons">navigate_next</i>
+          </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

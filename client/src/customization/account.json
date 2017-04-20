@@ -1,3 +1,16 @@
 {
-  "a": "b"
+  "form": {
+    "EMAIL": {
+      "label": "E-mail",
+      "placeholder": "jan@mail.com..."
+    },
+    "PASSWORD": {
+      "label": "Wachtwoord",
+      "placeholder": "Minimaal 8 karakters..."
+    },
+    "REPEAT_PASSWORD": {
+      "label": "Bevestig",
+      "placeholder": "Herhaal je wachtwoord"
+    }
+  }
 }

@@ -1,13 +1,15 @@
 import React from 'react';
-import { Container, Row, Main } from 'common';
+import { Container, Column, Row, Main } from 'common';
 import { LoginForm } from '../forms';
 
 export default () => {
   return (
-    <Main>
+    <Main className="login">
       <Container>
         <Row>
-          <LoginForm />
+          <Column columns={{ xs: 12, lg: 6 }} offsets={{ lg: 3 }}>
+            <LoginForm />
+          </Column>
         </Row>
       </Container>
     </Main>
