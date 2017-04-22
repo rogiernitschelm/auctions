@@ -14,7 +14,13 @@ export default class NavigationBar extends Component {
 
   renderSessionSpecificLinks() {
     if (this.props.data.currentUser) {
-      return <NavLink onClick={::this.logout}>Uitloggen</NavLink>;
+      return (
+        <div className="btn-group">
+          <NavLink to="/account">Account</NavLink>
+          <NavLink onClick={::this.logout}>Uitloggen</NavLink>
+        </div>
+
+      );
     }
 
     return (

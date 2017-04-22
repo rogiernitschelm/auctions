@@ -7,7 +7,10 @@
 @import './custom/buttons';
 @import './custom/body';
 
-@import '../namespaces/guest/landing/landing';
+@import '../namespaces/guest/registration/style';
+@import '../namespaces/guest/landing/style';
+@import '../namespaces/guest/login/style';
+
 @import '../namespaces/application/application';
 @import '../namespaces/common/common';
 @import '../namespaces/admin/admin';

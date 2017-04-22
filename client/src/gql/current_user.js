@@ -5,7 +5,9 @@ export default gql`
     currentUser {
       id
       email
-      usertype
+      usertype,
+      firstname,
+      lastname
     }
   }
 `;
