@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
-import { graphql } from 'react-apollo';
-import { currentUser, loginMutation } from 'gql';
-import { userValidator as validate } from 'helpers';
+import React from 'react';
 import json from 'customization/guest';
 import { Form, Input } from 'common';
 
@@ -13,55 +9,36 @@ const {
   TITLE_LOGIN,
 } = json.form;
 
-@graphql(currentUser)
-@graphql(loginMutation)
-@reduxForm({ form: 'login', fields: Object.keys(json.form), validate })
-export default class LoginForm extends Component {
-  constructor(props) {
-    super(props);
+export default props => {
+  const { onSubmit, errors } = props;
 
-    this.state = { errors: [] };
-    this.onSubmit = ::this.onSubmit;
-  }
+  return (
+    <Form
+      {...props}
+      className="login-form"
+      errors={errors}
+      onSubmit={onSubmit}
+      submit={SUBMIT_LOGIN}
+      title={TITLE_LOGIN}
+    >
 
-  onSubmit({ email, password }) {
-    this.props.mutate({
-      variables: { email, password },
-      refetchQueries: [{ query: currentUser }]
-    })
-    .then(() => this.setState({ errors: [] }))
-    .catch(response => this.setState({ errors: response.graphQLErrors }));
-  }
+      <Input
+        autoFocus
+        label={EMAIL.label}
+        name="email"
+        placeholder={EMAIL.placeholder}
+        type="email"
+      />
 
-  render() {
-    return (
-      <Form
-        {...this.props}
-        className="login-form"
-        errors={this.state.errors}
-        onSubmit={this.onSubmit}
-        submit={SUBMIT_LOGIN}
-        title={TITLE_LOGIN}
-      >
+      <Input
+        label={PASSWORD.label}
+        name="password"
+        placeholder={PASSWORD.placeholder}
+        type="password"
+      />
 
-        <Input
-          autoFocus
-          label={EMAIL.label}
-          name="email"
-          placeholder={EMAIL.placeholder}
-          type="email"
-        />
+      <br />
 
-        <Input
-          label={PASSWORD.label}
-          name="password"
-          placeholder={PASSWORD.placeholder}
-          type="password"
-        />
-
-        <br />
-
-      </Form>
-    );
-  }
-}
+    </Form>
+  );
+};
