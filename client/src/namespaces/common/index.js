@@ -7,3 +7,4 @@ export * from './semantic';
 export * from './lists';
 export * from './tables';
 export * from './other';
+export * from './loading_spinner';

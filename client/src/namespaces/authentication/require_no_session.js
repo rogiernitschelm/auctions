@@ -11,13 +11,17 @@ export default ComposedComponent => {
     componentWillUpdate(nextProps) {
       const { data } = this.props;
 
-      if (!data.currentUser && nextProps.data.currentUser) {
+      if (data.currentUser) {
         this.setState({ redirect: true });
       }
 
-      if (data.currentUser && !nextProps.data.currentUser) {
-        this.setState({ redirect: false });
+      if (nextProps.data.currentUser) {
+        this.setState({ redirect: true });
       }
+    }
+
+    componentWillUnmount() {
+      this.setState({ redirect: false });
     }
 
     render() {

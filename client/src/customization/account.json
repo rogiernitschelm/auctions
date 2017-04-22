@@ -1,5 +1,6 @@
 {
   "form": {
+    "TITLE": "Accountgegevens",
     "EMAIL": {
       "label": "E-mail",
       "placeholder": "jan@mail.com..."
@@ -11,6 +12,15 @@
     "REPEAT_PASSWORD": {
       "label": "Bevestig",
       "placeholder": "Herhaal je wachtwoord"
+    },
+    "SUBMIT": "Wijzig gegevens",
+    "FIRSTNAME": {
+      "label": "Voornaam",
+      "placeholder": "Piet"
+    },
+    "LASTNAME": {
+      "label": "Achternaam",
+      "placeholder": "De Boer"
     }
   }
 }
