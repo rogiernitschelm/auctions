@@ -50,4 +50,23 @@ const server = application.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
+// testing
+
+const User = mongoose.model('user')
+for (let i = 0; i < 100; i++) {
+  const email = `mail${i}@hoogle.nom`;
+
+  // User.create({
+  //   coc: 'abc1234',
+  //   company: 'Boogle.dom',
+  //   email,
+  //   firstname: 'Sjaak',
+  //   lastname: 'Henksma',
+  //   password: 'abcd1234',
+  //   usertype: 'buyer',
+  // });
+}
+
+
+//
 export default server;

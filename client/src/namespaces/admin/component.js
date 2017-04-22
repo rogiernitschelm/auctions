@@ -1,26 +1,33 @@
 import React from 'react';
-import { Main, Container } from 'common';
+import { Main, Container, Header } from 'common';
 import { Route, Switch } from 'react-router-dom';
-
-import Welcome from './children/welcome';
 import UserListComponent from './children/user_list_component';
+import AuctionListComponent from './children/auction_list_component';
+import json from 'customization/admin';
+
+const {
+  WELCOME,
+} = json.main;
 
 export default props => {
   return (
-    <Container>
-      <Main>
-        <Route exact path="/admin" component={Welcome} />
+    <Main>
+      <Container>
+        <Header title={WELCOME} />
 
-        <Switch>
-          <UserListComponent
-            users={props.users}
-            refetchQuery={props.refetchQuery}
-            mutate={props.mutate}
-            exact path="/admin/users"
-          />
-        </Switch>
+        <UserListComponent
+          users={props.users}
+          refetchQuery={props.refetchQuery}
+          mutate={props.mutate}
+          deleteUser={props.deleteUser}
+          onLoadMoreUsersClick={props.onLoadMoreUsersClick}
+        />
 
-      </Main>
-    </Container>
+        <AuctionListComponent
+
+        />
+
+      </Container>
+    </Main>
   );
 };

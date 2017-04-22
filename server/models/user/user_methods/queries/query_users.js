@@ -6,6 +6,8 @@ const { isAdmin } = actions;
 export default ({ req, args }) => {
   isAdmin({ req });
 
+  console.warn(args)
+
   const {
     limit = 50,
     sort = { date: -1 },

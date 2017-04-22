@@ -1,5 +1,10 @@
 {
+  "main": {
+    "WELCOME": "Welkom terug"
+  },
   "users": {
+    "TITLE": "Gebruikers",
+    "SEARCH": "Zoek gebruikers",
     "EMAIL": "E-mailadres",
     "NAME": "Naam",
     "USERTYPE": "Gebruikerstype",
