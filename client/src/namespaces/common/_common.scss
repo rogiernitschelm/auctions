@@ -90,7 +90,14 @@
 
 .list-with-search {
   border: 1px solid $light-grey;
-  padding: 20px;
+  padding: 30px;
+
+  input {
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 40px;
+  }
 
   thead {
     border-bottom: 0;
@@ -101,11 +108,19 @@
   }
 
   margin-bottom: 10px;
+
+  button {
+    font-size: 10px;
+  }
 }
 
 .header {
   margin-top: 20px;
   margin-bottom: 30px;
+
+  h2 {
+    color: $primary;
+  }
 }
 
 .jumbotron {
