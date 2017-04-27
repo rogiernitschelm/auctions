@@ -1,6 +1,5 @@
 import {
-  GraphQLString,
-  GraphQLNonNull
+  GraphQLString
 } from 'graphql';
 import { updateUser } from '../user_methods';
 import UserType from '../usertype';
@@ -9,9 +8,9 @@ export default {
   updateUser: {
     type: UserType,
     args: {
-      email: { type: new GraphQLNonNull(GraphQLString) },
-      firstname: { type: new GraphQLNonNull(GraphQLString) },
-      lastname: { type: new GraphQLNonNull(GraphQLString) }
+      email: { type: GraphQLString },
+      firstname: { type: GraphQLString },
+      lastname: { type: GraphQLString }
 
     },
     resolve(parentValue, args, req) {

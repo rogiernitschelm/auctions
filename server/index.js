@@ -8,8 +8,6 @@ import cors from 'cors';
 import { schema } from './models/index';
 import passport from './authentication';
 
-const development = process.env.NODE_ENV !== 'production';
-
 const DB_URI = 'mongodb://localhost/test1';
 const PORT = 3000;
 const corsOptions = {

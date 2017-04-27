@@ -50,9 +50,7 @@ const testServer = application.listen(PORT, () => {
 });
 
 beforeEach(done => {
-  mongoose.connection.collections.users.drop(() => {
-    done();
-  });
+  mongoose.connection.db.dropDatabase(() => done());
 });
 
 export default testServer;

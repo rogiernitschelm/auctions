@@ -18,7 +18,6 @@ export default class GuestContainer extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = { errors: [], limit: 0, offset: 0 };
     this.deleteUser = ::this.deleteUser;
     this.loadMoreUsers = ::this.loadMoreUsers;
