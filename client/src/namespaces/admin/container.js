@@ -5,11 +5,13 @@ import { users as query, adminDeleteUser } from 'gql';
 import { RequireAdmin } from '../authentication';
 import AdminComponent from './component';
 
+const INITIAL_LIMIT = 10;
+
 @RequireAdmin
 @graphql(query, {
   options: props => {
     return {
-      variables: { limit: 10 }
+      variables: { limit: INITIAL_LIMIT }
     };
   }
 })
@@ -18,18 +20,31 @@ export default class GuestContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { errors: [], limit: 0, offset: 0 };
+    this.state = { errors: [], limit: INITIAL_LIMIT, offset: 0 };
     this.deleteUser = ::this.deleteUser;
     this.loadMoreUsers = ::this.loadMoreUsers;
   }
 
+  componentWillUpdate(nextProps) {
+    if (!this.props.data.users && nextProps.data.users) {
+      this.setState({ offset: nextProps.data.users.length });
+    }
+
+    if (this.props.data.users) {
+      if (this.props.data.users.length !== nextProps.data.users.length) {
+        this.setState({ offset: nextProps.data.users.length });
+      }
+    }
+  }
+
   loadMoreUsers() {
-    const { fetchMore, users } = this.props.data;
+    const { fetchMore } = this.props.data;
 
     fetchMore({
       variables: {
-        offset: users.length
+        offset: this.state.offset
       },
+
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
           return previousResult;
@@ -46,7 +61,7 @@ export default class GuestContainer extends Component {
     this.props.mutate({ variables: { userId } })
     .then(() => {
       this.setState({ errors: [] });
-      this.props.data.refetch({ offset: this.props.users.length });
+      this.props.data.refetch();
     })
     .catch(response => this.setState({ errors: response.graphQLErrors }));
   }
