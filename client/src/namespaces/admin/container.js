@@ -27,12 +27,12 @@ export default class GuestContainer extends Component {
 
   componentWillUpdate(nextProps) {
     if (!this.props.data.users && nextProps.data.users) {
-      this.setState({ offset: nextProps.data.users.length });
+      this.setState({ offset: nextProps.data.users.length, limit: nextProps.data.users.length });
     }
 
     if (this.props.data.users) {
       if (this.props.data.users.length !== nextProps.data.users.length) {
-        this.setState({ offset: nextProps.data.users.length });
+        this.setState({ offset: nextProps.data.users.length, limit: nextProps.data.users.length });
       }
     }
   }
@@ -61,7 +61,8 @@ export default class GuestContainer extends Component {
     this.props.mutate({ variables: { userId } })
     .then(() => {
       this.setState({ errors: [] });
-      this.props.data.refetch();
+
+      this.props.data.refetch({ limit: this.state.limit });
     })
     .catch(response => this.setState({ errors: response.graphQLErrors }));
   }
