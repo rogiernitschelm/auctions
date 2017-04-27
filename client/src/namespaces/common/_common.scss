@@ -75,7 +75,6 @@
 
   th {
     border: 0;
-    border-bottom: $light-grey;
   }
 
   td {
@@ -93,9 +92,15 @@
   border: 1px solid $light-grey;
   padding: 20px;
 
+  thead {
+    border-bottom: 0;
+  }
+
   .search {
     margin-bottom: 10px;
   }
+
+  margin-bottom: 10px;
 }
 
 .header {

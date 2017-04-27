@@ -4,6 +4,7 @@ import { isLoggedIn } from '../../../../helpers';
 export default async ({ req, args }) => {
   isLoggedIn(req);
 
+
   if (args.password) {
     throw Error('You should not update the password via this method.');
   }

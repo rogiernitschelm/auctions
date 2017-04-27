@@ -15,7 +15,7 @@ export default new GraphQLObjectType({
     // infix: { type: GraphQLString },
     lastname: { type: GraphQLString },
     coc: { type: GraphQLString },
-    company: { type: new GraphQLNonNull(GraphQLString) },
+    company: { type: GraphQLString },
     // birthDate: { type: GraphQLString },
     // createdAt: { type: new GraphQLNonNull(GraphQLString) },
     // updatedAt: { type: new GraphQLNonNull(GraphQLString) },

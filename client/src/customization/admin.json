@@ -5,9 +5,11 @@
   "users": {
     "TITLE": "Gebruikers",
     "SEARCH": "Zoek gebruikers",
+    "CREDENTIALS": "E-mail en naam",
     "EMAIL": "E-mailadres",
     "NAME": "Naam",
     "USERTYPE": "Gebruikerstype",
-    "REMOVE": "Verwijder"
+    "REMOVE": "Verwijder",
+    "LOAD_MORE": "Laad meer"
   }
 }

@@ -43,16 +43,11 @@ export default class GuestContainer extends Component {
   }
 
   deleteUser(userId) {
-    this.props.mutate({
-      variables: {
-        userId
-      },
-      refetchQueries: [{
-        query,
-        variables: { limit: 2, offset: 2 }
-      }]
+    this.props.mutate({ variables: { userId } })
+    .then(() => {
+      this.setState({ errors: [] });
+      this.props.data.refetch({ offset: this.props.users.length });
     })
-    .then(() => this.setState({ errors: [] }))
     .catch(response => this.setState({ errors: response.graphQLErrors }));
   }
 
@@ -60,7 +55,6 @@ export default class GuestContainer extends Component {
     return (
       <AdminComponent
         users={this.props.data.users}
-        mutate={this.props.mutate}
         deleteUser={this.deleteUser}
         onLoadMoreUsersClick={this.loadMoreUsers}
       />

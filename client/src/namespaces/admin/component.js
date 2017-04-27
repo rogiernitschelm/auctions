@@ -17,7 +17,6 @@ export default props => {
 
         <UserListComponent
           users={props.users}
-          refetchQuery={props.refetchQuery}
           mutate={props.mutate}
           deleteUser={props.deleteUser}
           onLoadMoreUsersClick={props.onLoadMoreUsersClick}

@@ -3,12 +3,12 @@ import { Row, ListWithSearch, Column, Button } from 'common';
 import json from 'customization/admin';
 
 const {
-  EMAIL,
-  NAME,
+  CREDENTIALS,
   REMOVE,
   USERTYPE,
   SEARCH,
   TITLE,
+  LOAD_MORE,
 } = json.users;
 
 const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => {
@@ -16,23 +16,19 @@ const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => 
     return users.map(user => {
       return (
         <tr key={user.id}>
-          <td>{user.email}</td>
-          <td>{`${user.firstname} ${user.lastname}`}</td>
+          <td>{user.firstname} {user.lastname}<br /> {user.email} </td>
           <td>{user.usertype}</td>
           <td>
-            <i
-              className="material-icons delete-user"
-              onClick={() => deleteUser(user.id)}
-            >
-              not_interested
-            </i>
+            <Button color="danger" className="btn-sm" onClick={() => deleteUser(user.id)}>
+              {REMOVE}
+            </Button>
           </td>
         </tr>
       );
     });
   };
 
-  const renderHeaders = () => [EMAIL, NAME, USERTYPE, REMOVE];
+  const renderHeaders = () => [CREDENTIALS, USERTYPE, REMOVE];
 
   return (
     <Row>
@@ -43,7 +39,7 @@ const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => 
           placeholder={SEARCH}
           title={TITLE}
         />
-        <button onClick={onLoadMoreUsersClick}>Click</button>
+        <Button onClick={onLoadMoreUsersClick}>{LOAD_MORE}</Button>
       </Column>
     </Row>
   );

@@ -4,7 +4,7 @@ export const Table = props => {
   const { className = '', headers = [], rows = [] } = props;
 
   return (
-    <table className={`table table-striped ${className}`}>
+    <table className={`table table-hover ${className}`}>
       <thead className='table-head'>
         <tr>
           {headers.map(header => <th key={header}>{header}</th>)}
@@ -24,7 +24,7 @@ export const ListWithSearch = props => {
     <div className="list-with-search">
       <h3>{title}</h3>
       <input className="form-control search" placeholder={placeholder} />
-      <table className={`table ${className}`}>
+      <table className={`table table-hover ${className}`}>
         <thead className='table-head'>
           <tr>
             {headers.map(header => <th key={header}>{header}</th>)}
