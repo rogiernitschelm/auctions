@@ -1,22 +1,15 @@
 import { GraphQLObjectType } from 'graphql';
+import { queryAuctions as auctions } from './auction';
 import {
-  users,
-  buyers,
-  currentUser,
-  sellers,
-} from './user/user_queries';
-
-import {
-  queryAuctions
-} from './auction';
+  queryUsers as users,
+  queryCurrentUser as currentUser
+} from './user/';
 
 export default new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
-    users,
-    buyers,
+    auctions,
     currentUser,
-    sellers,
-    queryAuctions,
+    users,
   })
 });

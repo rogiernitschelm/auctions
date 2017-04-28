@@ -23,10 +23,6 @@ export default props => {
           onSearchTermChange={props.onSearchTermChange}
         />
 
-        <AuctionListComponent
-
-        />
-
       </Container>
     </Main>
   );
