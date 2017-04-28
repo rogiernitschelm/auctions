@@ -7,7 +7,8 @@ export default {
   args: {
     limit: { type: GraphQLInt },
     offset: { type: GraphQLInt },
-    sort: { type: GraphQLString }
+    sort: { type: GraphQLString },
+    searchTerm: { type: GraphQLString }
   },
   resolve(parentValue, args, req) {
     return queryUsers({ req, args });

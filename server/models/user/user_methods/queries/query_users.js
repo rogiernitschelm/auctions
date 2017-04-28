@@ -6,13 +6,26 @@ const { isAdmin } = actions;
 export default ({ req, args }) => {
   isAdmin({ req });
 
-  console.warn(args)
-
   const {
     limit = 50,
     sort = { date: -1 },
-    offset = 0
+    offset = 0,
+    searchTerm = ''
   } = args;
 
-  return User.find({ usertype: { $ne: 'admin' } }).skip(offset).limit(limit).sort(sort);
+  const regex = new RegExp(searchTerm, 'i');
+  const result = User
+    .find({
+      usertype: { $ne: 'admin' },
+      $or: [
+        { email: regex || '' },
+        { firstname: regex || '' },
+        { lastname: regex || '' }
+      ]
+    })
+    .skip(offset)
+    .limit(limit)
+    .sort(sort);
+
+  return result;
 };

@@ -52,14 +52,14 @@ const server = application.listen(PORT, () => {
 
 const User = mongoose.model('user')
 for (let i = 0; i < 100; i++) {
-  const email = `mail${i}@hoogle.nom`;
-
+  const email = `mailjan${i}@hoogle.nom`;
+  // 
   // User.create({
   //   coc: 'abc1234',
   //   company: 'Boogle.dom',
   //   email,
-  //   firstname: 'Sjaak',
-  //   lastname: 'Henksma',
+  //   firstname: 'Kees',
+  //   lastname: 'Jan',
   //   password: 'abcd1234',
   //   usertype: 'buyer',
   // });

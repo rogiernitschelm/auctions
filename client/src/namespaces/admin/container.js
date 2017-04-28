@@ -9,7 +9,7 @@ const INITIAL_LIMIT = 10;
 
 @RequireAdmin
 @graphql(query, {
-  options: props => {
+  options: () => {
     return {
       variables: { limit: INITIAL_LIMIT }
     };
@@ -20,9 +20,10 @@ export default class GuestContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { errors: [], limit: INITIAL_LIMIT, offset: 0 };
+    this.state = { errors: [], limit: INITIAL_LIMIT, offset: 0, searchTerm: '' };
     this.deleteUser = ::this.deleteUser;
     this.loadMoreUsers = ::this.loadMoreUsers;
+    this.searchTermChange = ::this.searchTermChange;
   }
 
   componentWillUpdate(nextProps) {
@@ -40,9 +41,12 @@ export default class GuestContainer extends Component {
   loadMoreUsers() {
     const { fetchMore } = this.props.data;
 
+    console.log("trigger")
+
     fetchMore({
       variables: {
-        offset: this.state.offset
+        offset: this.state.offset,
+        searchTerm: this.state.searchTerm
       },
 
       updateQuery: (previousResult, { fetchMoreResult }) => {
@@ -61,18 +65,24 @@ export default class GuestContainer extends Component {
     this.props.mutate({ variables: { userId } })
     .then(() => {
       this.setState({ errors: [] });
-
-      this.props.data.refetch({ limit: this.state.limit });
+      this.props.data.refetch({ limit: this.state.limit, searchTerm: this.state.searchTerm });
     })
     .catch(response => this.setState({ errors: response.graphQLErrors }));
+  }
+
+  searchTermChange(event) {
+    this.setState({ searchTerm: event.target.value });
+
+    console.log(event.target.value)
   }
 
   render() {
     return (
       <AdminComponent
         users={this.props.data.users}
-        deleteUser={this.deleteUser}
-        onLoadMoreUsersClick={this.loadMoreUsers}
+        onDeleteUser={this.deleteUser}
+        onLoadMoreUsers={this.loadMoreUsers}
+        onSearchTermChange={this.searchTermChange}
       />
     );
   }

@@ -18,8 +18,9 @@ export default props => {
         <UserListComponent
           users={props.users}
           mutate={props.mutate}
-          deleteUser={props.deleteUser}
-          onLoadMoreUsersClick={props.onLoadMoreUsersClick}
+          onDeleteUser={props.onDeleteUser}
+          onLoadMoreUsers={props.onLoadMoreUsers}
+          onSearchTermChange={props.onSearchTermChange}
         />
 
         <AuctionListComponent

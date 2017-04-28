@@ -11,7 +11,7 @@ const {
   LOAD_MORE,
 } = json.users;
 
-const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => {
+const UserListComponent = ({ users = [], onDeleteUser, onLoadMoreUsers, onSearchTermChange }) => {
   const renderUsers = () => {
     return users.map(user => {
       return (
@@ -19,7 +19,7 @@ const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => 
           <td>{user.firstname} {user.lastname}<br /> {user.email} </td>
           <td>{user.usertype}</td>
           <td>
-            <Button color="danger" className="btn-sm" onClick={() => deleteUser(user.id)}>
+            <Button color="danger" className="btn-sm" onClick={() => onDeleteUser(user.id)}>
               {REMOVE}
             </Button>
           </td>
@@ -38,8 +38,10 @@ const UserListComponent = ({ users = [], deleteUser, onLoadMoreUsersClick }) => 
           headers={renderHeaders()}
           placeholder={SEARCH}
           title={TITLE}
+          onSearchTermChange={onSearchTermChange}
+          onButtonClick={onLoadMoreUsers}
+          onButtonClickText={LOAD_MORE}
         />
-        <Button onClick={onLoadMoreUsersClick}>{LOAD_MORE}</Button>
       </Column>
     </Row>
   );
