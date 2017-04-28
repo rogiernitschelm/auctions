@@ -13,14 +13,14 @@ export default ({ req, args }) => {
     searchTerm = ''
   } = args;
 
-  const regex = new RegExp(searchTerm, 'i');
+  const searchTermRegex = new RegExp(searchTerm, 'i');
   const result = User
     .find({
       usertype: { $ne: 'admin' },
       $or: [
-        { email: regex || '' },
-        { firstname: regex || '' },
-        { lastname: regex || '' }
+        { email: searchTermRegex || '' },
+        { firstname: searchTermRegex || '' },
+        { lastname: searchTermRegex || '' }
       ]
     })
     .skip(offset)
